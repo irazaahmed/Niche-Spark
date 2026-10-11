@@ -1,0 +1,54 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="promo.css">
+<style>
+  :root { --w: 1400px; --h: 560px; }
+  .wrap { position: relative; height: 100%; display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 56px; padding: 0 90px; }
+  .copy { display: grid; gap: 22px; }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand img { width: 72px; height: 72px; }
+  .brand span { font-size: 50px; font-weight: 700; }
+  h1 { font-size: 54px; line-height: 1.08; font-weight: 700; }
+  p { font-size: 21px; color: #c9d6d1; line-height: 1.5; max-width: 560px; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { font-size: 16px; padding: 8px 14px; }
+  .win { background: #fff; color: #17211e; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .bar { display: flex; gap: 6px; padding: 12px 16px; background: #f3f6f5; border-bottom: 1px solid #e3e8e6; align-items: center; }
+  .bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .bar small { margin-left: 8px; font: 13px Consolas, monospace; color: #6b7a75; }
+  .body { padding: 22px; display: grid; gap: 14px; }
+  .row { display: flex; justify-content: space-between; align-items: center; }
+  .row strong { font: 700 19px Georgia, serif; }
+  .badge { font-size: 13px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: #e3f6ee; color: #047857; }
+  .prog { height: 9px; border-radius: 9px; background: #eef2f1; overflow: hidden; }
+  .prog div { height: 100%; width: 38%; background: linear-gradient(90deg, #047857, #34d399); }
+  .status { font: 14px Consolas, monospace; color: #6b7a75; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: #6b7a75; padding: 7px 8px; border-bottom: 1px solid #e3e8e6; }
+  td { padding: 9px 8px; border-bottom: 1px solid #eef2f1; }
+  .tag { font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 5px; background: #e3f6ee; color: #047857; }
+</style></head><body>
+<svg class="spark" style="left:46%;top:40px;width:22px" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></svg>
+<svg class="spark" style="left:52px;bottom:46px;width:30px;opacity:.2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></svg>
+<div class="wrap">
+  <div class="copy">
+    <div class="brand"><img src="logo.svg" alt=""><span class="serif">NicheSpark</span></div>
+    <h1 class="serif">Discover keywords.<br><span class="accent">Uncover opportunities.</span></h1>
+    <p>Collect the real Google Autocomplete suggestions for your niche, with A to Z, prefix and suffix research. Saved, deduplicated and ready to export.</p>
+    <div class="chips"><span class="chip">Free</span><span class="chip">No account</span><span class="chip">Data stays in your browser</span></div>
+  </div>
+  <div class="win">
+    <div class="bar"><i style="background:#f87171"></i><i style="background:#fbbf24"></i><i style="background:#34d399"></i><small>NicheSpark · Dashboard</small></div>
+    <div class="body">
+      <div class="row"><strong>A to Z · mobile car detailing</strong><span class="badge">● Running</span></div>
+      <div class="prog"><div></div></div>
+      <div class="status">10 of 26 queries · collecting "mobile car detailing k"</div>
+      <table>
+        <tr><th>Keyword</th><th>Method</th></tr>
+        <tr><td>mobile car detailing austin</td><td><span class="tag">A to Z</span></td></tr>
+        <tr><td>mobile car detailing brisbane</td><td><span class="tag">A to Z</span></td></tr>
+        <tr><td>mobile car detailing business</td><td><span class="tag">A to Z</span></td></tr>
+        <tr><td>mobile car detailing boston</td><td><span class="tag">A to Z</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+</body></html>
