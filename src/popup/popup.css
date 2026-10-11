@@ -1,0 +1,14 @@
+body { width: 360px; }
+
+.popup { padding: 16px; }
+.section-title { font-size: 15px; }
+.small { font-size: 12px; }
+.seed { font-weight: 600; font-size: 15px; word-break: break-word; }
+.row.nowrap { flex-wrap: nowrap; }
+
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0;
+}
+.stats div { background: var(--surface-2); border-radius: 6px; padding: 6px 8px; }
+.stats dt { color: var(--text-muted); font-size: 11px; }
+.stats dd { margin: 0; font-weight: 700; font-size: 16px; }
