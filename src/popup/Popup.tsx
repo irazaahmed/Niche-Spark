@@ -2,7 +2,11 @@ import { useCallback, useEffect, useState } from 'react';
 import type { NewProjectInput, Project, QueryCounts } from '../shared/types';
 import { getStorage } from '../storage';
 import { Brand, ErrorAlert, NewProjectForm } from '../ui/components';
+import { isActive } from '../core/collectionState';
+import { focusTab, JobPanel } from '../ui/JobPanel';
+import { useJob } from '../ui/jobClient';
 import { dashboardUrl, getLastProjectId, setLastProjectId } from '../ui/preferences';
+import { StartControls } from '../ui/StartControls';
 
 interface Summary {
   keywords: number;
@@ -16,6 +20,7 @@ export function Popup() {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<unknown>(null);
+  const job = useJob();
 
   const load = useCallback(async () => {
     try {
@@ -47,7 +52,7 @@ export function Popup() {
     return () => {
       cancelled = true;
     };
-  }, [selectedId, storage]);
+  }, [selectedId, storage, job?.updatedAt]);
 
   async function create(input: NewProjectInput) {
     const project = await storage.createProject(input);
@@ -128,9 +133,15 @@ export function Popup() {
             </div>
           )}
 
-          <div className="alert alert-info">
-            Keyword collection isn't available in this build yet. You can create and manage projects now.
-          </div>
+          {job && (isActive(job) || job.projectId === selectedId) && (
+            <JobPanel job={job} onOpenTab={() => focusTab(job.tabId)} />
+          )}
+
+          {selected && !isActive(job) && (
+            <section className="card" aria-label="Start collection">
+              <StartControls project={selected} counts={summary?.queries ?? null} />
+            </section>
+          )}
 
           <button
             className="btn btn-primary"

@@ -142,3 +142,25 @@ export function generateTemplateQueries(seed: string, templates: readonly string
   }
   return dedupeQueries(out);
 }
+
+export interface MethodQueryOptions {
+  startLetter?: string;
+}
+
+/** Generates the queries a project would run for one research method. */
+export function generateQueriesForMethod(
+  project: { seed: string; prefixes: readonly string[]; suffixes: readonly string[]; templates: readonly string[] },
+  method: ResearchMethod,
+  options: MethodQueryOptions = {},
+): GeneratedQuery[] {
+  switch (method) {
+    case 'az':
+      return generateAzQueries(project.seed, options.startLetter ? { startLetter: options.startLetter } : {});
+    case 'prefix':
+      return generatePrefixQueries(project.seed, project.prefixes);
+    case 'suffix':
+      return generateSuffixQueries(project.seed, project.suffixes);
+    case 'template':
+      return generateTemplateQueries(project.seed, project.templates);
+  }
+}

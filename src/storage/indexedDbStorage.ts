@@ -170,6 +170,11 @@ export class IndexedDbStorage implements StorageService {
     });
   }
 
+  async getQuery(projectId: string, id: string) {
+    const q = await this.run(['queries'], 'readonly', (tx) => request<QueryRecord | undefined>(tx.objectStore('queries').get(id)));
+    return q?.projectId === projectId ? q : undefined;
+  }
+
   async listQueries(projectId: string, method?: ResearchMethod) {
     const all = await this.run(['queries'], 'readonly', (tx) => this.byProject<QueryRecord>(tx, 'queries', projectId));
     return sortQueries(all.filter((q) => !method || q.method === method));

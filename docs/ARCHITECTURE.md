@@ -26,8 +26,9 @@ browser. There is no backend, account system, or paid API.
 | Query generation (A–Z, prefix, suffix, templates) | `src/core/queryGeneration.ts` |
 | Keyword normalization, dedup, source tracking | `src/core/keywords.ts` |
 | Storage interface and implementations | `src/storage/` |
-| Collection scheduler (pacing, pause/resume/cancel/retry) | `src/background/` *(Phase 5)* |
-| Google Autocomplete adapter (every Google selector) | `src/content/googleAdapter.ts` *(Phase 4)* |
+| Collection state machine (pure) | `src/core/collectionState.ts` |
+| Collection scheduler (pacing, pause/resume/cancel/retry) | `src/background/scheduler.ts`, `chromeDeps.ts` |
+| Google Autocomplete adapter | `src/content/googleAdapter.ts` (selectors in `googleSelectors.ts`) |
 | Popup UI | `src/popup/` |
 | Dashboard UI | `src/dashboard/` |
 | CSV / JSON / clipboard export and JSON import | `src/core/export*.ts` *(Phase 6)* |
@@ -80,6 +81,19 @@ IndexedDB is shared by the service worker, popup, and dashboard.
    query. A conservative, configurable delay with jitter sits between queries.
 5. If the worker sees `blocked` or `consent_required`, it pauses the job and
    asks the user to act. It never tries to get around those pages.
+
+## Observed Google behavior (checked by hand on 2026-10-11)
+
+- Programmatic `input` events on `textarea[name=q]` trigger real suggestions,
+  including in a hidden background tab (about 300 ms).
+- The previous query's dropdown stays visible for about 150 ms after new input, so
+  the adapter waits for the list to change and settle before reading.
+- `.wM6W7d` holds the clean suggestion text, without entity labels like "Dish".
+  `aria-label` is lower-cased and is used only as a fallback.
+- Search-history rows carry the `.sbic.sb27` icon (predictions use `sb43`).
+  The "Delete from history" buttons are reused DOM nodes and cannot be trusted.
+- An empty, focused box shows the user's recent searches. These are never read
+  as results.
 
 ## Technical risks
 

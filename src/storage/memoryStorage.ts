@@ -67,6 +67,11 @@ export class MemoryStorage implements StorageService {
     });
   }
 
+  async getQuery(projectId: string, id: string) {
+    const q = this.queries.get(id);
+    return q && q.projectId === projectId ? clone(q) : undefined;
+  }
+
   async listQueries(projectId: string, method?: ResearchMethod) {
     return sortQueries(this.projectQueries(projectId).filter((q) => !method || q.method === method)).map(clone);
   }

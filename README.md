@@ -19,12 +19,11 @@ This is an early build. Work is happening in phases (see
 | Query generation: A to Z (with start letter), prefix, suffix, `{seed}`/`{letter}` templates, plus a preview | Done and unit-tested |
 | Keyword normalization, deduplication, source-query tracking | Done and unit-tested |
 | Local storage (IndexedDB behind a `StorageService` interface) | Done. Unit-tested against a mock IndexedDB |
-| Live Google Autocomplete collection | **Not implemented yet** |
-| Collection controls (start, pause, resume, cancel, retry) and progress | **Not implemented yet** |
+| Live Google Autocomplete collection (Google adapter) | Implemented. Unit-tested on a simulated page. DOM behavior checked by hand on www.google.com (2026-10-11). The full extension flow is **not yet verified in Chrome** |
+| Collection controls: start (all, selected, or from a letter), pause, resume, cancel, retry failed, skip completed, progress | Implemented and unit-tested with mocks. **Not yet verified in Chrome** |
 | Keyword filters, copy, CSV/JSON export, JSON import | **Not implemented yet** |
 
-This build does not collect keywords yet. It never shows sample or made-up
-keywords as real results.
+NicheSpark never shows sample or made-up keywords as real results.
 
 ## Development
 
@@ -44,6 +43,45 @@ npm run build     # type-check + production build into dist/
 4. Pin NicheSpark and open the popup to create a project.
 
 After code changes, rebuild and click the reload icon on the extension card.
+
+## Collecting keywords
+
+1. Create a project with a seed keyword (popup or dashboard).
+2. Pick a method: **A to Z**, **Prefix**, **Suffix**, or **Template**. For
+   prefixes, suffixes, and templates, add entries first under *Research
+   queries* in the dashboard.
+3. Click **Start**. To collect specific queries only, tick them in the
+   dashboard preview and click **Collect N selected**.
+4. NicheSpark opens Google in a background tab. For each query it enters the
+   text in the search box, waits for the dropdown to settle, and saves the
+   suggestions. Progress is saved after every query, so you can close the popup.
+5. Use **Pause**, **Resume**, and **Cancel** at any time. Keywords collected
+   so far are always kept. **Retry failed** runs only the failed queries again.
+
+How results are recorded:
+- **Done**: suggestions were captured and saved.
+- **Empty**: Google showed no suggestions for that query.
+- **Failed**: the dropdown did not appear in time or the page changed. The
+  error is kept, and the query can be retried.
+- If Google shows an unusual-traffic or CAPTCHA page, or a consent page, the
+  job stops with **Needs your action**. Resolve it yourself in the Google tab,
+  then click **Resume**. NicheSpark never tries to get past these pages.
+- After 3 failed queries in a row, the job pauses automatically.
+- Your own search-history entries in the dropdown (clock icon) are never saved.
+
+Suggestions reflect what Google showed in your browser at that moment.
+Location, language, and sign-in state can change them.
+
+## Troubleshooting
+
+- **"Could not reach Google in the NicheSpark tab"**: open the tab. If Google
+  shows a consent or sign-in page, complete it, then click Resume.
+- **Many failed queries**: increase the delay, check your connection, then
+  click Retry failed.
+- **Job shows "Interrupted"**: Chrome restarted the extension mid-job. Click Resume.
+- **Nothing happens after updating the code**: run `npm run build`, then click
+  reload on the NicheSpark card in `chrome://extensions`. Reload any open
+  Google tabs too.
 
 ## Permissions
 
@@ -76,8 +114,8 @@ src/
   shared/      types, constants, message contracts
   core/        query generation, keyword normalization/merging (pure, tested)
   storage/     StorageService interface, IndexedDB + in-memory implementations
-  background/  service worker (collection scheduler goes here)
-  content/     Google Search content script + isolated selectors
+  background/  service worker: collection scheduler + Chrome tab driver
+  content/     Google Search content script, adapter, isolated selectors
   popup/       popup UI
   dashboard/   dashboard UI
   ui/          shared UI components and theme

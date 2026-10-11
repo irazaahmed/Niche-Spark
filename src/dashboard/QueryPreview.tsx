@@ -9,12 +9,18 @@ import {
   type GeneratedQuery,
 } from '../core/queryGeneration';
 import { normalizeText } from '../core/keywords';
-import type { Project, ProjectPatch, ResearchMethod } from '../shared/types';
+import type { Project, ProjectPatch, QueryCounts, QueryRecord, QueryStatus, ResearchMethod } from '../shared/types';
 import { RESEARCH_METHODS, RESEARCH_METHOD_LABELS } from '../shared/types';
 import { errorMessage } from '../ui/components';
+import { StartControls } from '../ui/StartControls';
+
+const STATUS_LABELS: Record<QueryStatus, string> = { pending: 'Pending', succeeded: 'Done', empty: 'Empty', failed: 'Failed' };
 
 interface Props {
   project: Project;
+  records: QueryRecord[];
+  counts: QueryCounts | null;
+  jobActive: boolean;
   onSave: (patch: ProjectPatch) => Promise<void>;
 }
 
@@ -35,7 +41,7 @@ function parseTemplates(value: string): string[] {
 }
 
 /** Edits a project's prefix/suffix/template lists and previews the queries each method would run. */
-export function QueryPreview({ project, onSave }: Props) {
+export function QueryPreview({ project, records, counts, jobActive, onSave }: Props) {
   const [method, setMethod] = useState<ResearchMethod>('az');
   const [startLetter, setStartLetter] = useState('a');
   const [drafts, setDrafts] = useState({
@@ -44,6 +50,19 @@ export function QueryPreview({ project, onSave }: Props) {
     templates: project.templates.join('\n'),
   });
   const field = LIST_FIELD[method];
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const statusByKey = useMemo(() => {
+    const m = new Map<string, QueryRecord>();
+    for (const r of records) if (r.method === method) m.set(r.key, r);
+    return m;
+  }, [records, method]);
+  const toggle = (key: string) =>
+    setSelected((s) => {
+      const next = new Set(s);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
 
   const preview = useMemo((): { queries: GeneratedQuery[]; error?: string } => {
     try {
@@ -82,7 +101,10 @@ export function QueryPreview({ project, onSave }: Props) {
             role="tab"
             aria-selected={m === method}
             className={`tab${m === method ? ' active' : ''}`}
-            onClick={() => setMethod(m)}
+            onClick={() => {
+              setMethod(m);
+              setSelected(new Set());
+            }}
           >
             {RESEARCH_METHOD_LABELS[m]}
           </button>
@@ -126,8 +148,13 @@ export function QueryPreview({ project, onSave }: Props) {
         </div>
 
         <div className="stack">
-          <div className="muted small" aria-live="polite">
-            {preview.error ? '' : `${preview.queries.length} queries`}
+          <div className="row spread muted small" aria-live="polite">
+            <span>{preview.error ? '' : `${preview.queries.length} queries${selected.size ? ` · ${selected.size} selected` : ''}`}</span>
+            {selected.size > 0 && (
+              <button className="link" type="button" onClick={() => setSelected(new Set())}>
+                Clear selection
+              </button>
+            )}
           </div>
           {preview.error ? (
             <div className="alert alert-error" role="alert">
@@ -136,13 +163,45 @@ export function QueryPreview({ project, onSave }: Props) {
           ) : preview.queries.length === 0 ? (
             <p className="muted">Add entries to preview queries.</p>
           ) : (
-            <ol className="query-list">
-              {preview.queries.map((q) => (
-                <li key={q.key}>{q.text}</li>
-              ))}
-            </ol>
+            <ul className="query-list">
+              {preview.queries.map((q) => {
+                const rec = statusByKey.get(q.key);
+                return (
+                  <li key={q.key}>
+                    <label className="query-row">
+                      <input type="checkbox" checked={selected.has(q.key)} onChange={() => toggle(q.key)} />
+                      <span className="query-text">{q.text}</span>
+                      {rec && (
+                        <span className={`status status-${rec.status}`} title={rec.lastError ?? `${rec.suggestionCount} suggestions`}>
+                          {STATUS_LABELS[rec.status]}
+                          {rec.status === 'succeeded' ? ` · ${rec.suggestionCount}` : ''}
+                        </span>
+                      )}
+                    </label>
+                  </li>
+                );
+              })}
+            </ul>
           )}
         </div>
+      </div>
+
+      <div className="collect-box">
+        <h3 className="collect-title">Collect from Google</h3>
+        {dirty ? (
+          <p className="muted small">Save the list before collecting.</p>
+        ) : (
+          <StartControls
+            key={method}
+            project={project}
+            counts={counts}
+            method={method}
+            startLetter={startLetter}
+            disabled={jobActive || Boolean(preview.error)}
+            {...(selected.size ? { selectedKeys: [...selected] } : {})}
+          />
+        )}
+        {jobActive && <p className="muted small">A collection job is active. Pause, finish, or cancel it to start another.</p>}
       </div>
     </section>
   );

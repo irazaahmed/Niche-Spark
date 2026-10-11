@@ -57,6 +57,7 @@ export interface StorageService {
    * Returns every record matching the input, in input order.
    */
   addQueries(projectId: string, queries: readonly GeneratedQuery[]): Promise<QueryRecord[]>;
+  getQuery(projectId: string, id: string): Promise<QueryRecord | undefined>;
   listQueries(projectId: string, method?: ResearchMethod): Promise<QueryRecord[]>;
   countQueries(projectId: string): Promise<QueryCounts>;
   /** Resets failed queries (optionally of one method) back to pending. Returns how many were reset. */

@@ -1,9 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { SUPPORTED_GOOGLE_DOMAINS } from '../shared/constants';
-import type { KeywordRecord, Project, QueryCounts } from '../shared/types';
+import type { KeywordRecord, Project, QueryRecord } from '../shared/types';
 import { RESEARCH_METHOD_LABELS } from '../shared/types';
 import { getStorage } from '../storage';
+import { isActive } from '../core/collectionState';
+import { countStatuses } from '../storage/shared';
 import { ErrorAlert } from '../ui/components';
+import { focusTab, JobPanel } from '../ui/JobPanel';
+import { useJob } from '../ui/jobClient';
 import { QueryPreview } from './QueryPreview';
 
 interface Props {
@@ -15,23 +19,26 @@ interface Props {
 export function ProjectView({ project, onChanged, onDeleted }: Props) {
   const storage = getStorage();
   const [keywords, setKeywords] = useState<KeywordRecord[] | null>(null);
-  const [counts, setCounts] = useState<QueryCounts | null>(null);
+  const [queries, setQueries] = useState<QueryRecord[] | null>(null);
+  const job = useJob();
+  const jobForProject = job && job.projectId === project.id ? job : null;
+  const counts = useMemo(() => (queries ? countStatuses(queries) : null), [queries]);
   const [search, setSearch] = useState('');
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
     let cancelled = false;
-    Promise.all([storage.listKeywords(project.id), storage.countQueries(project.id)])
-      .then(([k, c]) => {
+    Promise.all([storage.listKeywords(project.id), storage.listQueries(project.id)])
+      .then(([k, q]) => {
         if (cancelled) return;
         setKeywords(k);
-        setCounts(c);
+        setQueries(q);
       })
       .catch((e) => !cancelled && setError(e));
     return () => {
       cancelled = true;
     };
-  }, [project.id, project.updatedAt, storage]);
+  }, [project.id, project.updatedAt, storage, jobForProject?.updatedAt]);
 
   const visible = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -139,7 +146,18 @@ export function ProjectView({ project, onChanged, onDeleted }: Props) {
         </dl>
       </section>
 
-      <QueryPreview project={project} onSave={(patch) => run(() => storage.updateProject(project.id, patch))} />
+      {jobForProject && <JobPanel job={jobForProject} onOpenTab={() => focusTab(jobForProject.tabId)} />}
+      {job && isActive(job) && !jobForProject && (
+        <div className="alert alert-info">A collection job is running for another project ({job.projectName}).</div>
+      )}
+
+      <QueryPreview
+        project={project}
+        records={queries ?? []}
+        counts={counts}
+        jobActive={isActive(job)}
+        onSave={(patch) => run(() => storage.updateProject(project.id, patch))}
+      />
 
       <section className="card stack" aria-labelledby="keywords-heading">
         <div className="row spread">
