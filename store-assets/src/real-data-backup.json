@@ -1,0 +1,4175 @@
+{
+  "format": "nichespark-backup",
+  "version": 1,
+  "exportedAt": "2026-10-11T20:15:02.865Z",
+  "app": {
+    "name": "NicheSpark",
+    "version": "0.2.0"
+  },
+  "project": {
+    "name": "Mobile Car Detailing",
+    "seed": "mobile car detailing",
+    "googleDomain": "www.google.com",
+    "language": "en",
+    "prefixes": [
+      "best",
+      "affordable",
+      "cheap"
+    ],
+    "suffixes": [
+      "near me",
+      "cost",
+      "prices",
+      "services"
+    ],
+    "templates": [],
+    "createdAt": 1791749172865,
+    "updatedAt": 1791749702865
+  },
+  "queries": [
+    {
+      "text": "mobile car detailing a",
+      "method": "az",
+      "position": 0,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749172865,
+      "createdAt": 1791749172865
+    },
+    {
+      "text": "mobile car detailing b",
+      "method": "az",
+      "position": 1,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749181863,
+      "createdAt": 1791749181863
+    },
+    {
+      "text": "mobile car detailing c",
+      "method": "az",
+      "position": 2,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749189874,
+      "createdAt": 1791749189874
+    },
+    {
+      "text": "mobile car detailing d",
+      "method": "az",
+      "position": 3,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749207863,
+      "createdAt": 1791749207863
+    },
+    {
+      "text": "mobile car detailing e",
+      "method": "az",
+      "position": 4,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749215863,
+      "createdAt": 1791749215863
+    },
+    {
+      "text": "mobile car detailing i",
+      "method": "az",
+      "position": 5,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749255864,
+      "createdAt": 1791749255864
+    },
+    {
+      "text": "mobile car detailing n",
+      "method": "az",
+      "position": 6,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749303859,
+      "createdAt": 1791749303859
+    },
+    {
+      "text": "mobile car detailing o",
+      "method": "az",
+      "position": 7,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749312882,
+      "createdAt": 1791749312882
+    },
+    {
+      "text": "mobile car detailing s",
+      "method": "az",
+      "position": 8,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749351866,
+      "createdAt": 1791749351866
+    },
+    {
+      "text": "mobile car detailing near me",
+      "method": "suffix",
+      "position": 9,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749447861,
+      "createdAt": 1791749447861
+    },
+    {
+      "text": "best mobile car detailing",
+      "method": "prefix",
+      "position": 10,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749460092,
+      "createdAt": 1791749460092
+    },
+    {
+      "text": "mobile car detailing r",
+      "method": "az",
+      "position": 11,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749468866,
+      "createdAt": 1791749468866
+    },
+    {
+      "text": "mobile car detailing f",
+      "method": "az",
+      "position": 12,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749526869,
+      "createdAt": 1791749526869
+    },
+    {
+      "text": "mobile car detailing g",
+      "method": "az",
+      "position": 13,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749535873,
+      "createdAt": 1791749535873
+    },
+    {
+      "text": "mobile car detailing h",
+      "method": "az",
+      "position": 14,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749543870,
+      "createdAt": 1791749543870
+    },
+    {
+      "text": "mobile car detailing j",
+      "method": "az",
+      "position": 15,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749551862,
+      "createdAt": 1791749551862
+    },
+    {
+      "text": "mobile car detailing k",
+      "method": "az",
+      "position": 16,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749559862,
+      "createdAt": 1791749559862
+    },
+    {
+      "text": "mobile car detailing l",
+      "method": "az",
+      "position": 17,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749568870,
+      "createdAt": 1791749568870
+    },
+    {
+      "text": "mobile car detailing m",
+      "method": "az",
+      "position": 18,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749576862,
+      "createdAt": 1791749576862
+    },
+    {
+      "text": "mobile car detailing p",
+      "method": "az",
+      "position": 19,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749584858,
+      "createdAt": 1791749584858
+    },
+    {
+      "text": "mobile car detailing q",
+      "method": "az",
+      "position": 20,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749593862,
+      "createdAt": 1791749593862
+    },
+    {
+      "text": "mobile car detailing t",
+      "method": "az",
+      "position": 21,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749601867,
+      "createdAt": 1791749601867
+    },
+    {
+      "text": "mobile car detailing u",
+      "method": "az",
+      "position": 22,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749609866,
+      "createdAt": 1791749609866
+    },
+    {
+      "text": "mobile car detailing v",
+      "method": "az",
+      "position": 23,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749618869,
+      "createdAt": 1791749618869
+    },
+    {
+      "text": "mobile car detailing w",
+      "method": "az",
+      "position": 24,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749626858,
+      "createdAt": 1791749626858
+    },
+    {
+      "text": "mobile car detailing x",
+      "method": "az",
+      "position": 25,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749634860,
+      "createdAt": 1791749634860
+    },
+    {
+      "text": "mobile car detailing y",
+      "method": "az",
+      "position": 26,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749642870,
+      "createdAt": 1791749642870
+    },
+    {
+      "text": "mobile car detailing z",
+      "method": "az",
+      "position": 27,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749651865,
+      "createdAt": 1791749651865
+    },
+    {
+      "text": "affordable mobile car detailing",
+      "method": "prefix",
+      "position": 28,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749659871,
+      "createdAt": 1791749659871
+    },
+    {
+      "text": "cheap mobile car detailing",
+      "method": "prefix",
+      "position": 29,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 8,
+      "lastAttemptAt": 1791749667872,
+      "createdAt": 1791749667872
+    },
+    {
+      "text": "mobile car detailing cost",
+      "method": "suffix",
+      "position": 30,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749676868,
+      "createdAt": 1791749676868
+    },
+    {
+      "text": "mobile car detailing prices",
+      "method": "suffix",
+      "position": 31,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749684862,
+      "createdAt": 1791749684862
+    },
+    {
+      "text": "mobile car detailing services",
+      "method": "suffix",
+      "position": 32,
+      "status": "succeeded",
+      "attempts": 1,
+      "suggestionCount": 10,
+      "lastAttemptAt": 1791749693859,
+      "createdAt": 1791749693859
+    }
+  ],
+  "keywords": [
+    {
+      "text": "mobile car detailing austin",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing atlanta",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing albuquerque",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing alexandria va",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing augusta ga",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing arlington va",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing anchorage",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing aurora co",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing asheville",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing athens ga",
+      "sourceQueries": [
+        "mobile car detailing a"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749172865,
+      "lastCollectedAt": 1791749172865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing boston",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing business for sale",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing birmingham al",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing brooklyn",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing business",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing business start up cost",
+      "sourceQueries": [
+        "mobile car detailing b",
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "az",
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 2
+    },
+    {
+      "text": "mobile car detailing baltimore",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing boise",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing bakersfield",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing buffalo ny",
+      "sourceQueries": [
+        "mobile car detailing b"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749181863,
+      "lastCollectedAt": 1791749181863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing charlotte nc",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing columbus ohio",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing chicago",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing colorado springs",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing cleveland",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing columbia sc",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing chattanooga",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing columbus ga",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing cary nc",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing corpus christi",
+      "sourceQueries": [
+        "mobile car detailing c"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749189874,
+      "lastCollectedAt": 1791749189874,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing dallas",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing denver",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing detroit",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing durham nc",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing des moines",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing dayton ohio",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing denton",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing decatur ga",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing delray beach",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing daytona beach",
+      "sourceQueries": [
+        "mobile car detailing d"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749207863,
+      "lastCollectedAt": 1791749207863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing equipment",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing el paso",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing elk grove",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing eugene",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing ellicott city",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing equipment for sale",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing everett",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing erie pa",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing escondido",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing evans ga",
+      "sourceQueries": [
+        "mobile car detailing e"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749215863,
+      "lastCollectedAt": 1791749215863,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing in my area",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing indianapolis",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing irving tx",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing irvine",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing in virginia beach",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing idaho falls",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing insurance",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing interior",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing issaquah",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing income",
+      "sourceQueries": [
+        "mobile car detailing i"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749255864,
+      "lastCollectedAt": 1791749255864,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing near me",
+      "sourceQueries": [
+        "mobile car detailing n",
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "az",
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 2
+    },
+    {
+      "text": "mobile car detailing near me prices",
+      "sourceQueries": [
+        "mobile car detailing n",
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "az",
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 2
+    },
+    {
+      "text": "mobile car detailing near me within 5 mi",
+      "sourceQueries": [
+        "mobile car detailing n",
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "az",
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 2
+    },
+    {
+      "text": "mobile car detailing near me come to my house",
+      "sourceQueries": [
+        "mobile car detailing n",
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "az",
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 2
+    },
+    {
+      "text": "mobile car detailing nyc",
+      "sourceQueries": [
+        "mobile car detailing n"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749303859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing nashville",
+      "sourceQueries": [
+        "mobile car detailing n"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749303859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing new orleans",
+      "sourceQueries": [
+        "mobile car detailing n"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749303859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing new port richey",
+      "sourceQueries": [
+        "mobile car detailing n"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749303859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing new jersey",
+      "sourceQueries": [
+        "mobile car detailing n"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749303859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing north little rock",
+      "sourceQueries": [
+        "mobile car detailing n"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749303859,
+      "lastCollectedAt": 1791749303859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing orlando",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing omaha",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing okc",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing orange park fl",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing orange county",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing oakland",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing ocala",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing overland park",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing olive branch ms",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing oviedo",
+      "sourceQueries": [
+        "mobile car detailing o"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749312882,
+      "lastCollectedAt": 1791749312882,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing service near me",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing salt lake city",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing san diego",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing san antonio",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing seattle",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing sacramento",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing service",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing st louis",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing san jose",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing san francisco",
+      "sourceQueries": [
+        "mobile car detailing s"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749351866,
+      "lastCollectedAt": 1791749351866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing near me open now",
+      "sourceQueries": [
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749447861,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing near me cheap",
+      "sourceQueries": [
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749447861,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing near me book online",
+      "sourceQueries": [
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749447861,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing near me within 20 mi",
+      "sourceQueries": [
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749447861,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing near me within 1 mi",
+      "sourceQueries": [
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749447861,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing near me philadelphia",
+      "sourceQueries": [
+        "mobile car detailing near me"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749447861,
+      "lastCollectedAt": 1791749447861,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing near me",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing richmond va",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing charlotte nc",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing san diego",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing columbia sc",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing las vegas",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing raleigh nc",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing greensboro nc",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "best mobile car detailing near me reviews",
+      "sourceQueries": [
+        "best mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749460092,
+      "lastCollectedAt": 1791749460092,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing richmond va",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing raleigh nc",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing rock hill sc",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing raleigh",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing reno",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing rocky mount nc",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing rochester ny",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing round rock",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing roanoke va",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing riverview fl",
+      "sourceQueries": [
+        "mobile car detailing r"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749468866,
+      "lastCollectedAt": 1791749468866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing fort walton beach",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing fayetteville nc",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing fort mill sc",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing fresno",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing fort smith ar",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing fort myers",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing fort lauderdale",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing fort wayne",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing franklin tn",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing frisco",
+      "sourceQueries": [
+        "mobile car detailing f"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749526869,
+      "lastCollectedAt": 1791749526869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing greenville sc",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing grand rapids",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing gilbert az",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing georgetown tx",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing greenville nc",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing grand junction",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing greensboro nc",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing gastonia nc",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing glendale az",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing goldsboro nc",
+      "sourceQueries": [
+        "mobile car detailing g"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749535873,
+      "lastCollectedAt": 1791749535873,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing houston",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing high point nc",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing huntsville al",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing hope mills nc",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing honolulu",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing holly springs nc",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing hampton va",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing huntersville nc",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing hickory nc",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing harrisburg pa",
+      "sourceQueries": [
+        "mobile car detailing h"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749543870,
+      "lastCollectedAt": 1791749543870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jacksonville fl",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing johnson city tn",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jacksonville nc",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jersey city",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jobs",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jupiter",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jackson tn",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jonesboro ar",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jackson ms",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing jobs near me",
+      "sourceQueries": [
+        "mobile car detailing j"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749551862,
+      "lastCollectedAt": 1791749551862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing kansas city",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing knoxville tn",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing katy",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing kit",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing kissimmee",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing kalamazoo",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing killeen tx",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing kingman az",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing kennesaw",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing kent wa",
+      "sourceQueries": [
+        "mobile car detailing k"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749559862,
+      "lastCollectedAt": 1791749559862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing las vegas",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing los angeles",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing louisville ky",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing lexington ky",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing little rock",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing lincoln ne",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing lakeland",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing long island",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing lexington sc",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing lafayette la",
+      "sourceQueries": [
+        "mobile car detailing l"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749568870,
+      "lastCollectedAt": 1791749568870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing minneapolis",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing mount pleasant sc",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing miami",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing mesa az",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing melbourne fl",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing mold removal near me",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing mckinney",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing myrtle beach",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing montgomery al",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing milwaukee",
+      "sourceQueries": [
+        "mobile car detailing m"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749576862,
+      "lastCollectedAt": 1791749576862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing phoenix",
+      "sourceQueries": [
+        "mobile car detailing p"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749584858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing portland",
+      "sourceQueries": [
+        "mobile car detailing p"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749584858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing pittsburgh",
+      "sourceQueries": [
+        "mobile car detailing p"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749584858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing panama city fl",
+      "sourceQueries": [
+        "mobile car detailing p"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749584858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing prices near me",
+      "sourceQueries": [
+        "mobile car detailing p",
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "az",
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 2
+    },
+    {
+      "text": "mobile car detailing prices",
+      "sourceQueries": [
+        "mobile car detailing p",
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "az",
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 2
+    },
+    {
+      "text": "mobile car detailing prices list",
+      "sourceQueries": [
+        "mobile car detailing p",
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "az",
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 2
+    },
+    {
+      "text": "mobile car detailing philadelphia",
+      "sourceQueries": [
+        "mobile car detailing p"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749584858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing plano",
+      "sourceQueries": [
+        "mobile car detailing p"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749584858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing pensacola",
+      "sourceQueries": [
+        "mobile car detailing p"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749584858,
+      "lastCollectedAt": 1791749584858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing queens",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing queen creek",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing queanbeyan",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing quincy ma",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing queens ny",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing qatar",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing quincy",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing quispamsis",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing quote",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing queensbury ny",
+      "sourceQueries": [
+        "mobile car detailing q"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749593862,
+      "lastCollectedAt": 1791749593862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing tampa",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing tulsa",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing tucson",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing tallahassee",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing toms river nj",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing the woodlands",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing tacoma",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing tyler tx",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing temple tx",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing traverse city",
+      "sourceQueries": [
+        "mobile car detailing t"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749601867,
+      "lastCollectedAt": 1791749601867,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing utah",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing utica ny",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing upper marlboro md",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing usa",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing uk",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing uxbridge",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing utah county",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing ulladulla",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing upland",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing upper coomera",
+      "sourceQueries": [
+        "mobile car detailing u"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749609866,
+      "lastCollectedAt": 1791749609866,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing virginia beach",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing van for sale",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing vancouver wa",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing ventura",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing van",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing vacaville",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing venice fl",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing victorville",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing van nuys",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing visalia",
+      "sourceQueries": [
+        "mobile car detailing v"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749618869,
+      "lastCollectedAt": 1791749618869,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing west palm beach",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing warner robins ga",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing wilmington nc",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing wichita ks",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing woodbridge va",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing wilmington de",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing worcester",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing winston salem",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing waco",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing wake forest",
+      "sourceQueries": [
+        "mobile car detailing w"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749626858,
+      "lastCollectedAt": 1791749626858,
+      "collectionCount": 1
+    },
+    {
+      "text": "xlr8 mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "xtreme mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "x2 mobile car detailing reviews",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "xcellence mobile car detailing square site reviews",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "x2 mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "xquisit mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "detail x mobile car detailing noosa reviews",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "formula x mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "detail x mobile car detailing noosa",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "xceptional details mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing x"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749634860,
+      "lastCollectedAt": 1791749634860,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing york pa",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing yakima",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing youngstown ohio",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing yuma az",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing yarrawonga",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing york sc",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing yuba city",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing yeppoon",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing yatala",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing yarrabilba",
+      "sourceQueries": [
+        "mobile car detailing y"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749642870,
+      "lastCollectedAt": 1791749642870,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing zephyrhills fl",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing zurich",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing zebulon nc",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing zephyrhills",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing zionsville",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing zagreb",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "zenshin mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "zayn mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "zz mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "zac mobile car detailing",
+      "sourceQueries": [
+        "mobile car detailing z"
+      ],
+      "methods": [
+        "az"
+      ],
+      "firstCollectedAt": 1791749651865,
+      "lastCollectedAt": 1791749651865,
+      "collectionCount": 1
+    },
+    {
+      "text": "affordable mobile car detailing near me",
+      "sourceQueries": [
+        "affordable mobile car detailing",
+        "cheap mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749667872,
+      "collectionCount": 2
+    },
+    {
+      "text": "affordable mobile car detailing",
+      "sourceQueries": [
+        "affordable mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749659871,
+      "collectionCount": 1
+    },
+    {
+      "text": "cheap mobile car detailing near me",
+      "sourceQueries": [
+        "affordable mobile car detailing",
+        "cheap mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749667872,
+      "collectionCount": 2
+    },
+    {
+      "text": "cheap mobile car detailing",
+      "sourceQueries": [
+        "affordable mobile car detailing",
+        "cheap mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749667872,
+      "collectionCount": 2
+    },
+    {
+      "text": "cheap mobile car detailing near me prices",
+      "sourceQueries": [
+        "affordable mobile car detailing",
+        "cheap mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749667872,
+      "collectionCount": 2
+    },
+    {
+      "text": "affordable mobile auto detailing",
+      "sourceQueries": [
+        "affordable mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749659871,
+      "collectionCount": 1
+    },
+    {
+      "text": "cheap mobile car detailing las vegas",
+      "sourceQueries": [
+        "affordable mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749659871,
+      "collectionCount": 1
+    },
+    {
+      "text": "cheap mobile car detailing townsville",
+      "sourceQueries": [
+        "affordable mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749659871,
+      "collectionCount": 1
+    },
+    {
+      "text": "cheap mobile car detailing kitchener",
+      "sourceQueries": [
+        "affordable mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749659871,
+      "collectionCount": 1
+    },
+    {
+      "text": "affordable mobile car cleaning",
+      "sourceQueries": [
+        "affordable mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749659871,
+      "lastCollectedAt": 1791749659871,
+      "collectionCount": 1
+    },
+    {
+      "text": "cheapest mobile car detailing near me",
+      "sourceQueries": [
+        "cheap mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749667872,
+      "lastCollectedAt": 1791749667872,
+      "collectionCount": 1
+    },
+    {
+      "text": "cheap mobile detailing near me",
+      "sourceQueries": [
+        "cheap mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749667872,
+      "lastCollectedAt": 1791749667872,
+      "collectionCount": 1
+    },
+    {
+      "text": "how much is a mobile detailing",
+      "sourceQueries": [
+        "cheap mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749667872,
+      "lastCollectedAt": 1791749667872,
+      "collectionCount": 1
+    },
+    {
+      "text": "cheap mobile detailing near me prices",
+      "sourceQueries": [
+        "cheap mobile car detailing"
+      ],
+      "methods": [
+        "prefix"
+      ],
+      "firstCollectedAt": 1791749667872,
+      "lastCollectedAt": 1791749667872,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing cost",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing cost near me",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing costa mesa",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car cleaning cost",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing startup cost",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing insurance cost",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing average cost",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing setup cost",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing business cost",
+      "sourceQueries": [
+        "mobile car detailing cost"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749676868,
+      "lastCollectedAt": 1791749676868,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing prices uk",
+      "sourceQueries": [
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749684862,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing prices australia",
+      "sourceQueries": [
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749684862,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing prices list near me",
+      "sourceQueries": [
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749684862,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing prices south africa",
+      "sourceQueries": [
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749684862,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car cleaning prices",
+      "sourceQueries": [
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749684862,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car cleaning prices near me",
+      "sourceQueries": [
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749684862,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing price list uk",
+      "sourceQueries": [
+        "mobile car detailing prices"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749684862,
+      "lastCollectedAt": 1791749684862,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing services near me",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing services",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing services london",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing services list",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing services price list",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car detailing services delaware county pa",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car cleaning services near me",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile car cleaning services",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile auto detailing services",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    },
+    {
+      "text": "mobile auto detailing services near me prices",
+      "sourceQueries": [
+        "mobile car detailing services"
+      ],
+      "methods": [
+        "suffix"
+      ],
+      "firstCollectedAt": 1791749693859,
+      "lastCollectedAt": 1791749693859,
+      "collectionCount": 1
+    }
+  ]
+}

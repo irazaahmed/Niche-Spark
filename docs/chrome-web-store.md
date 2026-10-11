@@ -125,3 +125,17 @@ reviewers may look closely at this. The listing is written to be accurate:
 collection is user-started, slow, one query at a time, and stops at any
 verification page. If the review raises this, reply plainly with how it
 works; do not change the description to hide it.
+
+## Screenshots (ready)
+
+All 1280×800, rendered from the real built dashboard and popup using real
+Google Autocomplete data collected on 2026-10-12 (33 queries, 316 keywords;
+`store-assets/src/real-data-backup.json`). Regenerate with
+`node store-assets/src/capture.mjs store-assets/src/real-data-backup.json`.
+
+Suggested upload order:
+1. `screenshot-1-keywords.png`: keyword table with sources
+2. `screenshot-2-filters-export.png`: filters, selection, copy and CSV
+3. `screenshot-5-popup.png`: popup with one-click start
+4. `screenshot-3-project.png`: project overview and finished job
+5. `screenshot-4-queries.png`: suffix list and per-query status
