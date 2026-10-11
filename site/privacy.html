@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy | NicheSpark</title>
+  <meta name="description" content="How the NicheSpark Chrome extension and website handle your data. Your research data stays in your browser." />
+  <link rel="canonical" href="https://nichespark.tech/privacy.html" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="logo" href="/" aria-label="NicheSpark home">
+        <img class="logo-mark" src="/assets/icon-128.png" alt="" width="30" height="30" />
+        NicheSpark
+      </a>
+      <a class="btn btn-sm" href="/">← Back to home</a>
+    </nav>
+  </header>
+
+  <main class="prose" id="main">
+    <h1>Privacy Policy</h1>
+    <p><strong>Last updated:</strong> October 11, 2026</p>
+    <p>
+      This policy explains how the NicheSpark Chrome extension (“the extension”) and the website nichespark.tech
+      (“the website”) handle information. In short, NicheSpark is designed to keep your research on your own device.
+    </p>
+
+    <h2>What the extension stores</h2>
+    <p>The extension stores the following, locally in your Chrome profile (IndexedDB and chrome.storage.local):</p>
+    <ul>
+      <li>Projects you create: name, seed keyword, chosen Google domain and language, and prefix, suffix and template lists.</li>
+      <li>Generated queries and their status (pending, done, empty or failed), including error messages.</li>
+      <li>Keyword suggestions captured from Google Autocomplete, with the queries and methods that found them, timestamps and counts.</li>
+      <li>Collection progress and small interface preferences, such as the last opened project.</li>
+    </ul>
+    <p>This data never leaves your device through NicheSpark. We have no server that receives it, and we cannot see it.</p>
+
+    <h2>What the extension reads</h2>
+    <ul>
+      <li>The extension runs only on the supported Google Search domains listed in its manifest.</li>
+      <li>On those pages it only uses the search box and the autocomplete suggestions, and only while you are running a collection.</li>
+      <li>Your own search-history entries that Google shows in the dropdown are recognized and are not saved.</li>
+      <li>It does not read or collect your browsing history, cookies, passwords, form data or the content of other websites.</li>
+    </ul>
+
+    <h2>Communication with Google</h2>
+    <p>
+      To collect suggestions, the extension enters your generated queries into the Google search box in a browser tab,
+      just as you would by typing. Google receives these queries as normal searches typed in your browser, and
+      Google's own privacy policy applies to that interaction. NicheSpark does not add identifiers or send any other
+      data to Google.
+    </p>
+
+    <h2>Permissions</h2>
+    <ul>
+      <li><strong>storage</strong> and <strong>unlimitedStorage</strong>: to save your projects and keywords locally without running into browser storage limits.</li>
+      <li><strong>Access to supported Google Search domains</strong>: to run the collection script on Google Search pages only.</li>
+    </ul>
+
+    <h2>Analytics, ads and selling data</h2>
+    <p>
+      The extension contains no analytics, advertising or tracking code. We do not sell, rent or share your data.
+      The website uses no cookies, analytics or third-party scripts. Our hosting provider (Netlify) may keep standard
+      server logs, such as IP addresses and request times, for security and operations.
+    </p>
+
+    <h2>Deleting your data</h2>
+    <p>
+      You can delete individual keywords or whole projects in the dashboard. Removing the extension, or clearing its
+      site data in Chrome, permanently deletes everything NicheSpark has stored. This cannot be undone, so back up
+      anything you need first.
+    </p>
+
+    <h2>Children</h2>
+    <p>NicheSpark is a professional research tool and is not directed at children under 13.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, we will update this page and the “Last updated” date. Significant changes will also be noted in the project's release notes.</p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions? Open an issue on
+      <a href="https://github.com/irazaahmed/Niche-Spark/issues" rel="noopener">GitHub</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p class="small">© 2026 NicheSpark. Not affiliated with or endorsed by Google.</p>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="https://github.com/irazaahmed/Niche-Spark" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

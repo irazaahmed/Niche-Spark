@@ -97,6 +97,17 @@ Location, language, and sign-in state can change them.
   `npm run build` instead, click reload on the NicheSpark card in
   `chrome://extensions`.
 
+## Website (nichespark.tech)
+
+The public website is a static site in `site/`, deployed by Netlify
+(`netlify.toml` sets the publish folder; no build step is needed).
+
+- `npm run package` creates a production zip of the extension in
+  `site/downloads/` for the website's download button. Run it after every
+  release and commit the new zip. It builds into `release/`, so a running
+  `npm run dev` is not affected.
+- `node scripts/generate-og.mjs` regenerates the social preview image.
+
 ## Permissions
 
 | Permission | Why |

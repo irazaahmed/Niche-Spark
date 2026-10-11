@@ -13,7 +13,7 @@ export default defineConfig({
     __NS_DEV_RELOAD_PORT__: JSON.stringify(Number(process.env.NS_DEV_RELOAD_PORT ?? 0)),
   },
   build: {
-    outDir: 'dist',
+    outDir: process.env.NS_OUT_DIR ?? 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NicheSpark: Google Autocomplete Keyword Research Chrome Extension</title>
+  <meta name="description" content="NicheSpark is a free Chrome extension that collects real Google Autocomplete suggestions with A to Z, prefix, suffix and template research, then saves and organizes every long-tail keyword automatically." />
+  <link rel="canonical" href="https://nichespark.tech/" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/icon-128.png" />
+  <link rel="apple-touch-icon" href="/assets/icon-128.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nichespark.tech/" />
+  <meta property="og:site_name" content="NicheSpark" />
+  <meta property="og:title" content="NicheSpark: Discover Keywords. Uncover Opportunities." />
+  <meta property="og:description" content="Collect real Google Autocomplete suggestions for SEO niche research. A to Z, prefix and suffix modes, automatic saving and deduplication. Free and private." />
+  <meta property="og:image" content="https://nichespark.tech/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NicheSpark",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Google Chrome",
+    "description": "Chrome extension that collects real Google Autocomplete suggestions for SEO keyword and niche research, and saves them locally.",
+    "url": "https://nichespark.tech/",
+    "softwareVersion": "0.1.0",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="logo" href="/" aria-label="NicheSpark home">
+        <img class="logo-mark" src="/assets/icon-128.png" alt="" width="30" height="30" />
+        NicheSpark
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a class="btn btn-primary btn-sm" href="#install">Get early access</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="pill"><span class="pill-dot"></span> Free beta · v0.1</span>
+          <h1>Discover Keywords.<br /><span class="accent">Uncover Opportunities.</span></h1>
+          <p class="lead">
+            NicheSpark is a Chrome extension that collects the <strong>real suggestions Google Autocomplete shows</strong>
+            and turns them into an organized keyword list for your niche. Run A to Z, prefix and suffix research in one
+            click. Every result is saved, deduplicated and linked to the query that found it.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#install">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+              Download the beta
+            </a>
+            <a class="btn" href="https://github.com/irazaahmed/Niche-Spark" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+              View source on GitHub
+            </a>
+          </div>
+          <ul class="trust">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Free, no account</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Data stays in your browser</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Open source</li>
+          </ul>
+        </div>
+
+        <figure class="mock" aria-label="Illustration of the NicheSpark dashboard">
+          <div class="mock-glow" aria-hidden="true"></div>
+          <div class="mock-window">
+            <div class="mock-bar" aria-hidden="true"><span></span><span></span><span></span><span class="mock-title">NicheSpark Dashboard</span></div>
+            <div class="mock-body">
+              <div class="mock-row">
+                <strong>A to Z · mobile car detailing</strong>
+                <span class="mock-badge">Running</span>
+              </div>
+              <div class="mock-progress" aria-hidden="true"><div></div></div>
+              <div class="muted small">16 of 26 queries · collecting “mobile car detailing q”</div>
+              <table class="mock-table">
+                <thead><tr><th>Keyword</th><th>Method</th><th>Source query</th></tr></thead>
+                <tbody>
+                  <tr><td>mobile car detailing austin</td><td><span class="tag">A to Z</span></td><td class="muted">…detailing a</td></tr>
+                  <tr><td>mobile car detailing business</td><td><span class="tag">A to Z</span></td><td class="muted">…detailing b</td></tr>
+                  <tr><td>mobile car detailing near me</td><td><span class="tag">Suffix</span></td><td class="muted">…detailing near</td></tr>
+                  <tr><td>best mobile car detailing</td><td><span class="tag">Prefix</span></td><td class="muted">best mobile car…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <figcaption class="mock-caption">Illustration. Your results depend on what Google shows in your browser.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- What it is -->
+    <section class="section section-alt" id="what">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What is NicheSpark?</span>
+          <h2>Long-tail keyword research without copy and paste</h2>
+          <p class="lead">
+            Google Autocomplete is one of the best free sources of real search phrases, but collecting it by hand means
+            typing a query, waiting for the dropdown and copying each suggestion, hundreds of times.
+            NicheSpark does that loop for you, at a respectful pace, and keeps everything organized by project.
+          </p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+            <h3>Real suggestions only</h3>
+            <p>NicheSpark reads the suggestions Google actually displays in your browser. It never invents keywords or shows sample data as results.</p>
+          </article>
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6"/></svg></div>
+            <h3>Organized automatically</h3>
+            <p>Duplicates are merged (ignoring case and extra spaces), and every keyword remembers which queries and methods found it.</p>
+          </article>
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            <h3>Private by design</h3>
+            <p>No account, no server, no tracking. Your projects and keywords are stored only in your own Chrome profile.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">How it works</span>
+          <h2>From seed keyword to keyword list in four steps</h2>
+        </div>
+        <div class="grid grid-4 steps">
+          <article class="card step">
+            <div class="step-num">1</div>
+            <h3>Create a project</h3>
+            <p>Enter a seed keyword such as <em>mobile car detailing</em>, then choose a Google domain and language.</p>
+          </article>
+          <article class="card step">
+            <div class="step-num">2</div>
+            <h3>Pick a method</h3>
+            <p>Choose A to Z, prefix, suffix or your own templates. You can preview every query before anything runs.</p>
+          </article>
+          <article class="card step">
+            <div class="step-num">3</div>
+            <h3>Click Start</h3>
+            <p>NicheSpark opens Google in a background tab, enters each query and waits for the suggestion dropdown to settle before reading it.</p>
+          </article>
+          <article class="card step">
+            <div class="step-num">4</div>
+            <h3>Review your keywords</h3>
+            <p>Results are saved after every query. Search them in the dashboard, see their sources and pick up where you left off.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methods -->
+    <section class="section section-alt" id="methods">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Research methods</span>
+          <h2>Four ways to expand any niche</h2>
+          <p class="lead">Queries are generated deterministically from your seed keyword. Accidental duplicates are removed, and invalid input is caught before collection starts.</p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card method">
+            <h3>A to Z</h3>
+            <p>Adds every letter after your seed to uncover the full range of completions. You can start from any letter.</p>
+            <ul class="queries">
+              <li><code><span class="q-seed">mobile car detailing</span> <span class="q-var">a</span></code></li>
+              <li><code><span class="q-seed">mobile car detailing</span> <span class="q-var">b</span></code></li>
+              <li><code><span class="q-seed">mobile car detailing</span> <span class="q-var">c</span> … <span class="q-var">z</span></code></li>
+            </ul>
+          </article>
+          <article class="card method">
+            <h3>Prefix</h3>
+            <p>Puts your own words before the seed to find commercial and comparison intent.</p>
+            <ul class="queries">
+              <li><code><span class="q-var">best</span> <span class="q-seed">mobile car detailing</span></code></li>
+              <li><code><span class="q-var">affordable</span> <span class="q-seed">mobile car detailing</span></code></li>
+              <li><code><span class="q-var">professional</span> <span class="q-seed">mobile car detailing</span></code></li>
+            </ul>
+          </article>
+          <article class="card method">
+            <h3>Suffix</h3>
+            <p>Adds words after the seed to find local, pricing and service queries.</p>
+            <ul class="queries">
+              <li><code><span class="q-seed">mobile car detailing</span> <span class="q-var">near me</span></code></li>
+              <li><code><span class="q-seed">mobile car detailing</span> <span class="q-var">cost</span></code></li>
+              <li><code><span class="q-seed">mobile car detailing</span> <span class="q-var">services</span></code></li>
+            </ul>
+          </article>
+          <article class="card method">
+            <h3>Templates</h3>
+            <p>Build your own patterns with <code>{seed}</code> and <code>{letter}</code>. A template with a letter expands to 26 queries.</p>
+            <ul class="queries">
+              <li><code><span class="q-var">how much does</span> <span class="q-seed">{seed}</span> <span class="q-var">cost</span></code></li>
+              <li><code><span class="q-seed">{seed}</span> <span class="q-var">for</span> <span class="q-seed">{letter}</span></code></li>
+              <li><code><span class="q-var">is</span> <span class="q-seed">{seed}</span> <span class="q-var">worth it</span></code></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Features in the beta</span>
+          <h2>Built for reliable, honest research</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="feature">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 4v16M18 4v16M6 12h12"/></svg></div>
+            <div><h3>Pause, resume, cancel, retry</h3><p>Full control over every collection job. Retry only failed queries, and already completed queries are skipped automatically.</p></div>
+          </div>
+          <div class="feature">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/><path d="M5 19h14"/></svg></div>
+            <div><h3>Progress that survives</h3><p>Progress is saved after every query. Close the popup, come back later and continue exactly where you stopped.</p></div>
+          </div>
+          <div class="feature">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div><h3>Respectful pacing</h3><p>A configurable delay of at least 2 seconds, with random variation, between queries. Only one job runs at a time.</p></div>
+          </div>
+          <div class="feature">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4m0 4h.01"/><path d="M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+            <div><h3>Honest status reporting</h3><p>Each query is marked done, empty or failed, with the reason. Failures are never counted as completed.</p></div>
+          </div>
+          <div class="feature">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div>
+            <div><h3>Source tracking</h3><p>See every query and method that found a keyword, when it was first and last collected, and how often it appeared.</p></div>
+          </div>
+          <div class="feature">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+            <div><h3>18 Google domains</h3><p>Research google.com, .co.uk, .com.pk, .co.in, .de, .com.au and more, with your choice of interface language.</p></div>
+          </div>
+          <div class="feature">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
+            <div><h3>Multiple projects</h3><p>Keep a separate keyword collection for every niche or client. Rename, reopen or delete projects any time.</p></div>
+          </div>
+          <div class="feature">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3Z"/></svg></div>
+            <div><h3>Your history stays out</h3><p>Your own past searches that Google mixes into the dropdown are recognized and never saved as keywords.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="section section-alt" id="privacy">
+      <div class="container privacy-band">
+        <div class="section-head" style="text-align:left;margin:0">
+          <span class="eyebrow">Privacy and responsible use</span>
+          <h2>Your research stays yours</h2>
+          <p class="lead">NicheSpark asks only for the permissions it needs, and it works entirely inside your browser.</p>
+          <p><a href="/privacy.html">Read the privacy policy →</a></p>
+        </div>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>No servers, no accounts.</strong> Keywords and projects are stored locally in your Chrome profile and are never uploaded.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>Minimal access.</strong> Runs only on Google Search pages. No access to your browsing history, cookies, passwords or other websites.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>Never bypasses protections.</strong> If Google asks for verification or consent, NicheSpark stops and waits for you.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>Always started by you.</strong> Nothing runs in the background unless you start a collection, and you can stop it any time.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="section" id="roadmap">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Roadmap</span>
+          <h2>What's here and what's coming</h2>
+          <p class="lead">NicheSpark is in active development. These are our plans, not promises, and priorities may change based on feedback.</p>
+        </div>
+        <div class="roadmap">
+          <div class="road-col live">
+            <div class="road-head"><h3>Available now</h3><span class="status status-live">Beta v0.1</span></div>
+            <ul class="road-list">
+              <li><strong>Live Google Autocomplete collection</strong><span>Reads real suggestions from the visible dropdown</span></li>
+              <li><strong>A to Z, prefix, suffix and templates</strong><span>With a query preview before you start</span></li>
+              <li><strong>Job controls</strong><span>Pause, resume, cancel, retry failed, start from any letter</span></li>
+              <li><strong>Automatic saving and deduplication</strong><span>With source-query tracking</span></li>
+              <li><strong>Multiple projects</strong><span>Each with its own domain and language</span></li>
+            </ul>
+          </div>
+          <div class="road-col next">
+            <div class="road-head"><h3>Coming next</h3><span class="status status-next">In progress</span></div>
+            <ul class="road-list">
+              <li><strong>CSV and JSON export</strong><span>All, filtered or selected keywords, with sources and methods</span></li>
+              <li><strong>Copy to clipboard</strong><span>One keyword per line, ready to paste anywhere</span></li>
+              <li><strong>Filters and sorting</strong><span>By method, source query, date and alphabet</span></li>
+              <li><strong>Backup and restore</strong><span>Import a JSON backup safely, with validation</span></li>
+              <li><strong>Chrome Web Store release</strong><span>One-click install and automatic updates</span></li>
+            </ul>
+          </div>
+          <div class="road-col later">
+            <div class="road-head"><h3>Later</h3><span class="status status-later">Planned</span></div>
+            <ul class="road-list">
+              <li><strong>Keyword grouping</strong><span>Cluster related keywords by modifier and topic</span></li>
+              <li><strong>Question finder</strong><span>Who, what, how and why research modes</span></li>
+              <li><strong>More sources</strong><span>Exploring YouTube and other autocomplete sources</span></li>
+              <li><strong>Hosted dashboard</strong><span>Explore your projects on a larger screen</span></li>
+              <li><strong>Optional cloud sync</strong><span>Opt-in sync across devices. Local-only stays the default</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Install -->
+    <section class="section section-alt" id="install">
+      <div class="container install">
+        <div style="display:grid;gap:18px">
+          <span class="eyebrow">Get early access</span>
+          <h2>Install the beta in two minutes</h2>
+          <p class="lead">Until NicheSpark is on the Chrome Web Store, you can install the beta directly in Chrome's developer mode.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/downloads/nichespark-0.1.0.zip" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+              Download NicheSpark v0.1.0 (.zip)
+            </a>
+          </div>
+          <div class="callout callout-warn">
+            <h3>Beta notes</h3>
+            <p class="muted small">Export, copy and backup features are coming next. Your data lives only in this browser, so it is deleted if you remove the extension. Use the beta for research you can repeat, not for data you can't afford to lose.</p>
+          </div>
+        </div>
+        <ol class="install-steps">
+          <li><div><h3>Download and unzip</h3><p>Download the zip above and extract it to a folder you'll keep, for example <span class="path">Documents\NicheSpark</span>.</p></div></li>
+          <li><div><h3>Open Chrome extensions</h3><p>Type <span class="path">chrome://extensions</span> in the address bar and switch on <strong>Developer mode</strong> in the top-right corner.</p></div></li>
+          <li><div><h3>Load unpacked</h3><p>Click <strong>Load unpacked</strong> and choose the folder you extracted (the one that contains <span class="path">manifest.json</span>).</p></div></li>
+          <li><div><h3>Pin and start</h3><p>Pin NicheSpark from the puzzle icon, open the popup, create a project and click <strong>Start A to Z</strong>.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Common questions</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is NicheSpark free?</summary>
+            <p>Yes. The beta is free and needs no account. The source code is public on GitHub.</p>
+          </details>
+          <details>
+            <summary>Where do the keywords come from?</summary>
+            <p>From the Google Autocomplete dropdown in your own browser. NicheSpark enters each query into the Google search box, waits for the suggestions to finish loading and saves what Google displayed. It does not generate or guess keywords.</p>
+          </details>
+          <details>
+            <summary>Does NicheSpark show search volume or keyword difficulty?</summary>
+            <p>No. NicheSpark collects autocomplete suggestions, which show what people search for, but it does not invent volume or difficulty numbers. You can take your list to the keyword metrics tool of your choice.</p>
+          </details>
+          <details>
+            <summary>Why might my results differ from someone else's?</summary>
+            <p>Google personalizes suggestions by location, language, sign-in state and trends. NicheSpark records exactly what Google showed your browser at that moment.</p>
+          </details>
+          <details>
+            <summary>Will Google block me?</summary>
+            <p>NicheSpark uses conservative delays and runs one query at a time, the way a person would. If Google shows a verification page anyway, the job stops and waits for you. It never tries to get around it. Please use NicheSpark responsibly and in line with Google's terms.</p>
+          </details>
+          <details>
+            <summary>Is my data uploaded anywhere?</summary>
+            <p>No. Everything is stored locally in your Chrome profile. NicheSpark has no server and sends your research nowhere. Removing the extension or clearing its data deletes your projects, so export or back up your data once those features arrive.</p>
+          </details>
+          <details>
+            <summary>Why do I need Developer mode to install it?</summary>
+            <p>The beta isn't on the Chrome Web Store yet. Loading it as an unpacked extension is the standard way to try extensions before they are published. A Web Store release is on the roadmap.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta">
+          <h2>Start finding long-tail keywords today</h2>
+          <p>Free, private and built on real Google suggestions. Install the beta and run your first A to Z research in minutes.</p>
+          <div class="hero-actions" style="justify-content:center">
+            <a class="btn" href="#install">Get early access</a>
+            <a class="btn btn-ghost" href="https://github.com/irazaahmed/Niche-Spark" rel="noopener">Follow on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="logo" style="font-size:1rem">
+        <img class="logo-mark" src="/assets/icon-128.png" alt="" width="24" height="24" style="width:24px;height:24px" />
+        <span>NicheSpark <span class="muted" style="font-weight:400">· Discover Keywords. Uncover Opportunities.</span></span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="https://github.com/irazaahmed/Niche-Spark" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="container" style="margin-top:16px">
+      <p class="small">© <span id="year">2026</span> NicheSpark. Not affiliated with or endorsed by Google. Google is a trademark of Google LLC.</p>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

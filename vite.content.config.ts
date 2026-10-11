@@ -4,7 +4,7 @@ import { defineConfig } from 'vite';
 // Content script: a single classic (IIFE) bundle injected on Google Search pages.
 export default defineConfig({
   build: {
-    outDir: 'dist',
+    outDir: process.env.NS_OUT_DIR ?? 'dist',
     emptyOutDir: false,
     lib: {
       entry: resolve(import.meta.dirname, 'src/content/index.ts'),
