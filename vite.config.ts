@@ -8,6 +8,10 @@ import react from '@vitejs/plugin-react';
 // Chrome content scripts cannot be ES modules.
 export default defineConfig({
   plugins: [react()],
+  define: {
+    // Non-zero only under `npm run dev` (scripts/dev.mjs); enables auto-reload.
+    __NS_DEV_RELOAD_PORT__: JSON.stringify(Number(process.env.NS_DEV_RELOAD_PORT ?? 0)),
+  },
   build: {
     outDir: 'dist',
     emptyOutDir: true,

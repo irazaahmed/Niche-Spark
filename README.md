@@ -42,7 +42,21 @@ npm run build     # type-check + production build into dist/
 3. Click **Load unpacked** and select the `dist/` folder.
 4. Pin NicheSpark and open the popup to create a project.
 
-After code changes, rebuild and click the reload icon on the extension card.
+### Auto-reload while developing
+
+```bash
+npm run dev
+```
+
+This rebuilds `dist/` on every file change, and the extension reloads itself.
+You don't have to click reload in `chrome://extensions`. Load `dist/` with
+**Load unpacked** once, keep `npm run dev` running, and every saved change
+shows up automatically. Open NicheSpark pages close when the extension
+reloads. Google tabs are refreshed the next time a collection starts.
+
+The auto-reload code is only in `npm run dev` builds. It connects to
+`ws://127.0.0.1:35729` on your own computer. `npm run build` (the version you
+share or publish) does not include it.
 
 ## Collecting keywords
 
@@ -79,9 +93,9 @@ Location, language, and sign-in state can change them.
 - **Many failed queries**: increase the delay, check your connection, then
   click Retry failed.
 - **Job shows "Interrupted"**: Chrome restarted the extension mid-job. Click Resume.
-- **Nothing happens after updating the code**: run `npm run build`, then click
-  reload on the NicheSpark card in `chrome://extensions`. Reload any open
-  Google tabs too.
+- **Changes don't show up**: make sure `npm run dev` is running. If you used
+  `npm run build` instead, click reload on the NicheSpark card in
+  `chrome://extensions`.
 
 ## Permissions
 

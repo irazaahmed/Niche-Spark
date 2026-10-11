@@ -1,9 +1,15 @@
 // Background service worker: owns the collection scheduler.
 import type { BackgroundRequest, BackgroundResponse } from '../shared/messages';
 import { createChromeDeps } from './chromeDeps';
+import { startDevReload } from './devReload';
 import { CollectionScheduler } from './scheduler';
 
 const scheduler = new CollectionScheduler(createChromeDeps());
+
+if (__NS_DEV_RELOAD_PORT__) {
+  // Service workers cannot use dynamic import(); this call is removed from production builds.
+  startDevReload(__NS_DEV_RELOAD_PORT__);
+}
 
 async function handle(message: BackgroundRequest) {
   switch (message.type) {
