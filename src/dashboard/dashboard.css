@@ -76,6 +76,6 @@ th { font-size: 12px; color: var(--text-muted); font-weight: 600; background: va
 
 .query-list { list-style: none; padding: 8px; }
 .query-row { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-.query-text { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.query-text { flex: 1; min-width: 0; overflow-wrap: anywhere; font-family: var(--font-mono); font-size: 13px; }
 .collect-box { border-top: 1px solid var(--border); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
 .collect-title { font-size: 14px; }

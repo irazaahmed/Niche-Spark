@@ -1,5 +1,6 @@
 // Generates the NicheSpark PNG icons (rounded square + four-point spark) with no dependencies.
-// Usage: node scripts/generate-icons.mjs
+// Usage: node scripts/generate-icons.mjs          (extension icons)
+//        node scripts/generate-icons.mjs --site   (website icons)
 import { writeFileSync } from 'node:fs';
 import { deflateSync } from 'node:zlib';
 
@@ -22,10 +23,12 @@ const chunk = (type, data) => {
   return Buffer.concat([len, body, crc]);
 };
 
+const SITE = process.argv.includes('--site');
+
 function render(size) {
   const ss = 4; // supersampling
   const rows = [];
-  const bg = [79, 70, 229]; // indigo-600
+  const bg = [4, 120, 87]; // brand emerald #047857 (shared with the askSEO palette)
   const fg = [255, 255, 255];
   for (let y = 0; y < size; y++) {
     const row = [0];
@@ -65,5 +68,6 @@ function render(size) {
   ]);
 }
 
-for (const size of [16, 32, 48, 128]) writeFileSync(`public/icons/icon-${size}.png`, render(size));
+if (SITE) for (const size of [32, 128, 180]) writeFileSync(`site/assets/icon-${size}.png`, render(size));
+else for (const size of [16, 32, 48, 128]) writeFileSync(`public/icons/icon-${size}.png`, render(size));
 console.log('icons written');

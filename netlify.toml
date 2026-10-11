@@ -16,7 +16,7 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-H2aXN8Qxo7tpc9yNA0DO8XhO60cbKgw0QRZu5CIu7Hk='; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
 
 [[headers]]
   for = "/downloads/*"

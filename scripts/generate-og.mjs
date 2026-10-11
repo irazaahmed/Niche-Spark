@@ -9,7 +9,8 @@ const crc32 = (b) => { let c = 0xffffffff; for (const x of b) c = CRC[(c ^ x) & 
 const chunk = (t, d) => { const l = Buffer.alloc(4); l.writeUInt32BE(d.length); const body = Buffer.concat([Buffer.from(t), d]); const c = Buffer.alloc(4); c.writeUInt32BE(crc32(body)); return Buffer.concat([l, body, c]); };
 const mix = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
 
-const from = [67, 56, 202], to = [124, 58, 237]; // indigo -> violet
+// askSEO "stage" ink-green, lifting toward the emerald accent
+const from = [22, 38, 34], to = [6, 78, 59];
 // Sparks: [cx, cy, radius, opacity]
 const sparks = [[600, 300, 190, 1], [330, 150, 50, 0.35], [880, 460, 70, 0.3], [960, 150, 34, 0.25], [250, 470, 28, 0.25]];
 const inSpark = (x, y, [cx, cy, r]) => { const u = Math.abs(x - cx) / r, v = Math.abs(y - cy) / r; return u ** 0.55 + v ** 0.55 <= 1; };
@@ -22,7 +23,7 @@ for (let y = 0; y < H; y++) {
     for (let sy = 0; sy < SS; sy++) for (let sx = 0; sx < SS; sx++) {
       const px = x + (sx + 0.5) / SS, py = y + (sy + 0.5) / SS;
       let c = mix(from, to, (px / W) * 0.7 + (py / H) * 0.3);
-      for (const s of sparks) if (inSpark(px, py, s)) c = mix(c, [255, 255, 255], s[3]);
+      for (const s of sparks) if (inSpark(px, py, s)) c = mix(c, s[0] === 600 ? [52, 211, 153] : [255, 255, 255], s[3]);
       acc = acc.map((v, i) => v + c[i]);
     }
     row.push(...acc.map((v) => Math.round(v / (SS * SS))));
