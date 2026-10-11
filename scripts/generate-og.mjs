@@ -1,4 +1,4 @@
-// Generates site/assets/og-image.png (1200x630 social preview) with no dependencies.
+// Generates site/assets/og.png (1200x630 social preview) with no dependencies.
 // Usage: node scripts/generate-og.mjs
 import { writeFileSync } from 'node:fs';
 import { deflateSync } from 'node:zlib';
@@ -32,7 +32,7 @@ for (let y = 0; y < H; y++) {
 }
 const ihdr = Buffer.alloc(13);
 ihdr.writeUInt32BE(W, 0); ihdr.writeUInt32BE(H, 4); ihdr.set([8, 2, 0, 0, 0], 8);
-writeFileSync('site/assets/og-image.png', Buffer.concat([
+writeFileSync('site/assets/og.png', Buffer.concat([
   Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
   chunk('IHDR', ihdr), chunk('IDAT', deflateSync(Buffer.concat(rows), { level: 9 })), chunk('IEND', Buffer.alloc(0)),
 ]));

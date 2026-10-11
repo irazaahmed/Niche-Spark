@@ -1,10 +1,12 @@
 import type { KeywordRecord, NewProjectInput, Project, ProjectPatch, QueryRecord, ResearchMethod } from '../shared/types';
 import { keywordId, mergeSuggestion, normalizeKey } from '../core/keywords';
 import type { GeneratedQuery } from '../core/queryGeneration';
+import type { ProjectBackup } from '../core/backup';
 import { NotFoundError, StorageError, type QueryOutcome, type RecordOutcomeResult, type StorageService } from './StorageService';
 import {
   applyOutcome,
   applyProjectPatch,
+  buildImportRecords,
   buildProject,
   buildQueryRecord,
   checkOutcome,
@@ -226,6 +228,18 @@ export class IndexedDbStorage implements StorageService {
 
   countKeywords(projectId: string) {
     return this.run(['keywords'], 'readonly', (tx) => request(tx.objectStore('keywords').index('projectId').count(projectId)));
+  }
+
+  importProject(backup: ProjectBackup) {
+    return this.run(['projects', 'queries', 'keywords'], 'readwrite', async (tx) => {
+      const existing = await request<Project[]>(tx.objectStore('projects').getAll());
+      const { project, queries, keywords } = buildImportRecords(backup, existing.map((p) => p.name), this.now());
+      await request(tx.objectStore('projects').add(project));
+      // add() (not put) so an id clash fails the whole transaction instead of overwriting
+      for (const q of queries) await request(tx.objectStore('queries').add(q));
+      for (const k of keywords) await request(tx.objectStore('keywords').add(k));
+      return project;
+    });
   }
 
   deleteKeywords(projectId: string, ids: readonly string[]) {

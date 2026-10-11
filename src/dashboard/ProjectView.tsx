@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { SUPPORTED_GOOGLE_DOMAINS } from '../shared/constants';
 import type { KeywordRecord, Project, QueryRecord } from '../shared/types';
-import { RESEARCH_METHOD_LABELS } from '../shared/types';
+import { buildBackup, serializeBackup } from '../core/backup';
+import { exportFileName } from '../core/exportCsv';
+import { downloadText } from '../ui/download';
 import { getStorage } from '../storage';
 import { isActive } from '../core/collectionState';
 import { countStatuses } from '../storage/shared';
 import { ErrorAlert } from '../ui/components';
 import { focusTab, JobPanel } from '../ui/JobPanel';
 import { useJob } from '../ui/jobClient';
+import { KeywordTable } from './KeywordTable';
 import { QueryPreview } from './QueryPreview';
 
 interface Props {
@@ -23,7 +26,6 @@ export function ProjectView({ project, onChanged, onDeleted }: Props) {
   const job = useJob();
   const jobForProject = job && job.projectId === project.id ? job : null;
   const counts = useMemo(() => (queries ? countStatuses(queries) : null), [queries]);
-  const [search, setSearch] = useState('');
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
@@ -40,18 +42,22 @@ export function ProjectView({ project, onChanged, onDeleted }: Props) {
     };
   }, [project.id, project.updatedAt, storage, jobForProject?.updatedAt]);
 
-  const visible = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    return (keywords ?? [])
-      .filter((k) => !q || k.key.includes(q))
-      .sort((a, b) => a.key.localeCompare(b.key));
-  }, [keywords, search]);
-
   async function run(action: () => Promise<unknown>) {
     setError(null);
     try {
       await action();
       await onChanged();
+    } catch (e) {
+      setError(e);
+    }
+  }
+
+  async function exportBackup() {
+    setError(null);
+    try {
+      const [q, k] = await Promise.all([storage.listQueries(project.id), storage.listKeywords(project.id)]);
+      const backup = buildBackup(project, q, k, chrome.runtime.getManifest().version);
+      downloadText(exportFileName(project.name, 'json', new Date(), 'backup'), serializeBackup(backup), 'application/json');
     } catch (e) {
       setError(e);
     }
@@ -85,6 +91,9 @@ export function ProjectView({ project, onChanged, onDeleted }: Props) {
           </p>
         </div>
         <div className="row">
+          <button className="btn" type="button" onClick={() => void exportBackup()} title="Download everything in this project as a JSON backup">
+            Backup (JSON)
+          </button>
           <button className="btn" type="button" onClick={rename}>
             Rename
           </button>
@@ -159,56 +168,7 @@ export function ProjectView({ project, onChanged, onDeleted }: Props) {
         onSave={(patch) => run(() => storage.updateProject(project.id, patch))}
       />
 
-      <section className="card stack" aria-labelledby="keywords-heading">
-        <div className="row spread">
-          <h2 id="keywords-heading">Keywords</h2>
-          <label className="visually-hidden" htmlFor="kw-search">
-            Search keywords
-          </label>
-          <input
-            id="kw-search"
-            className="input search"
-            type="search"
-            placeholder="Search keywords"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
-        {keywords === null ? (
-          <p className="muted" role="status">
-            Loading keywords…
-          </p>
-        ) : keywords.length === 0 ? (
-          <p className="muted">
-            No keywords collected yet. Collected Google Autocomplete suggestions will appear here.
-          </p>
-        ) : (
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Keyword</th>
-                  <th scope="col">Methods</th>
-                  <th scope="col">Source queries</th>
-                  <th scope="col">Seen</th>
-                  <th scope="col">Last collected</th>
-                </tr>
-              </thead>
-              <tbody>
-                {visible.map((k) => (
-                  <tr key={k.id}>
-                    <td>{k.text}</td>
-                    <td>{k.methods.map((m) => RESEARCH_METHOD_LABELS[m]).join(', ')}</td>
-                    <td className="muted">{k.sourceQueries.join(' · ')}</td>
-                    <td>{k.collectionCount}</td>
-                    <td className="muted">{new Date(k.lastCollectedAt).toLocaleString()}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
+      <KeywordTable project={project} keywords={keywords} onChanged={onChanged} />
     </div>
   );
 }

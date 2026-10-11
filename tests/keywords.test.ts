@@ -4,7 +4,7 @@ import { cleanSuggestions, mergeSuggestion, normalizeKey, normalizeText } from '
 describe('normalization', () => {
   it('trims and collapses whitespace', () => {
     expect(normalizeText('  mobile \t car\n\ndetailing  ')).toBe('mobile car detailing');
-    expect(normalizeText('a b')).toBe('a b'); // non-breaking space
+    expect(normalizeText(`a${String.fromCharCode(0xa0)}b`)).toBe('a b'); // non-breaking space
   });
 
   it('builds a case-insensitive key', () => {
@@ -12,8 +12,8 @@ describe('normalization', () => {
   });
 
   it('normalizes Unicode composition so equivalent strings dedupe', () => {
-    const composed = 'café';
-    const decomposed = 'café';
+    const composed = `caf${String.fromCharCode(0xe9)}`;
+    const decomposed = `cafe${String.fromCharCode(0x301)}`;
     expect(normalizeKey(composed)).toBe(normalizeKey(decomposed));
   });
 

@@ -21,7 +21,9 @@ This is an early build. Work is happening in phases (see
 | Local storage (IndexedDB behind a `StorageService` interface) | Done. Unit-tested against a mock IndexedDB |
 | Live Google Autocomplete collection (Google adapter) | Implemented. Unit-tested on a simulated page. DOM behavior checked by hand on www.google.com (2026-10-11). The full extension flow is **not yet verified in Chrome** |
 | Collection controls: start (all, selected, or from a letter), pause, resume, cancel, retry failed, skip completed, progress | Implemented and unit-tested with mocks. **Not yet verified in Chrome** |
-| Keyword filters, copy, CSV/JSON export, JSON import | **Not implemented yet** |
+| Keyword search, filters (method, source query), six sort orders, selection | Implemented. Pure logic unit-tested; UI checked in a browser with a stand-in for the extension APIs (not inside the installed extension) |
+| Copy (all, filtered, selected), CSV export (all, filtered, selected), delete selected | Implemented. CSV escaping unit-tested; buttons checked in a browser as above |
+| JSON backup export and validated import (always as a new project) | Implemented. Unit-tested on both storage engines; export → import round trip checked in a browser |
 
 NicheSpark never shows sample or made-up keywords as real results.
 
@@ -123,8 +125,29 @@ websites, and it never sends research data anywhere.
 
 Research data is stored only in this browser profile, in the extension's
 IndexedDB. **It is deleted if you remove the extension or clear its site data.**
-JSON backup export is planned. Until it exists, do not rely on this build for
-data you cannot afford to lose.
+Back up regularly with **Backup (JSON)**.
+
+## Export, copy and backup
+
+In the dashboard, each project's **Keywords** section has:
+
+- **Copy all / Copy filtered / Copy selected**: one keyword per line, ready to
+  paste anywhere.
+- **Export all (CSV) / CSV: filtered / CSV: selected**: columns are keyword,
+  normalized key, research methods, source queries, first and last collected
+  (UTC) and times seen. Several sources or methods are joined with ` | `.
+  Files are UTF-8 with a BOM so Excel shows non-Latin text correctly. Cells
+  that start with `=`, `+`, `-` or `@` get a leading `'` so a spreadsheet can
+  never run them as formulas.
+- **Delete selected** asks for confirmation first.
+
+**Backup (JSON)** (top of each project) downloads the whole project: settings,
+prefix/suffix/template lists, every query with its status, and every keyword
+with its sources.
+
+**Import backup (JSON)** (sidebar) validates the file first and lists any
+problems. A valid backup is always added as a **new** project (for example,
+"Detailing (imported)"). Existing projects are never overwritten or merged.
 
 ## Tests
 

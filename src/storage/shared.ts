@@ -1,7 +1,8 @@
 // Logic shared by every StorageService implementation, so behavior stays identical.
 import { DEFAULT_GOOGLE_DOMAIN, DEFAULT_LANGUAGE, LIMITS, SUPPORTED_GOOGLE_DOMAINS } from '../shared/constants';
-import type { NewProjectInput, Project, ProjectPatch, QueryCounts, QueryRecord } from '../shared/types';
-import { cleanSuggestions, normalizeText } from '../core/keywords';
+import type { KeywordRecord, NewProjectInput, Project, ProjectPatch, QueryCounts, QueryRecord } from '../shared/types';
+import type { ProjectBackup } from '../core/backup';
+import { cleanSuggestions, keywordId, normalizeKey, normalizeText } from '../core/keywords';
 import { cleanAffixList, validateSeed, validateTemplate, ValidationError, type GeneratedQuery } from '../core/queryGeneration';
 import type { QueryOutcome } from './StorageService';
 
@@ -131,4 +132,76 @@ export function countStatuses(queries: readonly QueryRecord[]): QueryCounts {
 
 export function sortQueries(queries: QueryRecord[]): QueryRecord[] {
   return queries.sort((a, b) => a.position - b.position);
+}
+
+/** Picks a project name that doesn't clash: "Name", then "Name (imported)", "Name (imported 2)", … */
+export function uniqueImportName(name: string, existing: readonly string[]): string {
+  const taken = new Set(existing.map((n) => n.toLowerCase()));
+  const base = normalizeText(name).slice(0, LIMITS.projectNameMaxLength - 14) || 'Imported project';
+  if (!taken.has(base.toLowerCase())) return base;
+  for (let i = 1; ; i++) {
+    const candidate = i === 1 ? `${base} (imported)` : `${base} (imported ${i})`;
+    if (!taken.has(candidate.toLowerCase())) return candidate;
+  }
+}
+
+/**
+ * Turns a validated backup into brand-new records for a NEW project. Nothing
+ * from the file is used as an id, so an import can never overwrite or merge
+ * into an existing project.
+ */
+export function buildImportRecords(
+  backup: ProjectBackup,
+  existingNames: readonly string[],
+  now: number,
+): { project: Project; queries: QueryRecord[]; keywords: KeywordRecord[] } {
+  const project = buildProject(
+    {
+      name: uniqueImportName(backup.project.name, existingNames),
+      seed: backup.project.seed,
+      googleDomain: backup.project.googleDomain,
+      language: backup.project.language,
+      prefixes: backup.project.prefixes,
+      suffixes: backup.project.suffixes,
+      templates: backup.project.templates,
+    },
+    now,
+  );
+  const queries = new Map<string, QueryRecord>();
+  for (const q of [...backup.queries].sort((a, b) => a.position - b.position)) {
+    const text = normalizeText(q.text);
+    const key = normalizeKey(text);
+    const id = queryId(project.id, { method: q.method, key });
+    if (queries.has(id)) continue;
+    const record: QueryRecord = {
+      id,
+      projectId: project.id,
+      text,
+      key,
+      method: q.method,
+      position: queries.size,
+      status: q.status,
+      attempts: q.attempts,
+      suggestionCount: q.suggestionCount,
+      createdAt: q.createdAt,
+    };
+    if (q.lastError !== undefined) record.lastError = q.lastError;
+    if (q.lastAttemptAt !== undefined) record.lastAttemptAt = q.lastAttemptAt;
+    queries.set(id, record);
+  }
+  const keywords = backup.keywords.map((k): KeywordRecord => {
+    const key = normalizeKey(k.text);
+    return {
+      id: keywordId(project.id, key),
+      projectId: project.id,
+      text: normalizeText(k.text),
+      key,
+      sourceQueries: [...k.sourceQueries],
+      methods: [...k.methods],
+      firstCollectedAt: k.firstCollectedAt,
+      lastCollectedAt: k.lastCollectedAt,
+      collectionCount: k.collectionCount,
+    };
+  });
+  return { project, queries: [...queries.values()], keywords };
 }

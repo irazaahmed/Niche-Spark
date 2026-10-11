@@ -26,33 +26,35 @@ const chunk = (type, data) => {
 const SITE = process.argv.includes('--site');
 
 function render(size) {
+  // Same design as site/assets/logo.svg: emerald gradient tile, white spark,
+  // small mint companion spark (all coordinates in a 64-unit box).
   const ss = 4; // supersampling
   const rows = [];
-  const bg = [4, 120, 87]; // brand emerald #047857 (shared with the askSEO palette)
-  const fg = [255, 255, 255];
+  const from = [6, 95, 70]; // #065f46
+  const to = [16, 185, 129]; // #10b981
+  const white = [255, 255, 255];
+  const mint = [167, 243, 208]; // #a7f3d0
+  const star = (u, v, cx, cy, r) => (Math.abs(u - cx) / r) ** 0.55 + (Math.abs(v - cy) / r) ** 0.55 <= 1;
   for (let y = 0; y < size; y++) {
     const row = [0];
     for (let x = 0; x < size; x++) {
-      let cover = 0;
-      let spark = 0;
+      let a = 0;
+      let acc = [0, 0, 0];
       for (let sy = 0; sy < ss; sy++) {
         for (let sx = 0; sx < ss; sx++) {
-          const u = (x + (sx + 0.5) / ss) / size - 0.5;
-          const v = (y + (sy + 0.5) / ss) / size - 0.5;
-          const r = 0.22, h = 0.5 - r;
-          const dx = Math.max(Math.abs(u) - h, 0), dy = Math.max(Math.abs(v) - h, 0);
-          if (dx * dx + dy * dy <= r * r) {
-            cover++;
-            // four-point star: |u|^p + |v|^p <= R^p with p < 1
-            const p = 0.55, R = 0.36;
-            if (Math.abs(u) ** p + Math.abs(v) ** p <= R ** p) spark++;
-          }
+          const px = ((x + (sx + 0.5) / ss) / size) * 64;
+          const py = ((y + (sy + 0.5) / ss) / size) * 64;
+          const r = 15, dx = Math.max(Math.abs(px - 32) - (32 - r), 0), dy = Math.max(Math.abs(py - 32) - (32 - r), 0);
+          if (dx * dx + dy * dy > r * r) continue;
+          a++;
+          let c = from.map((f, i) => f + (to[i] - f) * ((px + py) / 128));
+          if (star(px, py, 32, 30, 19)) c = white;
+          else if (star(px, py, 48, 15, 6)) c = mint;
+          acc = acc.map((v, i) => v + c[i]);
         }
       }
       const n = ss * ss;
-      const a = cover / n, s = cover ? spark / cover : 0;
-      const c = bg.map((b, i) => Math.round(b + (fg[i] - b) * s));
-      row.push(...c, Math.round(a * 255));
+      row.push(...(a ? acc.map((v) => Math.round(v / a)) : [0, 0, 0]), Math.round((a / n) * 255));
     }
     rows.push(Buffer.from(row));
   }
@@ -68,6 +70,6 @@ function render(size) {
   ]);
 }
 
-if (SITE) for (const size of [32, 128, 180]) writeFileSync(`site/assets/icon-${size}.png`, render(size));
+if (SITE) for (const size of [32, 128, 180]) writeFileSync(`site/assets/logo-${size}.png`, render(size));
 else for (const size of [16, 32, 48, 128]) writeFileSync(`public/icons/icon-${size}.png`, render(size));
 console.log('icons written');

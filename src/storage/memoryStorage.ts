@@ -1,10 +1,12 @@
 import type { KeywordRecord, NewProjectInput, Project, ProjectPatch, QueryRecord, ResearchMethod } from '../shared/types';
 import { keywordId, mergeSuggestion, normalizeKey } from '../core/keywords';
 import type { GeneratedQuery } from '../core/queryGeneration';
+import type { ProjectBackup } from '../core/backup';
 import { NotFoundError, type QueryOutcome, type RecordOutcomeResult, type StorageService } from './StorageService';
 import {
   applyOutcome,
   applyProjectPatch,
+  buildImportRecords,
   buildProject,
   buildQueryRecord,
   checkOutcome,
@@ -129,6 +131,15 @@ export class MemoryStorage implements StorageService {
     }
     if (n) this.touch(projectId);
     return n;
+  }
+
+  async importProject(backup: ProjectBackup) {
+    const names = [...this.projects.values()].map((p) => p.name);
+    const { project, queries, keywords } = buildImportRecords(backup, names, this.now());
+    this.projects.set(project.id, project);
+    for (const q of queries) this.queries.set(q.id, q);
+    for (const k of keywords) this.keywords.set(k.id, k);
+    return clone(project);
   }
 
   private touch(projectId: string) {

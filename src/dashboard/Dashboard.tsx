@@ -3,6 +3,7 @@ import type { NewProjectInput, Project } from '../shared/types';
 import { getStorage } from '../storage';
 import { Brand, ErrorAlert, NewProjectForm } from '../ui/components';
 import { setLastProjectId } from '../ui/preferences';
+import { ImportBackup } from './ImportBackup';
 import { ProjectView } from './ProjectView';
 
 function projectIdFromHash(): string | undefined {
@@ -76,6 +77,12 @@ export function Dashboard() {
             <NewProjectForm onCreate={create} />
           </div>
         </details>
+        <ImportBackup
+          onImported={async (project) => {
+            await load();
+            select(project.id);
+          }}
+        />
       </aside>
 
       <main className="main">

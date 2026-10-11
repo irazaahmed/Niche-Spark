@@ -9,6 +9,7 @@ import type {
   ResearchMethod,
 } from '../shared/types';
 import type { GeneratedQuery } from '../core/queryGeneration';
+import type { ProjectBackup } from '../core/backup';
 
 export class StorageError extends Error {
   constructor(message: string, options?: { cause?: unknown }) {
@@ -72,4 +73,7 @@ export interface StorageService {
   listKeywords(projectId: string): Promise<KeywordRecord[]>;
   countKeywords(projectId: string): Promise<number>;
   deleteKeywords(projectId: string, ids: readonly string[]): Promise<number>;
+
+  /** Imports a validated backup as a NEW project (never overwrites). Returns the new project. */
+  importProject(backup: ProjectBackup): Promise<Project>;
 }
