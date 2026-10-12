@@ -111,6 +111,10 @@ The public website is a static site in `site/`, deployed by Netlify
   release and commit the new zip. It builds into `release/`, so a running
   `npm run dev` is not affected.
 - `node scripts/generate-og.mjs` regenerates the social preview image.
+- **Blog:** write posts in `blog-src/<slug>.html` (a JSON metadata comment, then
+  the article HTML) and run `npm run blog`. It builds `site/blog/` (pages,
+  index, schema, table of contents, related posts) and regenerates
+  `site/sitemap.xml`. Commit the generated files; Netlify serves them as-is.
 
 ## Permissions
 
