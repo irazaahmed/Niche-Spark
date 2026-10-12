@@ -55,6 +55,25 @@ Each extension ID's `https://<id>.chromiumapp.org` must be a trusted domain in
 Neon Auth. Configured now: the store ID `mfkjoekmjfphffamabelfngbonnjdgep` and
 the development ID `bboepjcnomhpgciggogklkmdadooogck`.
 
+### Email verification (v0.4.1)
+
+Emails (verification codes, password reset) are sent by Neon Auth through Brevo SMTP
+from `no-reply@nichespark.tech` (domain authenticated in Brevo with DKIM and DMARC
+records in Hostinger DNS).
+
+When verification is on, sign-up creates the account without a session and Neon
+emails a 6-digit code; signing in to an unverified account sends a new code. The
+bridge turns both into `403 { code: "verify_email" }`, and the sign-in screen
+switches to a code form (`verify-email` and `resend-code` bridge actions). A
+correct code signs the user in. Google accounts are already verified.
+
+Verification must stay **off** in Neon until v0.4.1 is live, because v0.4.0 has
+no code form. Turn it on with:
+
+```
+npx neon@latest neon-auth config email-password update --project-id rapid-rice-51072222 --branch br-gentle-frog-b72nth9t --email-verification-method otp --require-email-verification true --send-verification-email-on-sign-up true --send-verification-email-on-sign-in true --auto-sign-in-after-verification true
+```
+
 ### Sync rules
 
 - Every local write also writes an outbox entry in the same IndexedDB

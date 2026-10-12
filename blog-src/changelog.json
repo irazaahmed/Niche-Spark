@@ -1,5 +1,25 @@
 [
   {
+    "version": "0.4.1",
+    "date": "2026-10-12",
+    "status": "Coming to the Chrome Web Store after 0.4.0.",
+    "title": "Email verification and a theme switch",
+    "changes": [
+      {
+        "type": "Added",
+        "text": "Email verification: new email accounts confirm their address with a 6-digit code sent from no-reply@nichespark.tech, with a \"Send a new code\" option."
+      },
+      {
+        "type": "Added",
+        "text": "Light and dark theme switch in the popup and dashboard. Your choice is remembered; until you choose, NicheSpark follows your system setting."
+      },
+      {
+        "type": "Fixed",
+        "text": "First-time sign-in with Google now returns to the extension instead of opening the NicheSpark website."
+      }
+    ]
+  },
+  {
     "version": "0.4.0",
     "date": "2026-10-12",
     "status": "Coming to the Chrome Web Store. It installs automatically once Google approves the update.",

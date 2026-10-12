@@ -82,6 +82,21 @@ describe('AuthService', () => {
     expect(flaky.stored()).not.toBeNull();
   });
 
+  it('reports an unverified email with its code, then signs in with the emailed code', async () => {
+    const { service, calls, stored } = makeAuth({
+      'sign-up': () => ({ status: 403, body: { error: 'We sent a 6-digit code to u1@example.com.', code: 'verify_email', email: 'u1@example.com' } }),
+      'verify-email': (b) => (b.otp === '123456' ? session() : { status: 400, body: { error: 'That code is not right.', code: 'INVALID_OTP' } }),
+      'resend-code': () => ({ status: 200, body: { ok: true } }),
+    });
+    await expect(service.signUp('u1@example.com', 'pw-123456', 'U')).rejects.toMatchObject({ status: 403, code: 'verify_email' });
+    expect(stored()).toBeNull();
+    await expect(service.verifyEmail('u1@example.com', '000000')).rejects.toThrow('That code is not right.');
+    await service.resendCode('u1@example.com');
+    expect(await service.verifyEmail('u1@example.com', '123456')).toEqual(user());
+    expect(stored()).not.toBeNull();
+    expect(calls.map((c) => c.action)).toEqual(['sign-up', 'verify-email', 'resend-code', 'verify-email']);
+  });
+
   it('completes Google sign-in with the verifier from the redirect', async () => {
     const { service, calls } = makeAuth(
       {
@@ -112,6 +127,7 @@ function makeAccount(opts: { owner?: string | null; syncFails?: boolean } = {}) 
     signIn: async () => (signedIn = user('u1')),
     signUp: async () => (signedIn = user('u1')),
     signInWithGoogle: async () => (signedIn = user('u1')),
+    verifyEmail: async () => (signedIn = user('u1')),
     signOut: vi.fn(async () => void (signedIn = null)),
     forgotPassword: async () => {},
   } as unknown as AuthService;
@@ -148,6 +164,14 @@ describe('AccountController', () => {
     expect((await t.store.listProjects()).map((p) => p.name)).toEqual(['Old']);
     await vi.waitFor(() => expect(t.status()?.state).toBe('idle'));
     expect(t.engine.sync).toHaveBeenCalled();
+  });
+
+  it('treats a verified code like a sign-in (uploads data saved before accounts)', async () => {
+    const t = makeAccount();
+    await t.store.createProject({ name: 'Old', seed: 'old seed' });
+    await t.account.verifyEmail('u1@example.com', '123456');
+    expect(t.owner()).toBe('u1');
+    expect((await t.store.listProjects()).map((p) => p.name)).toEqual(['Old']);
   });
 
   it("removes another account's leftover data before signing in", async () => {

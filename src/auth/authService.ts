@@ -28,6 +28,8 @@ export class AuthError extends Error {
   constructor(
     message: string,
     readonly status = 0,
+    /** Bridge error code, e.g. "verify_email" when the account's email needs its code. */
+    readonly code = '',
   ) {
     super(message);
     this.name = 'AuthError';
@@ -74,7 +76,7 @@ export class AuthService {
     } catch {
       /* non-JSON */
     }
-    if (!res.ok) throw new AuthError(data?.error ?? `Sign-in service error (${res.status}).`, res.status);
+    if (!res.ok) throw new AuthError(data?.error ?? `Sign-in service error (${res.status}).`, res.status, (data as { code?: string } | null)?.code ?? '');
     return data as T;
   }
 
@@ -116,6 +118,15 @@ export class AuthService {
     const verifier = params.get('neon_auth_session_verifier');
     if (!verifier) throw new AuthError(params.get('error') ? `Google sign-in failed: ${params.get('error')}` : 'Google sign-in did not complete.');
     return (await this.store(await this.bridge<SessionReply>('social-finish', { verifier, jar: start.jar }))).user;
+  }
+
+  /** Completes sign-up (or a sign-in blocked by verification) with the emailed 6-digit code. */
+  async verifyEmail(email: string, otp: string) {
+    return (await this.store(await this.bridge<SessionReply>('verify-email', { email, otp }))).user;
+  }
+
+  async resendCode(email: string) {
+    await this.bridge('resend-code', { email });
   }
 
   async forgotPassword(email: string) {

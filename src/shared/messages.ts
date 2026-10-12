@@ -37,10 +37,15 @@ export type AccountRequest =
   | { type: 'auth/sign-up'; email: string; password: string; name: string }
   | { type: 'auth/google' }
   | { type: 'auth/forgot'; email: string }
+  | { type: 'auth/verify'; email: string; otp: string }
+  | { type: 'auth/resend'; email: string }
   | { type: 'auth/sign-out'; force?: boolean }
   | { type: 'sync/request' }
   | { type: 'sync/now' };
 
 export type AccountResponse =
   | { ok: true; user: AccountUser | null }
-  | { ok: false; error: string; code?: 'unsynced' };
+  | { ok: false; error: string; code?: AccountErrorCode };
+
+/** unsynced: sign-out would lose changes; verify_email: enter the code emailed to the user. */
+export type AccountErrorCode = 'unsynced' | 'verify_email';

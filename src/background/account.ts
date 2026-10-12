@@ -52,6 +52,14 @@ export class AccountController {
     return this.afterSignIn(await this.deps.auth.signInWithGoogle());
   }
 
+  async verifyEmail(email: string, otp: string) {
+    return this.afterSignIn(await this.deps.auth.verifyEmail(email, otp));
+  }
+
+  resendCode(email: string) {
+    return this.deps.auth.resendCode(email);
+  }
+
   forgotPassword(email: string) {
     return this.deps.auth.forgotPassword(email);
   }

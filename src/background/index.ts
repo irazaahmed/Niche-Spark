@@ -2,6 +2,7 @@
 import { isActive } from '../core/collectionState';
 import type { AccountRequest, AccountResponse, BackgroundRequest, BackgroundResponse } from '../shared/messages';
 import { getStorage } from '../storage';
+import { AuthError } from '../auth/authService';
 import { UnsyncedChangesError } from './account';
 import { createAccount } from './accountDeps';
 import { createChromeDeps } from './chromeDeps';
@@ -62,6 +63,11 @@ async function handleAccount(message: AccountRequest) {
       return account.signUp(message.email, message.password, message.name);
     case 'auth/google':
       return account.signInWithGoogle();
+    case 'auth/verify':
+      return account.verifyEmail(message.email, message.otp);
+    case 'auth/resend':
+      await account.resendCode(message.email);
+      return account.user();
     case 'auth/forgot':
       await account.forgotPassword(message.email);
       return account.user();
@@ -100,7 +106,11 @@ chrome.runtime.onMessage.addListener((message: BackgroundRequest | AccountReques
         sendResponse({
           ok: false,
           error: errorText(e),
-          ...(e instanceof UnsyncedChangesError ? { code: 'unsynced' as const } : {}),
+          ...(e instanceof UnsyncedChangesError
+            ? { code: 'unsynced' as const }
+            : e instanceof AuthError && e.code === 'verify_email'
+              ? { code: 'verify_email' as const }
+              : {}),
         } satisfies AccountResponse),
       );
     return true;

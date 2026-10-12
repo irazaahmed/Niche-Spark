@@ -24,8 +24,9 @@
   color-scheme: light;
 }
 
+/* Dark theme: follows the system unless the user picked a theme (data-theme on <html>, see ui/themePreference.ts). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: oklch(0.155 0.012 168);
     --surface: oklch(0.195 0.012 168);
     --surface-2: oklch(0.24 0.012 168);
@@ -43,6 +44,25 @@
     --focus: #34d399;
     color-scheme: dark;
   }
+}
+
+:root[data-theme='dark'] {
+  --bg: oklch(0.155 0.012 168);
+  --surface: oklch(0.195 0.012 168);
+  --surface-2: oklch(0.24 0.012 168);
+  --border: oklch(1 0 0 / 12%);
+  --text: oklch(0.965 0.004 168);
+  --text-muted: oklch(0.7 0.014 168);
+  --accent: #34d399;
+  --accent-hover: #6ee7b7;
+  --accent-contrast: #022c22;
+  --accent-soft: oklch(0.26 0.04 168);
+  --danger: #f2897f;
+  --danger-soft: oklch(0.27 0.04 25);
+  --success: #6edaa0;
+  --warning: #e0906e;
+  --focus: #34d399;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -147,3 +167,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .sync-state:hover { text-decoration: underline; }
 .sync-error { color: var(--danger, #b42318); }
 .sync-offline { color: var(--warning, #9a6700); }
+
+.code-input { font-family: var(--font-mono); font-size: 20px; letter-spacing: 0.35em; text-align: center; }
+.link:disabled { opacity: 0.6; cursor: default; text-decoration: none; }
+
+/* Theme switch in the brand header */
+.theme-toggle { margin-left: auto; display: inline-grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text-muted); cursor: pointer; flex: none; }
+.theme-toggle:hover { color: var(--text); background: var(--surface-2); }
+.theme-toggle svg { width: 16px; height: 16px; }

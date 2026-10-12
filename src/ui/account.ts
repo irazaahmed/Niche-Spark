@@ -1,13 +1,13 @@
 // Page-side helpers for the account and sync state kept by the background worker.
 import { useEffect, useState } from 'react';
 import { AUTH_STORAGE_KEY, SYNC_STATUS_KEY, type AccountUser, type SyncStatus } from '../shared/cloud';
-import type { AccountRequest, AccountResponse } from '../shared/messages';
+import type { AccountErrorCode, AccountRequest, AccountResponse } from '../shared/messages';
 import { getStorage } from '../storage';
 
 export class AccountCommandError extends Error {
   constructor(
     message: string,
-    readonly code?: 'unsynced',
+    readonly code?: AccountErrorCode,
   ) {
     super(message);
     this.name = 'AccountCommandError';
