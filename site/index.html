@@ -26,15 +26,98 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "NicheSpark",
-    "applicationCategory": "BrowserApplication",
-    "operatingSystem": "Google Chrome",
-    "description": "Chrome extension that collects real Google Autocomplete suggestions for SEO keyword and niche research, and saves them locally.",
-    "url": "https://nichespark.tech/",
-    "softwareVersion": "0.2.0",
-    "installUrl": "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nichespark.tech/#organization",
+        "name": "NicheSpark",
+        "url": "https://nichespark.tech/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nichespark.tech/assets/logo-180.png",
+          "width": 180,
+          "height": 180
+        },
+        "sameAs": [
+          "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "telephone": "+92-313-0221118",
+          "url": "https://wa.me/923130221118",
+          "availableLanguage": [
+            "English",
+            "Urdu"
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nichespark.tech/#website",
+        "url": "https://nichespark.tech/",
+        "name": "NicheSpark",
+        "description": "Free Chrome extension for Google Autocomplete keyword research.",
+        "inLanguage": "en",
+        "publisher": {
+          "@id": "https://nichespark.tech/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://nichespark.tech/#webpage",
+        "url": "https://nichespark.tech/",
+        "name": "NicheSpark: Google Autocomplete Keyword Research Chrome Extension",
+        "isPartOf": {
+          "@id": "https://nichespark.tech/#website"
+        },
+        "about": {
+          "@id": "https://nichespark.tech/#software"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://nichespark.tech/assets/og.png"
+        },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://nichespark.tech/#software",
+        "name": "NicheSpark",
+        "alternateName": [
+          "NicheSpark Chrome Extension",
+          "Niche Spark"
+        ],
+        "applicationCategory": "BrowserApplication",
+        "applicationSubCategory": "SEO keyword research",
+        "operatingSystem": "Google Chrome",
+        "description": "Chrome extension that collects real Google Autocomplete suggestions with A to Z, prefix, suffix and template research, then saves, deduplicates and exports the keywords locally.",
+        "url": "https://nichespark.tech/",
+        "sameAs": [
+          "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep"
+        ],
+        "installUrl": "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep",
+        "downloadUrl": "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep",
+        "softwareVersion": "0.2.0",
+        "image": "https://nichespark.tech/assets/og.png",
+        "featureList": [
+          "A to Z, prefix, suffix and template keyword research",
+          "Real Google Autocomplete suggestions",
+          "Automatic deduplication and source tracking",
+          "Pause, resume and retry collection",
+          "CSV export, copy and JSON backup"
+        ],
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@id": "https://nichespark.tech/#organization"
+        }
+      }
+    ]
   }
   </script>
 </head>
