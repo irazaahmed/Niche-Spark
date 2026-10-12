@@ -122,3 +122,4 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .status-empty { color: var(--text-muted); }
 .status-failed { color: var(--danger); background: var(--danger-soft); }
 .status-pending { color: var(--warning); }
+.empty-list { display: grid; gap: 6px; padding: 10px; border: 1px dashed var(--border); border-radius: var(--radius); }

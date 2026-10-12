@@ -87,3 +87,21 @@ export function addPackToList(list: readonly string[], pack: ModifierPack): { li
   }
   return { list: out, added };
 }
+
+/** Example templates offered when a project has none yet. */
+export const TEMPLATE_EXAMPLES: ModifierPack = {
+  id: 'examples',
+  label: 'Example templates',
+  description: 'Questions about cost and value, plus an A to Z pattern',
+  words: ['how much does {seed} cost', 'is {seed} worth it', '{seed} for {letter}'],
+};
+
+/**
+ * Lists every new project starts with, so Prefix, Suffix and Template
+ * research work straight away. Users can edit or clear them at any time.
+ */
+export const DEFAULT_PROJECT_LISTS = {
+  prefixes: ['best', 'cheap', 'top', 'affordable'],
+  suffixes: ['near me', 'cost', 'price', 'reviews', 'for beginners'],
+  templates: [...TEMPLATE_EXAMPLES.words],
+} as const;

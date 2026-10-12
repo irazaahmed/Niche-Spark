@@ -29,9 +29,9 @@ describe.each(implementations)('%s', (_name, make) => {
         seed: 'mobile car detailing',
         googleDomain: 'www.google.com',
         language: 'en',
-        prefixes: [],
-        suffixes: [],
-        templates: [],
+        prefixes: ['best', 'cheap', 'top', 'affordable'],
+        suffixes: ['near me', 'cost', 'price', 'reviews', 'for beginners'],
+        templates: ['how much does {seed} cost', 'is {seed} worth it', '{seed} for {letter}'],
       });
       expect(p.id).toBeTruthy();
       expect(await s.getProject(p.id)).toEqual(p);

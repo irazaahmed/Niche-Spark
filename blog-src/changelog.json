@@ -24,6 +24,18 @@
       {
         "type": "Added",
         "text": "CSV exports include a Theme column."
+      },
+      {
+        "type": "Changed",
+        "text": "New projects start with ready-to-use prefix, suffix and template lists, so Prefix, Suffix and Template research work straight away."
+      },
+      {
+        "type": "Changed",
+        "text": "The popup offers one-click ready-made lists when a project's prefix, suffix or template list is empty."
+      },
+      {
+        "type": "Changed",
+        "text": "In the dashboard, Start is always available: if you've edited a list, \"Save list & start\" saves it and starts collecting in one click."
       }
     ]
   },

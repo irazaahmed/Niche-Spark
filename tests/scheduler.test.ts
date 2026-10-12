@@ -93,6 +93,7 @@ describe('CollectionScheduler', () => {
 
   it('rejects starting with no entries or while active', async () => {
     const p = await env.storage.createProject({ name: 'P', seed: 's' });
+    await env.storage.updateProject(p.id, { prefixes: [] });
     await expect(env.scheduler.start({ projectId: p.id, method: 'prefix' })).rejects.toThrow(/at least one prefix/);
     let release!: () => void;
     const slow = setup(() => new Promise((r) => (release = () => r({ status: 'empty' }))));

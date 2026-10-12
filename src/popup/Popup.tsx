@@ -7,6 +7,8 @@ import { focusTab, JobPanel } from '../ui/JobPanel';
 import { useJob } from '../ui/jobClient';
 import { dashboardUrl, getLastProjectId, setLastProjectId } from '../ui/preferences';
 import { StartControls } from '../ui/StartControls';
+import { addPackToList, type ModifierPack } from '../core/modifierPacks';
+import type { ResearchMethod } from '../shared/types';
 
 interface Summary {
   keywords: number;
@@ -53,6 +55,14 @@ export function Popup() {
       cancelled = true;
     };
   }, [selectedId, storage, job?.updatedAt]);
+
+  async function addPack(project: Project, method: ResearchMethod, pack: ModifierPack) {
+    const field = method === 'prefix' ? 'prefixes' : method === 'suffix' ? 'suffixes' : method === 'template' ? 'templates' : null;
+    if (!field) return;
+    const { list } = addPackToList(project[field], pack);
+    await storage.updateProject(project.id, { [field]: list });
+    await load();
+  }
 
   async function create(input: NewProjectInput) {
     const project = await storage.createProject(input);
@@ -139,7 +149,11 @@ export function Popup() {
 
           {selected && !isActive(job) && (
             <section className="card" aria-label="Start collection">
-              <StartControls project={selected} counts={summary?.queries ?? null} />
+              <StartControls
+                project={selected}
+                counts={summary?.queries ?? null}
+                onAddPack={(method, pack) => addPack(selected, method, pack)}
+              />
             </section>
           )}
 

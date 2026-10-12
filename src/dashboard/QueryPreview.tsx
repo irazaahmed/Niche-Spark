@@ -236,19 +236,17 @@ export function QueryPreview({ project, records, counts, jobActive, onSave }: Pr
 
       <div className="collect-box">
         <h3 className="collect-title">Collect from Google</h3>
-        {dirty ? (
-          <p className="muted small">Save the list before collecting.</p>
-        ) : (
-          <StartControls
-            key={method}
-            project={project}
-            counts={counts}
-            method={method}
-            startLetter={startLetter}
-            disabled={jobActive || Boolean(preview.error)}
-            {...(selected.size ? { selectedKeys: [...selected] } : {})}
-          />
-        )}
+        <StartControls
+          key={method}
+          project={project}
+          counts={counts}
+          method={method}
+          startLetter={startLetter}
+          disabled={jobActive || Boolean(preview.error)}
+          {...(field ? { listCount: preview.queries.length } : {})}
+          {...(dirty ? { beforeStart: save } : {})}
+          {...(selected.size ? { selectedKeys: [...selected] } : {})}
+        />
         {jobActive && <p className="muted small">A collection job is active. Pause, finish, or cancel it to start another.</p>}
       </div>
     </section>

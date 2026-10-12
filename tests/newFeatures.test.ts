@@ -61,6 +61,25 @@ describe('Questions method', () => {
   });
 });
 
+describe('default lists for new projects', () => {
+  it('lets Prefix, Suffix and Template research run on a brand-new project', async () => {
+    const storage = new MemoryStorage();
+    const p = await storage.createProject({ name: 'P', seed: 'mobile repairing' });
+    expect(generateQueriesForMethod(p, 'prefix').map((q) => q.text)).toContain('best mobile repairing');
+    expect(generateQueriesForMethod(p, 'suffix').map((q) => q.text)).toContain('mobile repairing near me');
+    const templates = generateQueriesForMethod(p, 'template').map((q) => q.text);
+    expect(templates).toContain('how much does mobile repairing cost');
+    expect(templates).toContain('mobile repairing for z');
+  });
+
+  it('keeps explicit lists, including empty ones', async () => {
+    const storage = new MemoryStorage();
+    const p = await storage.createProject({ name: 'P', seed: 'x', prefixes: [], suffixes: ['cost'] });
+    expect(p.prefixes).toEqual([]);
+    expect(p.suffixes).toEqual(['cost']);
+  });
+});
+
 describe('ready-made packs', () => {
   it('adds new words, keeps order, and skips duplicates case-insensitively', () => {
     const pricing = SUFFIX_PACKS.find((p) => p.id === 'pricing')!;

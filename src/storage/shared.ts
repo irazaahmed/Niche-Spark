@@ -2,6 +2,7 @@
 import { DEFAULT_GOOGLE_DOMAIN, DEFAULT_LANGUAGE, LIMITS, SUPPORTED_GOOGLE_DOMAINS } from '../shared/constants';
 import type { KeywordRecord, NewProjectInput, Project, ProjectPatch, QueryCounts, QueryRecord } from '../shared/types';
 import type { ProjectBackup } from '../core/backup';
+import { DEFAULT_PROJECT_LISTS } from '../core/modifierPacks';
 import { cleanSuggestions, keywordId, normalizeKey, normalizeText } from '../core/keywords';
 import { cleanAffixList, validateSeed, validateTemplate, ValidationError, type GeneratedQuery } from '../core/queryGeneration';
 import type { QueryOutcome } from './StorageService';
@@ -58,9 +59,9 @@ export function buildProject(input: NewProjectInput, now: number): Project {
   const fields = validateProjectFields({
     googleDomain: DEFAULT_GOOGLE_DOMAIN,
     language: DEFAULT_LANGUAGE,
-    prefixes: [],
-    suffixes: [],
-    templates: [],
+    prefixes: [...DEFAULT_PROJECT_LISTS.prefixes],
+    suffixes: [...DEFAULT_PROJECT_LISTS.suffixes],
+    templates: [...DEFAULT_PROJECT_LISTS.templates],
     ...input,
   });
   return {
