@@ -41,3 +41,15 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# Auth bridge for the extension (netlify/functions/auth.mjs, served at /api/auth/*).
+[functions]
+  directory = "netlify/functions"
+
+# The password reset page and its links must not be indexed or cached.
+[[headers]]
+  for = "/reset-password/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store"
+    Referrer-Policy = "no-referrer"

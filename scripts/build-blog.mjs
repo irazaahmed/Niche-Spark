@@ -326,7 +326,7 @@ const urls = [
   [`${SITE}/blog/`, latest],
   ...posts.map((p) => [`${SITE}/blog/${p.slug}/`, p.updated ?? p.date]),
   [`${SITE}/changelog/`, releases[0].date],
-  [`${SITE}/privacy.html`, '2026-10-11'],
+  [`${SITE}/privacy.html`, '2026-10-12'],
 ];
 writeFileSync(
   'site/sitemap.xml',

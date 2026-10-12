@@ -17,7 +17,9 @@ describe('manifest', () => {
   });
 
   it('requests only the expected permissions', () => {
-    expect(manifest.permissions).toEqual(['storage', 'unlimitedStorage']);
+    // identity: Google sign-in window; alarms: periodic cloud sync.
+    expect(manifest.permissions).toEqual(['storage', 'unlimitedStorage', 'identity', 'alarms']);
+    expect(manifest.key).toBeUndefined();
     const json = JSON.stringify(manifest);
     for (const broad of ['<all_urls>', 'history', 'cookies', 'webRequest', '*://*/*']) {
       expect(json).not.toContain(broad);

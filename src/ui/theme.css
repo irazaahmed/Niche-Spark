@@ -123,3 +123,27 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .status-failed { color: var(--danger); background: var(--danger-soft); }
 .status-pending { color: var(--warning); }
 .empty-list { display: grid; gap: 6px; padding: 10px; border: 1px dashed var(--border); border-radius: var(--radius); }
+
+.btn-sm { padding: 4px 10px; font-size: 13px; }
+
+/* Sign-in screen */
+.auth-loading { padding: 24px; text-align: center; }
+.auth-screen { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: var(--surface-2); }
+.auth-compact { min-height: 0; padding: 0; background: none; }
+.auth-card { width: 100%; max-width: 400px; gap: 14px; }
+.auth-compact .auth-card { border: 0; padding: 16px; max-width: none; }
+.auth-title { font-size: 20px; margin: 4px 0; }
+.btn-google { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 9px 12px; }
+.auth-divider { display: flex; align-items: center; gap: 10px; color: var(--text-muted); font-size: 12px; }
+.auth-divider::before, .auth-divider::after { content: ''; flex: 1; border-top: 1px solid var(--border); }
+.auth-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+/* Signed-in account bar */
+.account-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); }
+.account-bar .alert { flex-basis: 100%; }
+.account-who { display: grid; min-width: 0; flex: 1; }
+.account-email { font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sync-state { justify-self: start; padding: 0; border: 0; background: none; font: inherit; font-size: 12px; color: var(--text-muted); cursor: pointer; text-align: left; }
+.sync-state:hover { text-decoration: underline; }
+.sync-error { color: var(--danger, #b42318); }
+.sync-offline { color: var(--warning, #9a6700); }

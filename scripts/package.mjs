@@ -10,10 +10,15 @@ const manifest = JSON.parse(readFileSync('public/manifest.json', 'utf8'));
 const zipPath = `site/downloads/nichespark-${manifest.version}.zip`;
 
 delete process.env.NS_DEV_RELOAD_PORT; // never ship the dev auto-reload client
+process.env.NS_STORE_BUILD = '1'; // keep the store extension ID and the real auth bridge
 process.env.NS_OUT_DIR = OUT;
 rmSync('release', { recursive: true, force: true });
 await build({ configFile: 'vite.config.ts', mode: 'production', logLevel: 'warn' });
 await build({ configFile: 'vite.content.config.ts', mode: 'production', logLevel: 'warn' });
+
+if ('key' in JSON.parse(readFileSync(join(OUT, 'manifest.json'), 'utf8'))) {
+  throw new Error('Refusing to package: the development extension key is in the manifest');
+}
 
 const files = [];
 (function walk(dir) {

@@ -125,18 +125,25 @@ The public website is a static site in `site/`, deployed by Netlify
 
 | Permission | Why |
 | --- | --- |
-| `storage` | Remembers small UI preferences, such as the last opened project |
+| `storage` | Remembers small UI preferences, the sign-in session and sync state |
 | `unlimitedStorage` | Large keyword collections in IndexedDB will not hit quota limits |
+| `identity` | Opens the Google sign-in window ("Continue with Google") |
+| `alarms` | Syncs the account in the background every 5 minutes |
 | Listed Google Search domains | Runs the content script only on supported Google Search pages |
 
 NicheSpark does not request access to browsing history, cookies, or all
-websites, and it never sends research data anywhere.
+websites. From v0.4.0 it sends research data only to the user's own NicheSpark
+account (see [docs/accounts.md](docs/accounts.md)).
 
 ## Your data
 
-Research data is stored only in this browser profile, in the extension's
-IndexedDB. **It is deleted if you remove the extension or clear its site data.**
-Back up regularly with **Backup (JSON)**.
+From v0.4.0 you sign in to use NicheSpark (email and password, or Google).
+Research data is stored in the extension's IndexedDB and synced to your account,
+so it is kept if you remove the extension and is available on any computer where
+you sign in. Signing out removes the copy from that browser. Versions before
+0.4.0 keep data only in the browser, where removing the extension or clearing its
+site data deletes it. **Backup (JSON)** still gives you your own offline copy.
+How accounts and sync work: [docs/accounts.md](docs/accounts.md).
 
 ## Export, copy and backup
 

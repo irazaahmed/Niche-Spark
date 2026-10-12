@@ -54,8 +54,8 @@ export function ImportBackup({ onImported }: { onImported: (project: Project) =>
       )}
       <ErrorAlert error={error} />
       <p className="muted small">
-        Your data lives only in this browser. Use <strong>Backup (JSON)</strong> on a project to save a copy; removing the
-        extension or clearing its data deletes everything.
+        Your projects sync to your account, so they are kept if you remove the extension or switch computers. Use{' '}
+        <strong>Backup (JSON)</strong> on a project for your own offline copy.
       </p>
     </div>
   );

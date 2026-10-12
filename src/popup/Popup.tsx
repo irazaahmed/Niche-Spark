@@ -7,6 +7,8 @@ import { focusTab, JobPanel } from '../ui/JobPanel';
 import { useJob } from '../ui/jobClient';
 import { dashboardUrl, getLastProjectId, setLastProjectId } from '../ui/preferences';
 import { StartControls } from '../ui/StartControls';
+import { useRemoteChange } from '../ui/account';
+import { AccountBar } from '../ui/AuthGate';
 import { addPackToList, type ModifierPack } from '../core/modifierPacks';
 import type { ResearchMethod } from '../shared/types';
 
@@ -23,6 +25,7 @@ export function Popup() {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<unknown>(null);
   const job = useJob();
+  const remoteChange = useRemoteChange();
 
   const load = useCallback(async () => {
     try {
@@ -39,7 +42,7 @@ export function Popup() {
 
   useEffect(() => {
     void load();
-  }, [load]);
+  }, [load, remoteChange]);
 
   useEffect(() => {
     if (!selectedId) {
@@ -54,7 +57,7 @@ export function Popup() {
     return () => {
       cancelled = true;
     };
-  }, [selectedId, storage, job?.updatedAt]);
+  }, [selectedId, storage, job?.updatedAt, remoteChange]);
 
   async function addPack(project: Project, method: ResearchMethod, pack: ModifierPack) {
     const field = method === 'prefix' ? 'prefixes' : method === 'suffix' ? 'suffixes' : method === 'template' ? 'templates' : null;
@@ -75,6 +78,7 @@ export function Popup() {
   return (
     <main className="popup stack">
       <Brand />
+      <AccountBar compact />
       <ErrorAlert error={error} />
 
       {projects === null ? (

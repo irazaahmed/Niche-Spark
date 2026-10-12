@@ -1,7 +1,10 @@
 # NicheSpark Architecture
 
-NicheSpark is a Manifest V3 Chrome extension. All research data stays in the
-browser. There is no backend, account system, or paid API.
+NicheSpark is a Manifest V3 Chrome extension. Research data lives in the
+browser's IndexedDB and, from v0.4.0, is synced to the user's NicheSpark account
+(Neon Postgres through the Neon Data API, sign-in through Neon Auth and a small
+Netlify function). Accounts and sync are described in [accounts.md](accounts.md).
+There is no paid API.
 
 ## Components
 

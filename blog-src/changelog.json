@@ -1,5 +1,33 @@
 [
   {
+    "version": "0.4.0",
+    "date": "2026-10-12",
+    "status": "In testing. It will come to the Chrome Web Store after 0.3.1.",
+    "title": "Accounts and cloud sync",
+    "changes": [
+      {
+        "type": "Added",
+        "text": "Free NicheSpark accounts: sign up with email and password or continue with Google. Signing in is required to use the extension."
+      },
+      {
+        "type": "Added",
+        "text": "Cloud sync: projects, queries and keywords are saved to your account and kept in sync on every computer where you sign in. Collection still works offline; changes upload when you are back online."
+      },
+      {
+        "type": "Added",
+        "text": "Research you collected before 0.4.0 is uploaded to your account the first time you sign in."
+      },
+      {
+        "type": "Added",
+        "text": "Password reset by email, and a sync status with \"sync now\" next to your account."
+      },
+      {
+        "type": "Changed",
+        "text": "Signing out uploads any remaining changes, then removes your data from that browser; it stays in your account."
+      }
+    ]
+  },
+  {
     "version": "0.3.1",
     "date": "2026-10-12",
     "status": "Coming to the Chrome Web Store after 0.3.0. It installs automatically once Google approves it.",

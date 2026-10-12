@@ -143,11 +143,11 @@ Do not prioritize animations or unnecessary visual effects over reliability.
 
 ## Privacy and Data Safety
 
-Keep research data local in the MVP.
+Accounts are required from v0.4.0 (owner decision, 2026-10-12): research data is kept in IndexedDB and synced to the user's own account (Neon), as described in docs/accounts.md.
 
 Do not collect unrelated browsing history, credentials, authentication cookies, or unrelated website content.
 
-Do not transmit research data to remote services.
+Do not transmit research data anywhere except the signed-in user's own NicheSpark account.
 
 Use only necessary permissions.
 

@@ -701,3 +701,12 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
   background: var(--primary); color: var(--on-primary);
 }
 @media (max-width: 760px) { .queries-inline { grid-template-columns: 1fr; } }
+
+/* Password reset page */
+.reset-form { display: grid; gap: 8px; max-width: 420px; }
+.reset-form label { font-weight: 600; color: var(--ink); }
+.reset-form input { font: inherit; padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--card); color: var(--ink); }
+.reset-form input:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+.reset-form .btn { justify-self: start; margin-top: 6px; }
+.reset-ok { color: var(--success); font-weight: 600; }
+.reset-error { color: var(--caution); font-weight: 600; }

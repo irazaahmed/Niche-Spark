@@ -3,6 +3,8 @@ import type { NewProjectInput, Project } from '../shared/types';
 import { getStorage } from '../storage';
 import { Brand, ErrorAlert, NewProjectForm } from '../ui/components';
 import { setLastProjectId } from '../ui/preferences';
+import { useRemoteChange } from '../ui/account';
+import { AccountBar } from '../ui/AuthGate';
 import { ImportBackup } from './ImportBackup';
 import { ProjectView } from './ProjectView';
 
@@ -16,6 +18,7 @@ export function Dashboard() {
   const [projects, setProjects] = useState<Project[] | null>(null);
   const [selectedId, setSelectedId] = useState<string | undefined>(projectIdFromHash);
   const [error, setError] = useState<unknown>(null);
+  const remoteChange = useRemoteChange();
 
   const load = useCallback(async () => {
     try {
@@ -31,7 +34,7 @@ export function Dashboard() {
     const onHash = () => setSelectedId(projectIdFromHash());
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
-  }, [load]);
+  }, [load, remoteChange]);
 
   function select(id: string | undefined) {
     location.hash = id ? `project=${encodeURIComponent(id)}` : '';
@@ -51,6 +54,7 @@ export function Dashboard() {
     <div className="layout">
       <aside className="sidebar stack" aria-label="Projects">
         <Brand />
+        <AccountBar />
         <nav className="stack">
           <h2 className="sidebar-title">Projects</h2>
           {projects === null && <p className="muted">Loading…</p>}
@@ -89,7 +93,8 @@ export function Dashboard() {
         <ErrorAlert error={error} />
         {selected ? (
           <ProjectView
-            key={selected.id}
+            // Changes pulled from another device reload the project view.
+            key={`${selected.id}:${remoteChange}`}
             project={selected}
             onChanged={load}
             onDeleted={async () => {

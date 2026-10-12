@@ -78,6 +78,9 @@ Website: https://nichespark.tech
 
 ## Privacy practices tab
 
+> The answers below are for v0.2–v0.3.1. **For v0.4.0 (accounts and sync), use
+> "Privacy practices for v0.4.0" further down instead.**
+
 **Single purpose**:
 
 ```
@@ -110,6 +113,42 @@ Certify all three statements:
 - I do not use or transfer user data to determine creditworthiness or for lending purposes.
 
 **Privacy policy URL**: https://nichespark.tech/privacy.html
+
+## Privacy practices for v0.4.0
+
+**Single purpose**:
+
+```
+NicheSpark helps users research SEO keywords by collecting the Google Autocomplete suggestions shown for queries the user chooses, and saving them in an organized keyword list that is synced to the user's NicheSpark account.
+```
+
+**New permission justifications** (keep the earlier ones):
+
+- `identity`:
+  ```
+  Opens the Google sign-in window when the user chooses "Continue with Google" to sign in to their NicheSpark account.
+  ```
+- `alarms`:
+  ```
+  Runs a sync every few minutes so the user's projects and keywords stay up to date between their computers.
+  ```
+
+**Data usage**: tick
+- **Personally identifiable information** (email address and name for the account),
+- **Authentication information** (password, sent over HTTPS to create or sign in to the account; stored only as a hash),
+- **Website content** (the Google Autocomplete suggestions the user collects, saved to their account).
+
+Certify the same three statements as before, and keep the privacy policy URL
+(the policy was updated for accounts on 2026-10-12).
+
+**Test instructions** (Distribution or "Test instructions" field): reviewers need
+an account because the extension cannot be used without signing in. Create one
+for them (any email and password) and paste:
+
+```
+Sign in with email: <test email>  Password: <test password>
+Or click "Create an account" to make a new one. Google sign-in also works.
+```
 
 ## Distribution tab
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy | NicheSpark</title>
-  <meta name="description" content="How the NicheSpark Chrome extension and website handle your data. Your research data stays in your browser." />
+  <meta name="description" content="How the NicheSpark Chrome extension and website handle your data: your account, the research data synced to it, and what is never collected." />
   <link rel="canonical" href="https://nichespark.tech/privacy.html" />
   <meta name="theme-color" content="#047857" />
   <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
@@ -31,21 +31,44 @@
 
   <main class="prose" id="main">
     <h1>Privacy Policy</h1>
-    <p><strong>Last updated:</strong> October 11, 2026</p>
+    <p><strong>Last updated:</strong> October 12, 2026</p>
     <p>
       This policy explains how the NicheSpark Chrome extension (“the extension”) and the website nichespark.tech
-      (“the website”) handle information. In short, NicheSpark is designed to keep your research on your own device.
+      (“the website”) handle information. In short: from version 0.4.0, you sign in to use the extension and your
+      research is saved to your NicheSpark account so it is backed up and available on any computer. Nothing else about
+      your browsing is collected.
+    </p>
+    <p>
+      Versions before 0.4.0 have no accounts: they keep all research data in your browser only, as described under
+      “What the extension stores”, and send it nowhere.
+    </p>
+
+    <h2>Your account</h2>
+    <p>To use NicheSpark 0.4.0 or later you create a free account, either with an email address and password or with Google.</p>
+    <ul>
+      <li><strong>Email sign-up:</strong> we store your email address, the name you enter, and your password as a secure one-way hash. We never see or store your password in readable form.</li>
+      <li><strong>Google sign-in:</strong> we receive your name, email address and profile picture from Google. We do not get access to your Gmail, Drive, contacts or any other Google data.</li>
+      <li>We also keep sign-in sessions (with the IP address and browser that started them) to keep you signed in and protect your account.</li>
+    </ul>
+    <p>Account and research data are stored with our database provider Neon (in the United States). Sign-in requests pass through a small service on nichespark.tech hosted by Netlify, which does not store them.</p>
+
+    <h2>Research data in your account</h2>
+    <p>
+      While you are signed in, the projects, queries and keywords described below are copied to your account and kept in
+      sync with every browser where you sign in. Only you can read them: every request is checked against your account,
+      and other users cannot see your data. We do not look at your research except when you ask us for support, and we
+      never sell it or use it for advertising.
     </p>
 
     <h2>What the extension stores</h2>
-    <p>The extension stores the following, locally in your Chrome profile (IndexedDB and chrome.storage.local):</p>
+    <p>The extension stores the following in your Chrome profile (IndexedDB and chrome.storage.local), and from version 0.4.0 also in your account:</p>
     <ul>
       <li>Projects you create: name, seed keyword, chosen Google domain and language, and prefix, suffix and template lists.</li>
       <li>Generated queries and their status (pending, done, empty or failed), including error messages.</li>
       <li>Keyword suggestions captured from Google Autocomplete, with the queries and methods that found them, timestamps and counts.</li>
       <li>Collection progress and small interface preferences, such as the last opened project.</li>
     </ul>
-    <p>This data never leaves your device through NicheSpark. We have no server that receives it, and we cannot see it.</p>
+    <p>Your sign-in session is also kept in chrome.storage.local so you stay signed in. Signing out removes your research data and session from that browser; it stays in your account.</p>
 
     <h2>What the extension reads</h2>
     <ul>
@@ -67,20 +90,25 @@
     <ul>
       <li><strong>storage</strong> and <strong>unlimitedStorage</strong>: to save your projects and keywords locally without running into browser storage limits.</li>
       <li><strong>Access to supported Google Search domains</strong>: to run the collection script on Google Search pages only.</li>
+      <li><strong>identity</strong>: to open the Google sign-in window when you choose “Continue with Google”.</li>
+      <li><strong>alarms</strong>: to sync your account in the background every few minutes.</li>
     </ul>
 
     <h2>Analytics, ads and selling data</h2>
     <p>
-      The extension contains no analytics, advertising or tracking code. We do not sell, rent or share your data.
-      The website uses no cookies, analytics or third-party scripts. Our hosting provider (Netlify) may keep standard
+      The extension contains no analytics, advertising or tracking code. We do not sell, rent or share your data,
+      except with the service providers named above (Neon for the database and sign-in, Netlify for hosting), who
+      process it only to run NicheSpark. The website uses no cookies, analytics or third-party scripts. Our hosting provider (Netlify) may keep standard
       server logs, such as IP addresses and request times, for security and operations.
     </p>
 
     <h2>Deleting your data</h2>
     <p>
-      You can delete individual keywords or whole projects in the dashboard. Removing the extension, or clearing its
-      site data in Chrome, permanently deletes everything NicheSpark has stored. This cannot be undone, so back up
-      anything you need first.
+      You can delete individual keywords or whole projects in the dashboard; deletions sync to your account and your
+      other browsers. Removing the extension or clearing its site data deletes the copy in that browser only; your
+      account keeps its copy. To delete your account and all of its data, message us from the contact below with the
+      email address of the account and we will delete it within 30 days. You can export any project as CSV or JSON at
+      any time.
     </p>
 
     <h2>Children</h2>

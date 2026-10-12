@@ -1,0 +1,5 @@
+{
+  "note": "Public key only. Pins the extension ID of development builds (npm run dev) so sign-in redirects work. The Chrome Web Store build does not include it.",
+  "id": "bboepjcnomhpgciggogklkmdadooogck",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApogJ4BewINvp9qX15+PHF38APi22pHXvAJYmbU3aU8MWujYd35t/c3E8RDEcBhMUw/mb6bwqsDfD/Pn4JiAra3MXCR8Rk8VXROwETX09B+vyStyFXWfUGHmP+ZzflX76yXti18NhoQLSjv0EWzClza6rI/P9XhScanoE6nf+MKK0TzTn1BR35XGrVkuElwgQR36q94PTq/XSfWfoCI8qfkANQlw8AnHZ2Sdw2Hdrf6JtQUTDweu0Z9IUUfKrqzQq4wmhmhbxX8RBKa4Ex/sKs593KCard3fM905mxyHO6W8FLvsE1/RZuyZnjgSYMuS2p4oo9meriu8J8Ke+x6/k4wIDAQAB"
+}
