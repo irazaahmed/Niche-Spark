@@ -9,6 +9,19 @@
   status = 301
   force = true
 
+# The niche article was rewritten for the "niche keyword research" cluster.
+[[redirects]]
+  from = "/blog/find-a-niche-with-google-autocomplete"
+  to = "/blog/niche-keyword-research/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/find-a-niche-with-google-autocomplete/*"
+  to = "/blog/niche-keyword-research/"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
