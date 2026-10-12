@@ -71,8 +71,14 @@ async function upstream(path, { method = 'GET', body, jar } = {}) {
 }
 
 const publicUser = (u) => (u ? { id: u.id, email: u.email, name: u.name ?? '', image: u.image ?? null, emailVerified: !!u.emailVerified } : null);
+const errorCode = (data) => (data && typeof data.code === 'string' ? data.code : '');
 const errorMessage = (data, fallback) => (data && typeof data.message === 'string' ? data.message : fallback);
 const str = (v, max = 320) => (typeof v === 'string' && v.length <= max ? v : null);
+
+/** The account exists but its email must be verified with the emailed code. */
+function verifyEmailReply(email, message, origin) {
+  return json(403, { error: message, code: 'verify_email', email }, origin);
+}
 
 /** Session reply: the user, the cookie jar, and a fresh JWT for the Data API. */
 async function sessionReply(jar, origin) {
@@ -89,12 +95,18 @@ const actions = {
     if (!email || !password) return json(400, { error: 'Email and password are required.' }, origin);
     const r = await upstream('/sign-up/email', { method: 'POST', body: { email, password, name: name || email.split('@')[0] } });
     if (!r.res.ok) return json(r.res.status, { error: errorMessage(r.data, 'Could not create your account.') }, origin);
+    // With email verification on, sign-up creates the account but no session until the code is entered.
+    if (!r.data?.token) return verifyEmailReply(email, `We sent a 6-digit code to ${email}. Enter it to finish creating your account.`, origin);
     return sessionReply(r.jar, origin);
   },
   async 'sign-in'(b, origin) {
     const email = str(b.email), password = str(b.password, 128);
     if (!email || !password) return json(400, { error: 'Email and password are required.' }, origin);
     const r = await upstream('/sign-in/email', { method: 'POST', body: { email, password } });
+    // Neon Auth sends a new code when an unverified account signs in.
+    if (r.res.status === 403 && errorCode(r.data) === 'EMAIL_NOT_VERIFIED') {
+      return verifyEmailReply(email, `Please verify your email first. We sent a 6-digit code to ${email}.`, origin);
+    }
     if (!r.res.ok) return json(r.res.status, { error: errorMessage(r.data, 'Wrong email or password.') }, origin);
     return sessionReply(r.jar, origin);
   },
@@ -103,7 +115,8 @@ const actions = {
     if (!redirect || !allowedRedirect(redirect)) return json(400, { error: 'Unsupported redirect.' }, origin);
     const provider = b.provider === 'google' ? 'google' : null;
     if (!provider) return json(400, { error: 'Unsupported provider.' }, origin);
-    const r = await upstream('/sign-in/social', { method: 'POST', body: { provider, callbackURL: redirect, errorCallbackURL: redirect } });
+    // newUserCallbackURL too: without it, first-time Google users are sent to the website instead of back to the extension.
+    const r = await upstream('/sign-in/social', { method: 'POST', body: { provider, callbackURL: redirect, newUserCallbackURL: redirect, errorCallbackURL: redirect } });
     if (!r.res.ok || !r.data?.url) return json(502, { error: errorMessage(r.data, 'Could not start Google sign-in.') }, origin);
     return json(200, { url: r.data.url, jar: r.jar }, origin);
   },
@@ -113,6 +126,28 @@ const actions = {
     const r = await upstream(`/get-session?neon_auth_session_verifier=${encodeURIComponent(verifier)}`, { jar });
     if (!r.res.ok || !r.data?.user) return json(401, { error: 'Google sign-in did not complete. Please try again.' }, origin);
     return sessionReply(r.jar, origin);
+  },
+  async 'verify-email'(b, origin) {
+    const email = str(b.email), otp = str(b.otp, 12);
+    if (!email || !otp || !/^[0-9]{6}$/.test(otp.trim())) return json(400, { error: 'Enter the 6-digit code from the email.' }, origin);
+    const r = await upstream('/email-otp/verify-email', { method: 'POST', body: { email, otp: otp.trim() } });
+    if (!r.res.ok) {
+      const code = errorCode(r.data);
+      const error =
+        code === 'OTP_EXPIRED' ? 'This code has expired. Send a new code and try again.'
+        : code === 'TOO_MANY_ATTEMPTS' ? 'Too many wrong codes. Send a new code and try again.'
+        : code === 'INVALID_OTP' ? 'That code is not right. Check the latest email and try again.'
+        : errorMessage(r.data, 'Could not verify the code.');
+      return json(400, { error, code }, origin);
+    }
+    return sessionReply(r.jar, origin);
+  },
+  async 'resend-code'(b, origin) {
+    const email = str(b.email);
+    if (!email) return json(400, { error: 'Enter your email address.' }, origin);
+    const r = await upstream('/email-otp/send-verification-otp', { method: 'POST', body: { email, type: 'email-verification' } });
+    if (!r.res.ok) return json(r.res.status === 429 ? 429 : 502, { error: r.res.status === 429 ? 'Please wait a minute before asking for another code.' : errorMessage(r.data, 'Could not send a new code.') }, origin);
+    return json(200, { ok: true }, origin);
   },
   async session(b, origin) {
     const jar = str(b.jar, 8192);
