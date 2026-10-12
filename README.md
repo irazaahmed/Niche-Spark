@@ -7,6 +7,8 @@ designed to collect real Google Autocomplete suggestions with A to Z, prefix,
 suffix, and template queries, save them automatically, deduplicate them, and
 export the results. All data stays in your browser.
 
+**Install:** [NicheSpark on the Chrome Web Store](https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep) · Website: https://nichespark.tech
+
 ## Project status
 
 This is an early build. Work is happening in phases (see
