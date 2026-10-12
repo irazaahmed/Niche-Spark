@@ -1,11 +1,12 @@
-export type ResearchMethod = 'az' | 'prefix' | 'suffix' | 'template';
+export type ResearchMethod = 'az' | 'prefix' | 'suffix' | 'question' | 'template';
 
-export const RESEARCH_METHODS: readonly ResearchMethod[] = ['az', 'prefix', 'suffix', 'template'];
+export const RESEARCH_METHODS: readonly ResearchMethod[] = ['az', 'prefix', 'suffix', 'question', 'template'];
 
 export const RESEARCH_METHOD_LABELS: Record<ResearchMethod, string> = {
   az: 'A to Z',
   prefix: 'Prefix',
   suffix: 'Suffix',
+  question: 'Questions',
   template: 'Template',
 };
 

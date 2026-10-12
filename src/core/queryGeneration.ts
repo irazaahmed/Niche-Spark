@@ -104,7 +104,19 @@ export function generateSuffixQueries(seed: string, suffixes: readonly string[])
   return dedupeQueries(cleanAffixList(suffixes).map((x) => makeQuery(`${s} ${x}`, 'suffix')));
 }
 
-const PLACEHOLDER_RE = /\{([^{}]*)\}/g;
+/**
+ * Question words placed before the seed by the Questions method. Google
+ * completes each one with the questions people actually ask.
+ */
+export const QUESTION_WORDS = ['how', 'how to', 'how much', 'what', 'what is', 'why', 'where', 'when', 'which', 'who', 'can', 'is', 'does', 'are', 'should'] as const;
+
+/** "how seed", "what is seed", … one query per question word. */
+export function generateQuestionQueries(seed: string): GeneratedQuery[] {
+  const s = requireSeed(seed);
+  return dedupeQueries(QUESTION_WORDS.map((w) => makeQuery(`${w} ${s}`, 'question')));
+}
+
+const PLACEHOLDER_RE =/\{([^{}]*)\}/g;
 const SUPPORTED_PLACEHOLDERS = new Set(['seed', 'letter']);
 
 /** Returns an error message for an invalid template, or null when valid. */
@@ -160,6 +172,8 @@ export function generateQueriesForMethod(
       return generatePrefixQueries(project.seed, project.prefixes);
     case 'suffix':
       return generateSuffixQueries(project.seed, project.suffixes);
+    case 'question':
+      return generateQuestionQueries(project.seed);
     case 'template':
       return generateTemplateQueries(project.seed, project.templates);
   }

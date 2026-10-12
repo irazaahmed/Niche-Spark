@@ -1,5 +1,6 @@
 import type { KeywordRecord } from '../shared/types';
 import { RESEARCH_METHOD_LABELS } from '../shared/types';
+import { detectTheme, THEME_LABELS } from './keywordGroups';
 
 export const CSV_HEADERS = [
   'Keyword',
@@ -9,6 +10,7 @@ export const CSV_HEADERS = [
   'First collected (UTC)',
   'Last collected (UTC)',
   'Times seen',
+  'Theme',
 ] as const;
 
 /**
@@ -45,6 +47,7 @@ export function keywordsToCsv(keywords: readonly KeywordRecord[]): string {
         iso(k.firstCollectedAt),
         iso(k.lastCollectedAt),
         k.collectionCount,
+        THEME_LABELS[detectTheme(k.text)],
       ]
         .map(escapeCsvField)
         .join(','),

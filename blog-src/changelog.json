@@ -1,8 +1,36 @@
 [
   {
-    "version": "0.2.1",
+    "version": "0.3.0",
     "date": "2026-10-12",
     "status": "Coming to the Chrome Web Store. It installs automatically once Google approves the update.",
+    "title": "Questions, ready-made lists and keyword grouping",
+    "changes": [
+      {
+        "type": "Added",
+        "text": "Questions research method: puts how, what, why, can, is and other question words before your seed, so Google suggests the questions people actually ask."
+      },
+      {
+        "type": "Added",
+        "text": "Ready-made prefix and suffix lists (Commercial, Budget, Pricing, Local, Learning, Business) that you add to a project in one click and can edit before saving."
+      },
+      {
+        "type": "Added",
+        "text": "Keyword grouping: every keyword gets a theme (Questions, Price & cost, Local, Compare & reviews, Business & jobs, Learning & guides), with a Theme filter and column."
+      },
+      {
+        "type": "Added",
+        "text": "Groups by modifier: one-click chips for words that recur after your seed, such as \"course\" or \"prices\", to filter the table."
+      },
+      {
+        "type": "Added",
+        "text": "CSV exports include a Theme column."
+      }
+    ]
+  },
+  {
+    "version": "0.2.1",
+    "date": "2026-10-12",
+    "status": "Ships together with 0.3.0.",
     "title": "Cleaner A to Z results",
     "changes": [
       {

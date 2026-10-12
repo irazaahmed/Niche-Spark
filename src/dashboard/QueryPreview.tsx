@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react';
 import {
   generateAzQueries,
   generatePrefixQueries,
+  generateQuestionQueries,
+  QUESTION_WORDS,
   generateSuffixQueries,
   generateTemplateQueries,
   LETTERS,
@@ -9,6 +11,7 @@ import {
   type GeneratedQuery,
 } from '../core/queryGeneration';
 import { normalizeText } from '../core/keywords';
+import { addPackToList, PREFIX_PACKS, SUFFIX_PACKS, type ModifierPack } from '../core/modifierPacks';
 import type { Project, ProjectPatch, QueryCounts, QueryRecord, QueryStatus, ResearchMethod } from '../shared/types';
 import { RESEARCH_METHODS, RESEARCH_METHOD_LABELS } from '../shared/types';
 import { errorMessage } from '../ui/components';
@@ -73,6 +76,8 @@ export function QueryPreview({ project, records, counts, jobActive, onSave }: Pr
           return { queries: generatePrefixQueries(project.seed, parseAffixInput(drafts.prefixes)) };
         case 'suffix':
           return { queries: generateSuffixQueries(project.seed, parseAffixInput(drafts.suffixes)) };
+        case 'question':
+          return { queries: generateQuestionQueries(project.seed) };
         case 'template':
           return { queries: generateTemplateQueries(project.seed, parseTemplates(drafts.templates)) };
       }
@@ -82,6 +87,16 @@ export function QueryPreview({ project, records, counts, jobActive, onSave }: Pr
   }, [method, startLetter, drafts, project.seed]);
 
   const dirty = field !== undefined && drafts[field] !== project[field].join('\n');
+  const packs = method === 'prefix' ? PREFIX_PACKS : method === 'suffix' ? SUFFIX_PACKS : [];
+  const [packNote, setPackNote] = useState('');
+
+  function addPack(pack: ModifierPack) {
+    if (field !== 'prefixes' && field !== 'suffixes') return;
+    const current = drafts[field].split(/[\n,]/).map(normalizeText).filter(Boolean);
+    const { list, added } = addPackToList(current, pack);
+    setDrafts((d) => ({ ...d, [field]: list.join('\n') }));
+    setPackNote(added ? `Added ${added} from "${pack.label}". Review the list, then Save list.` : `Everything in "${pack.label}" is already in your list.`);
+  }
 
   async function save() {
     if (!field) return;
@@ -104,6 +119,7 @@ export function QueryPreview({ project, records, counts, jobActive, onSave }: Pr
             onClick={() => {
               setMethod(m);
               setSelected(new Set());
+              setPackNote('');
             }}
           >
             {RESEARCH_METHOD_LABELS[m]}
@@ -113,7 +129,22 @@ export function QueryPreview({ project, records, counts, jobActive, onSave }: Pr
 
       <div className="preview-grid" role="tabpanel">
         <div className="stack">
-          {method === 'az' ? (
+          {method === 'question' ? (
+            <div className="stack">
+              <p className="small">
+                Puts a question word before your seed so Google suggests the questions people actually ask, ideal for blog
+                posts and FAQs.
+              </p>
+              <div className="tags">
+                {QUESTION_WORDS.map((w) => (
+                  <span key={w} className="tag">
+                    {w}
+                  </span>
+                ))}
+              </div>
+              <p className="muted small">Tick queries on the right to collect only some of them.</p>
+            </div>
+          ) : method === 'az' ? (
             <div className="field">
               <label htmlFor="start-letter">Start from letter</label>
               <select id="start-letter" className="input" value={startLetter} onChange={(e) => setStartLetter(e.target.value)}>
@@ -136,6 +167,23 @@ export function QueryPreview({ project, records, counts, jobActive, onSave }: Pr
                   onChange={(e) => setDrafts((d) => ({ ...d, [field]: e.target.value }))}
                 />
                 <span className="hint">{LIST_HINT[method]}</span>
+                {packs.length > 0 && (
+                  <div className="packs">
+                    <span className="small">Add a ready-made list:</span>
+                    <div className="row">
+                      {packs.map((p) => (
+                        <button key={p.id} type="button" className="btn btn-sm" title={`${p.description}: ${p.words.join(', ')}`} onClick={() => addPack(p)}>
+                          + {p.label}
+                        </button>
+                      ))}
+                    </div>
+                    {packNote && (
+                      <span className="muted small" role="status">
+                        {packNote}
+                      </span>
+                    )}
+                  </div>
+                )}
                 <div className="row">
                   <button className="btn btn-primary" type="button" disabled={!dirty || Boolean(preview.error)} onClick={() => void save()}>
                     Save list

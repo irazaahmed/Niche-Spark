@@ -65,9 +65,11 @@ share or publish) does not include it.
 ## Collecting keywords
 
 1. Create a project with a seed keyword (popup or dashboard).
-2. Pick a method: **A to Z**, **Prefix**, **Suffix**, or **Template**. For
-   prefixes, suffixes, and templates, add entries first under *Research
-   queries* in the dashboard.
+2. Pick a method: **A to Z**, **Prefix**, **Suffix**, **Questions** (how,
+   what, why, can, is … before the seed) or **Template**. For prefixes,
+   suffixes and templates, add entries under *Research queries* in the
+   dashboard, typing your own or adding a ready-made list (Pricing, Local,
+   Commercial, Learning, Business …).
 3. Click **Start**. To collect specific queries only, tick them in the
    dashboard preview and click **Collect N selected**.
 4. NicheSpark opens Google in a background tab. For each query it enters the
@@ -149,6 +151,12 @@ In the dashboard, each project's **Keywords** section has:
   that start with `=`, `+`, `-` or `@` get a leading `'` so a spreadsheet can
   never run them as formulas.
 - **Delete selected** asks for confirmation first.
+
+**Keyword grouping:** every keyword gets a theme (Questions, Price & cost,
+Local / near me, Compare & reviews, Business & jobs, Learning & guides, Other)
+with a Theme filter, a Theme column and a Theme column in CSV exports. *Groups by
+modifier* chips list words that recur after the seed (for example "course");
+click one to filter. Grouping rules are English-only.
 
 **Backup (JSON)** (top of each project) downloads the whole project: settings,
 prefix/suffix/template lists, every query with its status, and every keyword

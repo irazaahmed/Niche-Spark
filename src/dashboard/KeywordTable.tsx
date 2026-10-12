@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { exportFileName, keywordsToCsv, keywordsToLines } from '../core/exportCsv';
 import { findEchoKeywords } from '../core/keywords';
+import { detectTheme, summarizeModifiers, summarizeThemes, THEME_LABELS, type KeywordTheme } from '../core/keywordGroups';
 import { filterKeywords, KEYWORD_SORT_LABELS, listSourceQueries, sortKeywords, type KeywordSort } from '../core/keywordFilters';
 import type { KeywordRecord, Project, ResearchMethod } from '../shared/types';
 import { RESEARCH_METHODS, RESEARCH_METHOD_LABELS } from '../shared/types';
@@ -33,6 +34,8 @@ export function KeywordTable({ project, keywords, onChanged }: Props) {
   const [search, setSearch] = useState('');
   const [method, setMethod] = useState<ResearchMethod | ''>('');
   const [sourceQuery, setSourceQuery] = useState('');
+  const [theme, setTheme] = useState<KeywordTheme | ''>('');
+  const [modifier, setModifier] = useState('');
   const [sort, setSort] = useState<KeywordSort>(readSort);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [limit, setLimit] = useState(PAGE_SIZE);
@@ -42,10 +45,22 @@ export function KeywordTable({ project, keywords, onChanged }: Props) {
   const all = keywords ?? [];
   const sources = useMemo(() => listSourceQueries(all), [all]);
   const visible = useMemo(
-    () => sortKeywords(filterKeywords(all, { search, methods: method ? [method] : [], sourceQuery }), sort),
-    [all, search, method, sourceQuery, sort],
+    () =>
+      sortKeywords(
+        filterKeywords(all, {
+          search,
+          methods: method ? [method] : [],
+          sourceQuery,
+          ...(theme ? { theme } : {}),
+          ...(modifier ? { modifier, seed: project.seed } : {}),
+        }),
+        sort,
+      ),
+    [all, search, method, sourceQuery, theme, modifier, project.seed, sort],
   );
-  const filtered = Boolean(search.trim() || method || sourceQuery);
+  const filtered = Boolean(search.trim() || method || sourceQuery || theme || modifier);
+  const themes = useMemo(() => summarizeThemes(all), [all]);
+  const modifiers = useMemo(() => summarizeModifiers(all, project.seed), [all, project.seed]);
   // Echoes of unfinished A to Z queries saved by versions before 0.2.1.
   const echoes = useMemo(() => findEchoKeywords(all), [all]);
 
@@ -58,7 +73,7 @@ export function KeywordTable({ project, keywords, onChanged }: Props) {
     });
   }, [all]);
 
-  useEffect(() => setLimit(PAGE_SIZE), [search, method, sourceQuery, sort]);
+  useEffect(() => setLimit(PAGE_SIZE), [search, method, sourceQuery, theme, modifier, sort]);
 
   useEffect(() => {
     if (!notice) return;
@@ -144,6 +159,8 @@ These are not real suggestions. Other keywords are not touched.`)) return;
     setSearch('');
     setMethod('');
     setSourceQuery('');
+    setTheme('');
+    setModifier('');
   }
 
   return (
@@ -190,6 +207,17 @@ These are not real suggestions. Other keywords are not touched.`)) return;
           </select>
         </div>
         <div className="field">
+          <label htmlFor="kw-theme">Theme</label>
+          <select id="kw-theme" className="input" value={theme} onChange={(e) => setTheme(e.target.value as KeywordTheme | '')}>
+            <option value="">All themes</option>
+            {themes.map((g) => (
+              <option key={g.key} value={g.key}>
+                {THEME_LABELS[g.key]} ({g.count})
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="field">
           <label htmlFor="kw-sort">Sort</label>
           <select id="kw-sort" className="input" value={sort} onChange={(e) => changeSort(e.target.value as KeywordSort)}>
             {(Object.keys(KEYWORD_SORT_LABELS) as KeywordSort[]).map((s) => (
@@ -200,6 +228,23 @@ These are not real suggestions. Other keywords are not touched.`)) return;
           </select>
         </div>
       </div>
+
+      {modifiers.length > 0 && (
+        <div className="modifier-groups" role="group" aria-label="Group by modifier">
+          <span className="muted small">Groups by modifier:</span>
+          {modifiers.map((m) => (
+            <button
+              key={m.key}
+              type="button"
+              className={`chip${modifier === m.key ? ' active' : ''}`}
+              aria-pressed={modifier === m.key}
+              onClick={() => setModifier(modifier === m.key ? '' : m.key)}
+            >
+              {m.key} <span className="chip-count">{m.count}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {all.length > 0 && (
         <div className="action-bar" aria-live="polite">
@@ -289,6 +334,7 @@ These are not real suggestions. Other keywords are not touched.`)) return;
                     />
                   </th>
                   <th scope="col">Keyword</th>
+                  <th scope="col">Theme</th>
                   <th scope="col">Methods</th>
                   <th scope="col">Source queries</th>
                   <th scope="col" className="num">Seen</th>
@@ -302,6 +348,7 @@ These are not real suggestions. Other keywords are not touched.`)) return;
                       <input type="checkbox" aria-label={`Select ${k.text}`} checked={selected.has(k.id)} onChange={() => toggle(k.id)} />
                     </td>
                     <td className="kw-text">{k.text}</td>
+                    <td className="muted nowrap">{THEME_LABELS[detectTheme(k.text)]}</td>
                     <td>
                       <div className="tags">
                         {k.methods.map((m) => (

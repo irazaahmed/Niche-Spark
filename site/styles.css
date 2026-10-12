@@ -691,3 +691,13 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
 :root[data-theme="dark"] .change-changed { color: #a5b4fc; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .change-changed { color: #a5b4fc; } }
 @media (max-width: 560px) { .release-changes li { flex-direction: column; gap: 4px; } }
+
+/* ── v0.3 additions ───────────────────────────────────────────────────── */
+.card-wide { grid-column: 1 / -1; }
+.queries-inline { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+.new-badge {
+  display: inline-block; vertical-align: middle; margin-left: 6px; padding: 2px 8px; border-radius: 999px;
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--primary); color: var(--on-primary);
+}
+@media (max-width: 760px) { .queries-inline { grid-template-columns: 1fr; } }

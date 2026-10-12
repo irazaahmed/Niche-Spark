@@ -112,3 +112,12 @@ tbody tr.selected:hover td { background: var(--accent-soft); }
 .main, .sidebar, .filters .field { min-width: 0; }
 .filters select { max-width: 100%; text-overflow: ellipsis; }
 .cleanup-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.packs { display: grid; gap: 6px; padding: 10px; border: 1px dashed var(--border); border-radius: var(--radius); }
+.filters { grid-template-columns: minmax(180px, 2fr) repeat(4, minmax(130px, 1fr)); }
+.modifier-groups { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); font-size: 12.5px; cursor: pointer; }
+.chip:hover { border-color: var(--accent); }
+.chip.active { background: var(--accent); border-color: var(--accent); color: var(--accent-contrast); }
+.chip-count { font-size: 11px; opacity: 0.7; }
+@media (max-width: 900px) { .filters { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .filters { grid-template-columns: 1fr; } }

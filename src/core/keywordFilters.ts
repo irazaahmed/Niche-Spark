@@ -1,4 +1,5 @@
 import type { KeywordRecord, ResearchMethod } from '../shared/types';
+import { detectTheme, keywordModifier, type KeywordTheme } from './keywordGroups';
 import { normalizeKey } from './keywords';
 
 export interface KeywordFilter {
@@ -8,6 +9,11 @@ export interface KeywordFilter {
   methods?: readonly ResearchMethod[];
   /** Keep keywords found by this exact source query. */
   sourceQuery?: string;
+  /** Keep keywords in this search-intent theme. */
+  theme?: KeywordTheme;
+  /** Keep keywords whose first added word (after the seed) is this modifier. Requires `seed`. */
+  modifier?: string;
+  seed?: string;
 }
 
 export type KeywordSort = 'alpha-asc' | 'alpha-desc' | 'newest' | 'oldest' | 'last-collected' | 'most-seen';
@@ -29,7 +35,9 @@ export function filterKeywords(keywords: readonly KeywordRecord[], filter: Keywo
     (k) =>
       (!search || k.key.includes(search)) &&
       (!methods || k.methods.some((m) => methods.has(m))) &&
-      (!source || k.sourceQueries.some((q) => normalizeKey(q) === source)),
+      (!source || k.sourceQueries.some((q) => normalizeKey(q) === source)) &&
+      (!filter.theme || detectTheme(k.text) === filter.theme) &&
+      (!filter.modifier || keywordModifier(k.text, filter.seed ?? '') === filter.modifier),
   );
 }
 

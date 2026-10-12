@@ -43,9 +43,9 @@ describe('keywordsToCsv', () => {
     ]);
     expect(csv.startsWith(UTF8_BOM)).toBe(true);
     const lines = csv.slice(1).split('\r\n');
-    expect(lines[0]).toBe('Keyword,Normalized key,Research methods,Source queries,First collected (UTC),Last collected (UTC),Times seen');
+    expect(lines[0]).toBe('Keyword,Normalized key,Research methods,Source queries,First collected (UTC),Last collected (UTC),Times seen,Theme');
     expect(lines[1]).toBe(
-      'Mobile Car Detailing Near Me,mobile car detailing near me,A to Z | Suffix,seed n | seed near,2026-10-11T10:00:00.000Z,2026-10-12T08:30:00.000Z,2',
+      'Mobile Car Detailing Near Me,mobile car detailing near me,A to Z | Suffix,seed n | seed near,2026-10-11T10:00:00.000Z,2026-10-12T08:30:00.000Z,2,Local / near me',
     );
     expect(lines[2]).toBe('');
   });
