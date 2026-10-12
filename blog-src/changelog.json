@@ -2,7 +2,7 @@
   {
     "version": "0.4.0",
     "date": "2026-10-12",
-    "status": "In testing. It will come to the Chrome Web Store after 0.3.1.",
+    "status": "Coming to the Chrome Web Store. It installs automatically once Google approves the update.",
     "title": "Accounts and cloud sync",
     "changes": [
       {
@@ -30,7 +30,7 @@
   {
     "version": "0.3.1",
     "date": "2026-10-12",
-    "status": "Coming to the Chrome Web Store after 0.3.0. It installs automatically once Google approves it.",
+    "status": "Ships together with 0.4.0.",
     "title": "Dashboard controls fixed; Prefix, Suffix and Template ready out of the box",
     "changes": [
       {
