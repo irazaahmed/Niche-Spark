@@ -3,8 +3,12 @@
     "version": "0.3.1",
     "date": "2026-10-12",
     "status": "Coming to the Chrome Web Store after 0.3.0. It installs automatically once Google approves it.",
-    "title": "Prefix, Suffix and Template research ready out of the box",
+    "title": "Dashboard controls fixed; Prefix, Suffix and Template ready out of the box",
     "changes": [
+      {
+        "type": "Fixed",
+        "text": "Start, Retry failed, Pause, Resume and Cancel in the dashboard now work. Before, they could fail with \"The NicheSpark background worker did not respond\" because commands from the dashboard tab were rejected."
+      },
       {
         "type": "Changed",
         "text": "New projects start with ready-to-use prefix, suffix and template lists, so Prefix, Suffix and Template research work straight away."

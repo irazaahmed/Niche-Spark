@@ -30,9 +30,14 @@ async function handle(message: BackgroundRequest) {
   }
 }
 
+/** NicheSpark's own pages: the popup, or the dashboard (which runs in a tab). */
+function isExtensionPage(sender: chrome.runtime.MessageSender) {
+  return sender.id === chrome.runtime.id && !!sender.url?.startsWith(chrome.runtime.getURL(''));
+}
+
 chrome.runtime.onMessage.addListener((message: BackgroundRequest, sender, sendResponse) => {
-  // Only accept commands from NicheSpark's own pages, never from content scripts.
-  if (sender.id !== chrome.runtime.id || sender.tab || !message?.type?.startsWith('job/')) return false;
+  // Only accept commands from extension pages, never from content scripts (their sender URL is the web page).
+  if (!isExtensionPage(sender) || !message?.type?.startsWith('job/')) return false;
   handle(message)
     .then((job) => sendResponse({ ok: true, job: job ?? null } satisfies BackgroundResponse))
     .catch((e: unknown) => sendResponse({ ok: false, error: e instanceof Error ? e.message : String(e) } satisfies BackgroundResponse));
