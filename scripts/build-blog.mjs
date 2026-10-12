@@ -74,6 +74,7 @@ const footer = `<footer class="site-footer">
       <ul class="footer-links">
         <li><a href="/#how">How it works</a></li>
         <li><a href="/blog/">Blog</a></li>
+        <li><a href="/changelog/">Changelog</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
         <li><a href="${WA}" target="_blank" rel="noopener">WhatsApp: +92 313 0221118</a></li>
       </ul>
@@ -257,17 +258,79 @@ writeFileSync(
   }),
 );
 
+// ── Changelog ─────────────────────────────────────────────────────
+const releases = JSON.parse(readFileSync('blog-src/changelog.json', 'utf8'));
+const typeOrder = ['Added', 'Changed', 'Fixed'];
+const changelogBody = `  <main id="main">
+    <header class="post-hero">
+      <div class="container post-narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a></nav>
+        <span class="eyebrow">Changelog</span>
+        <h1>What's new in <span class="accent">NicheSpark</span></h1>
+        <p class="lead">Every release of the extension, newest first. Chrome installs updates automatically after the Chrome Web Store approves them.</p>
+      </div>
+    </header>
+    <section class="section" style="padding-top:48px">
+      <div class="container post-narrow">
+        <ol class="releases">
+${releases
+  .map(
+    (r, i) => `          <li class="release" id="v${r.version.replace(/\./g, '-')}">
+            <div class="release-head">
+              <span class="release-version">v${esc(r.version)}</span>${i === 0 ? '<span class="release-latest">Latest</span>' : ''}
+              <time datetime="${r.date}">${fmtDate(r.date)}</time>
+            </div>
+            <h2>${esc(r.title)}</h2>
+            <p class="release-status">${esc(r.status)}</p>
+            <ul class="release-changes">
+${[...r.changes]
+  .sort((a, b) => typeOrder.indexOf(a.type) - typeOrder.indexOf(b.type))
+  .map((c) => `              <li><span class="change-type change-${c.type.toLowerCase()}">${esc(c.type)}</span> ${esc(c.text)}</li>`)
+  .join('\n')}
+            </ul>
+          </li>`,
+  )
+  .join('\n')}
+        </ol>
+        ${ctaBox}
+      </div>
+    </section>
+  </main>`;
+mkdirSync('site/changelog', { recursive: true });
+writeFileSync(
+  'site/changelog/index.html',
+  page({
+    title: "Changelog: What's New in NicheSpark",
+    description: 'Release notes for the NicheSpark Chrome extension: new features, fixes and changes in every version.',
+    canonical: `${SITE}/changelog/`,
+    ogType: 'website',
+    image: `${SITE}/assets/og.png`,
+    jsonld: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${SITE}/changelog/#webpage`,
+      name: 'NicheSpark changelog',
+      url: `${SITE}/changelog/`,
+      about: { '@id': `${SITE}/#software` },
+      isPartOf: { '@id': `${SITE}/#website` },
+      dateModified: releases[0].date,
+    },
+    body: changelogBody,
+  }),
+);
+
 // ── Sitemap ────────────────────────────────────────────────────────
 const latest = posts.reduce((d, p) => ((p.updated ?? p.date) > d ? (p.updated ?? p.date) : d), '2026-10-11');
 const urls = [
   [`${SITE}/`, latest],
   [`${SITE}/blog/`, latest],
   ...posts.map((p) => [`${SITE}/blog/${p.slug}/`, p.updated ?? p.date]),
+  [`${SITE}/changelog/`, releases[0].date],
   [`${SITE}/privacy.html`, '2026-10-11'],
 ];
 writeFileSync(
   'site/sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(([u, d]) => `  <url><loc>${u}</loc><lastmod>${d}</lastmod></url>`).join('\n')}\n</urlset>\n`,
 );
-console.log(`Built ${posts.length} posts:`);
+console.log(`Built changelog (${releases.length} releases) and ${posts.length} posts:`);
 for (const p of posts) console.log(`  /blog/${p.slug}/  (${p.words} words, ${p.minutes} min)`);

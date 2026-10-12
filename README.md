@@ -115,6 +115,9 @@ The public website is a static site in `site/`, deployed by Netlify
   the article HTML) and run `npm run blog`. It builds `site/blog/` (pages,
   index, schema, table of contents, related posts) and regenerates
   `site/sitemap.xml`. Commit the generated files; Netlify serves them as-is.
+- **Changelog:** add a release at the top of `blog-src/changelog.json` (version,
+  date, status, title, changes typed Added / Changed / Fixed) and run
+  `npm run blog`; it builds `/changelog/`.
 
 ## Permissions
 

@@ -17,6 +17,7 @@ import {
   type JobState,
   type ProcessedOutcome,
 } from '../core/collectionState';
+import { meaningfulSuggestions } from '../core/keywords';
 import { generateQueriesForMethod, ValidationError } from '../core/queryGeneration';
 import type { CollectResult } from '../shared/collection';
 import type { Project, ResearchMethod } from '../shared/types';
@@ -218,7 +219,7 @@ export class CollectionScheduler {
         result = { status: 'failed', reason: e instanceof PageUnavailableError ? 'page_unavailable' : 'error', message };
       }
 
-      const outcome = await this.persist(project.id, queryId, result);
+      const outcome = await this.persist(project.id, queryId, query.text, result);
       if (!outcome) break;
       // Apply to the latest state: the user may have paused or cancelled meanwhile.
       await this.commit(applyQueryOutcome(this.job, outcome, now()));
@@ -226,17 +227,19 @@ export class CollectionScheduler {
   }
 
   /** Saves a real result. Returns null if the job had to stop because saving failed. */
-  private async persist(projectId: string, queryId: string, result: CollectResult): Promise<ProcessedOutcome | null> {
+  private async persist(projectId: string, queryId: string, queryText: string, result: CollectResult): Promise<ProcessedOutcome | null> {
     const at = this.deps.now();
     if (result.status === 'failed' && ['blocked', 'page_unavailable', 'no_search_box'].includes(result.reason)) {
       return result; // never attempted for real: query stays pending
     }
     try {
-      if (result.status === 'succeeded') {
-        const r = await this.deps.storage.recordQueryOutcome(projectId, queryId, { status: 'succeeded', suggestions: result.suggestions, at });
+      // Google sometimes echoes an unfinished A to Z query ("seed a") as a suggestion; never save that.
+      const kept = result.status === 'succeeded' ? meaningfulSuggestions(queryText, result.suggestions) : [];
+      if (result.status === 'succeeded' && kept.length > 0) {
+        const r = await this.deps.storage.recordQueryOutcome(projectId, queryId, { status: 'succeeded', suggestions: kept, at });
         return { status: 'succeeded', keywordsAdded: r.keywordsAdded };
       }
-      if (result.status === 'empty') {
+      if (result.status === 'succeeded' || result.status === 'empty') {
         await this.deps.storage.recordQueryOutcome(projectId, queryId, { status: 'empty', suggestions: [], at });
         return { status: 'empty' };
       }

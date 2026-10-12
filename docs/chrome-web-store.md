@@ -1,10 +1,10 @@
-# Chrome Web Store submission kit (NicheSpark v0.2.0)
+# Chrome Web Store submission kit (NicheSpark)
 
 Copy each block into the matching field in the Developer Dashboard.
 
 ## Package
 
-- Upload: `site/downloads/nichespark-0.2.0.zip` (built by `npm run package`;
+- Upload: `site/downloads/nichespark-<version>.zip` (built by `npm run package`;
   production build, no dev auto-reload code).
 
 ## Store listing tab

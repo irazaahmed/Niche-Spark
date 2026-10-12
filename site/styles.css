@@ -670,3 +670,24 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
   .post-body { font-size: 1.02rem; }
   .post-cta { grid-template-columns: 1fr; }
 }
+
+/* ── Changelog ────────────────────────────────────────────────────────── */
+.releases { list-style: none; margin: 0; padding: 0 0 0 28px; position: relative; display: grid; gap: 28px; }
+.releases::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--rule); }
+.release { position: relative; padding: 22px 24px; border: 1px solid var(--rule); border-radius: var(--radius-lg); background: var(--card); }
+.release::before { content: ''; position: absolute; left: -27px; top: 28px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--primary); }
+.release:first-child::before { background: var(--primary); box-shadow: 0 0 0 5px color-mix(in oklch, var(--primary) 20%, transparent); }
+.release-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.release-version { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+.release-latest { padding: 2px 8px; border-radius: 999px; background: var(--primary); color: var(--on-primary); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.release h2 { font-size: 1.35rem; margin-top: 8px; }
+.release-status { margin-top: 4px; font-size: 0.9rem; color: var(--muted); }
+.release-changes { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.release-changes li { display: flex; gap: 10px; align-items: baseline; line-height: 1.6; }
+.change-type { flex-shrink: 0; min-width: 66px; text-align: center; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 8px; border-radius: 6px; }
+.change-added { background: var(--primary-soft); color: var(--primary); }
+.change-changed { background: color-mix(in oklch, #6366f1 14%, transparent); color: #4f46e5; }
+.change-fixed { background: color-mix(in oklch, var(--caution) 14%, transparent); color: var(--caution); }
+:root[data-theme="dark"] .change-changed { color: #a5b4fc; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .change-changed { color: #a5b4fc; } }
+@media (max-width: 560px) { .release-changes li { flex-direction: column; gap: 4px; } }

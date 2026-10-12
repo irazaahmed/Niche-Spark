@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { exportFileName, keywordsToCsv, keywordsToLines } from '../core/exportCsv';
+import { findEchoKeywords } from '../core/keywords';
 import { filterKeywords, KEYWORD_SORT_LABELS, listSourceQueries, sortKeywords, type KeywordSort } from '../core/keywordFilters';
 import type { KeywordRecord, Project, ResearchMethod } from '../shared/types';
 import { RESEARCH_METHODS, RESEARCH_METHOD_LABELS } from '../shared/types';
@@ -45,6 +46,8 @@ export function KeywordTable({ project, keywords, onChanged }: Props) {
     [all, search, method, sourceQuery, sort],
   );
   const filtered = Boolean(search.trim() || method || sourceQuery);
+  // Echoes of unfinished A to Z queries saved by versions before 0.2.1.
+  const echoes = useMemo(() => findEchoKeywords(all), [all]);
 
   // Drop selections for keywords that no longer exist (deleted or re-imported).
   useEffect(() => {
@@ -114,6 +117,18 @@ export function KeywordTable({ project, keywords, onChanged }: Props) {
       setSelected(new Set());
       await onChanged();
       return `Deleted ${deleted} keyword${deleted === 1 ? '' : 's'}.`;
+    });
+
+  const removeEchoes = () =>
+    act(async () => {
+      const n = echoes.length;
+      const examples = echoes.slice(0, 3).map((k) => `"${k.text}"`).join(", ");
+      if (!window.confirm(`Remove ${n} keyword${n === 1 ? "" : "s"} that only repeat an A to Z search query (for example ${examples})?
+
+These are not real suggestions. Other keywords are not touched.`)) return;
+      const deleted = await storage.deleteKeywords(project.id, echoes.map((k) => k.id));
+      await onChanged();
+      return `Removed ${deleted} echo keyword${deleted === 1 ? "" : "s"}.`;
     });
 
   function changeSort(value: KeywordSort) {
@@ -221,6 +236,18 @@ export function KeywordTable({ project, keywords, onChanged }: Props) {
               Delete selected
             </button>
           </div>
+        </div>
+      )}
+
+      {echoes.length > 0 && (
+        <div className="alert alert-info cleanup-bar">
+          <span>
+            <strong>{echoes.length}</strong> keyword{echoes.length === 1 ? "" : "s"} only repeat an A to Z search query
+            (like <em>{echoes[0]?.text}</em>) and aren&apos;t real suggestions.
+          </span>
+          <button className="btn btn-sm" type="button" onClick={() => void removeEchoes()}>
+            Clean up
+          </button>
         </div>
       )}
 

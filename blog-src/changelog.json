@@ -1,0 +1,94 @@
+[
+  {
+    "version": "0.2.1",
+    "date": "2026-10-12",
+    "status": "Coming to the Chrome Web Store. It installs automatically once Google approves the update.",
+    "title": "Cleaner A to Z results",
+    "changes": [
+      {
+        "type": "Fixed",
+        "text": "A to Z research no longer saves Google echoing the unfinished query back, such as \"mobile repairing a\". Real completions like \"mobile repairing app\", and prefix or suffix keywords like \"mobile repairing near me\", are still saved."
+      },
+      {
+        "type": "Added",
+        "text": "A Clean up button in the dashboard removes echo keywords saved by earlier versions, after asking you to confirm."
+      },
+      {
+        "type": "Changed",
+        "text": "An A to Z query where Google only echoed the query back is now marked Empty instead of Done."
+      }
+    ]
+  },
+  {
+    "version": "0.2.0",
+    "date": "2026-10-12",
+    "status": "Released on the Chrome Web Store.",
+    "title": "Export, filters and the Chrome Web Store",
+    "changes": [
+      {
+        "type": "Added",
+        "text": "Search, filters by research method and source query, and six sort orders in the keyword table."
+      },
+      {
+        "type": "Added",
+        "text": "Copy all, filtered or selected keywords, one per line."
+      },
+      {
+        "type": "Added",
+        "text": "CSV export of all, filtered or selected keywords, UTF-8 so Urdu and other scripts open correctly in Excel."
+      },
+      {
+        "type": "Added",
+        "text": "Backup (JSON) for a whole project, and a validated import that always restores as a new project."
+      },
+      {
+        "type": "Added",
+        "text": "Delete selected keywords, with confirmation."
+      },
+      {
+        "type": "Changed",
+        "text": "New NicheSpark logo."
+      }
+    ]
+  },
+  {
+    "version": "0.1.1",
+    "date": "2026-10-12",
+    "status": "Beta (manual install).",
+    "title": "A fresh look",
+    "changes": [
+      {
+        "type": "Changed",
+        "text": "New emerald colour scheme and typography in the popup and dashboard."
+      }
+    ]
+  },
+  {
+    "version": "0.1.0",
+    "date": "2026-10-11",
+    "status": "First beta (manual install).",
+    "title": "First beta",
+    "changes": [
+      {
+        "type": "Added",
+        "text": "Live collection of real Google Autocomplete suggestions from a background Google tab."
+      },
+      {
+        "type": "Added",
+        "text": "A to Z, prefix, suffix and template research, with a query preview."
+      },
+      {
+        "type": "Added",
+        "text": "Pause, resume, cancel and retry failed, with progress saved after every query."
+      },
+      {
+        "type": "Added",
+        "text": "Automatic deduplication and source-query tracking for every keyword."
+      },
+      {
+        "type": "Added",
+        "text": "Stops for Google verification or consent pages and never bypasses them; your own search history is never saved."
+      }
+    ]
+  }
+]

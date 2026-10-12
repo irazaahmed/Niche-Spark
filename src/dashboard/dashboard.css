@@ -111,3 +111,4 @@ tbody tr.selected:hover td { background: var(--accent-soft); }
 }
 .main, .sidebar, .filters .field { min-width: 0; }
 .filters select { max-width: 100%; text-overflow: ellipsis; }
+.cleanup-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }

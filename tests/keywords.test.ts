@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cleanSuggestions, mergeSuggestion, normalizeKey, normalizeText } from '../src/core/keywords';
+import { cleanSuggestions, findEchoKeywords, isQueryEcho, meaningfulSuggestions, mergeSuggestion, normalizeKey, normalizeText } from '../src/core/keywords';
 
 describe('normalization', () => {
   it('trims and collapses whitespace', () => {
@@ -70,5 +70,34 @@ describe('mergeSuggestion', () => {
     const a = mergeSuggestion(undefined, P, 'x', { query: 'q', method: 'az' }, 1);
     expect(() => mergeSuggestion(a, P, 'y', { query: 'q', method: 'az' }, 2)).toThrow();
     expect(() => mergeSuggestion(a, 'p2', 'x', { query: 'q', method: 'az' }, 2)).toThrow();
+  });
+});
+
+describe('query echoes', () => {
+  it('detects an echo of an unfinished A to Z query', () => {
+    expect(isQueryEcho('mobile repairing a', 'mobile repairing a')).toBe(true);
+    expect(isQueryEcho('  Mobile  Repairing B ', 'mobile repairing b')).toBe(true);
+    expect(isQueryEcho('best laptop for z', 'best laptop for z')).toBe(true); // {letter} template
+  });
+
+  it('keeps real completions of A to Z queries', () => {
+    expect(isQueryEcho('mobile repairing app', 'mobile repairing a')).toBe(false);
+    expect(isQueryEcho('mobile repairing', 'mobile repairing a')).toBe(false);
+  });
+
+  it('keeps the echo of prefix and suffix queries, which is a real keyword', () => {
+    expect(isQueryEcho('mobile repairing near me', 'mobile repairing near me')).toBe(false);
+    expect(isQueryEcho('best mobile repairing', 'best mobile repairing')).toBe(false);
+  });
+
+  it('filters suggestion lists and finds old echo keywords', () => {
+    expect(meaningfulSuggestions('mobile repairing a', ['mobile repairing a', 'mobile repairing app', 'mobile repairing apron'])).toEqual([
+      'mobile repairing app',
+      'mobile repairing apron',
+    ]);
+    const echo = mergeSuggestion(undefined, 'p', 'mobile repairing a', { query: 'mobile repairing a', method: 'az' }, 1);
+    const real = mergeSuggestion(undefined, 'p', 'mobile repairing app', { query: 'mobile repairing a', method: 'az' }, 1);
+    const suffix = mergeSuggestion(undefined, 'p', 'mobile repairing near me', { query: 'mobile repairing near me', method: 'suffix' }, 1);
+    expect(findEchoKeywords([echo, real, suffix]).map((k) => k.text)).toEqual(['mobile repairing a']);
   });
 });

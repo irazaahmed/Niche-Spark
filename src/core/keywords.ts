@@ -80,3 +80,26 @@ export function cleanSuggestions(raw: readonly string[]): string[] {
   }
   return out;
 }
+
+/**
+ * True when a suggestion is only Google echoing an unfinished query back,
+ * e.g. "mobile repairing a" for the A to Z query "mobile repairing a".
+ * Only queries that end in a single-character token (A to Z letters, or a
+ * {letter} template) can produce such an echo. The echo of a prefix or suffix
+ * query ("mobile repairing near me") is a real, meaningful keyword and is kept.
+ */
+export function isQueryEcho(suggestion: string, query: string): boolean {
+  const q = normalizeKey(query);
+  const lastToken = q.split(' ').at(-1) ?? '';
+  return [...lastToken].length === 1 && normalizeKey(suggestion) === q;
+}
+
+/** Suggestions worth saving for a query: query echoes removed. */
+export function meaningfulSuggestions(query: string, suggestions: readonly string[]): string[] {
+  return suggestions.filter((s) => !isQueryEcho(s, query));
+}
+
+/** Keywords saved by earlier versions that are only an echo of one of their source queries. */
+export function findEchoKeywords(keywords: readonly KeywordRecord[]): KeywordRecord[] {
+  return keywords.filter((k) => k.sourceQueries.some((q) => isQueryEcho(k.text, q)));
+}

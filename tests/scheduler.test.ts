@@ -191,6 +191,31 @@ describe('CollectionScheduler', () => {
   });
 });
 
+describe('query echoes', () => {
+  it('never saves Google echoing an A to Z query, but keeps prefix/suffix echoes', async () => {
+    const e = setup((q) => ({ status: 'succeeded', suggestions: [q, `${q}pp`] }));
+    const p = await e.storage.createProject({ name: 'P', seed: 'mobile repairing', suffixes: ['near me'] });
+    await e.scheduler.start({ projectId: p.id, method: 'az', startLetter: 'z' });
+    await e.scheduler.idle();
+    await e.scheduler.start({ projectId: p.id, method: 'suffix' });
+    await e.scheduler.idle();
+    const keys = (await e.storage.listKeywords(p.id)).map((k) => k.key).sort();
+    expect(keys).toEqual(['mobile repairing near me', 'mobile repairing near mepp', 'mobile repairing zpp']);
+    const az = (await e.storage.listQueries(p.id, 'az'))[0]!;
+    expect(az).toMatchObject({ status: 'succeeded', suggestionCount: 1 });
+  });
+
+  it('marks an A to Z query empty when Google only echoed it back', async () => {
+    const e = setup((q) => ({ status: 'succeeded', suggestions: [q] }));
+    const p = await e.storage.createProject({ name: 'P', seed: 'mobile repairing' });
+    await e.scheduler.start({ projectId: p.id, method: 'az', startLetter: 'z' });
+    await e.scheduler.idle();
+    expect(await e.storage.listKeywords(p.id)).toEqual([]);
+    expect((await e.storage.countQueries(p.id)).empty).toBe(1);
+    expect(e.saved?.counts).toMatchObject({ empty: 1, succeeded: 0 });
+  });
+});
+
 describe('pacedDelay', () => {
   it('adds up to 50% jitter', () => {
     expect(pacedDelay(4000, 0)).toBe(4000);
