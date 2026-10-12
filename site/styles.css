@@ -580,20 +580,31 @@ code { font-family: var(--font-mono); font-size: 0.88em; }
 
 /* ── Floating WhatsApp button (bottom-left; back-to-top is bottom-right) ── */
 .wa-float {
-  position: fixed; left: 22px; bottom: 22px; z-index: 90; display: inline-flex; align-items: center; gap: 10px;
-  height: 52px; padding: 0 18px 0 14px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.95rem;
-  background: #25d366; color: #073b1e; box-shadow: 0 10px 30px rgb(37 211 102 / 0.35);
+  position: fixed; left: 22px; bottom: 22px; z-index: 90;
+  width: 56px; height: 56px; padding: 0; border-radius: 50%;
+  display: grid; place-items: center; /* icon dead-centre on every screen size */
+  background: #25d366; color: #fff; text-decoration: none;
+  box-shadow: 0 10px 30px rgb(37 211 102 / 0.35);
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
   animation: rise 0.8s 1s var(--ease) both;
 }
-.wa-float:hover { color: #073b1e; transform: translateY(-3px); box-shadow: 0 14px 36px rgb(37 211 102 / 0.45); }
-.wa-float svg { width: 24px; height: 24px; }
+.wa-float:hover { color: #fff; transform: translateY(-3px); box-shadow: 0 14px 36px rgb(37 211 102 / 0.45); }
+.wa-float svg { width: 30px; height: 30px; display: block; }
 .wa-float::before {
   content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: -1;
   box-shadow: 0 0 0 0 rgb(37 211 102 / 0.55); animation: wa-ping 2.6s 2s infinite;
 }
 @keyframes wa-ping { 0% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0.55); } 80%, 100% { box-shadow: 0 0 0 14px rgb(37 211 102 / 0); } }
+/* Label shown as a tooltip on hover/focus; always available to screen readers. */
+.wa-float .wa-label {
+  position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%);
+  white-space: nowrap; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+  background: var(--ink); color: var(--paper); box-shadow: var(--shadow);
+  opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.wa-float:hover .wa-label, .wa-float:focus-visible .wa-label { opacity: 1; }
 @media (max-width: 760px) {
-  .wa-float { left: 16px; bottom: 16px; width: 48px; height: 48px; padding: 0; justify-content: center; }
+  .wa-float { left: 16px; bottom: 16px; width: 52px; height: 52px; }
+  .wa-float svg { width: 28px; height: 28px; }
   .wa-float .wa-label { display: none; }
 }
