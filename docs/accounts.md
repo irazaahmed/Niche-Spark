@@ -170,6 +170,10 @@ https://nichespark.tech/admin/ (not linked from the site, `noindex`, disallowed 
   `admin_*` database functions (`db/admin.sql`) with the admin's JWT. The
   functions run as security definer and check `ns_is_admin()` themselves, so no
   database password is stored on Netlify.
+- After changing database functions, the Neon Data API may keep an old schema
+  cache (calls return 404 "try reloading the schema cache"); `notify pgrst` does
+  not reach it. Re-saving the Data API settings (Neon `update_data_api`, or
+  Console → Data API → Save) reloads it.
 - Activity: the auth bridge calls `ns_record_activity` on each session reply with
   Netlify's geolocation (country, city; the IP is not stored), one row per account
   in `public.user_activity`.
