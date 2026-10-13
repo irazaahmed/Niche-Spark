@@ -75,6 +75,7 @@ const footer = `<footer class="site-footer">
         <li><a href="/#how">How it works</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/about/">About</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
         <li><a href="${WA}" target="_blank" rel="noopener">WhatsApp: +92 313 0221118</a></li>
       </ul>
@@ -134,7 +135,7 @@ const org = { '@id': `${SITE}/#organization` };
 const ctaBox = `<aside class="post-cta" aria-label="Try NicheSpark">
           <div>
             <h2 class="post-cta-title">Collect these keywords automatically</h2>
-            <p>NicheSpark runs A to Z, prefix and suffix research on real Google Autocomplete suggestions and saves every keyword for you. Free, no account, and your data stays in your browser.</p>
+            <p>NicheSpark runs A to Z, prefix, suffix and question research on real Google Autocomplete suggestions, groups the keywords and saves them to your free account. Free, with no daily limits.</p>
           </div>
           <a class="btn btn-primary" href="${STORE}" target="_blank" rel="noopener">Add to Chrome, it's free</a>
         </aside>`;
@@ -320,12 +321,14 @@ writeFileSync(
 );
 
 // ── Sitemap ────────────────────────────────────────────────────────
+const HOME_UPDATED = '2026-10-13'; // bump when the homepage changes
 const latest = posts.reduce((d, p) => ((p.updated ?? p.date) > d ? (p.updated ?? p.date) : d), '2026-10-11');
 const urls = [
-  [`${SITE}/`, latest],
+  [`${SITE}/`, latest > HOME_UPDATED ? latest : HOME_UPDATED],
   [`${SITE}/blog/`, latest],
   ...posts.map((p) => [`${SITE}/blog/${p.slug}/`, p.updated ?? p.date]),
   [`${SITE}/changelog/`, releases[0].date],
+  [`${SITE}/about/`, '2026-10-13'],
   [`${SITE}/privacy.html`, '2026-10-13'],
 ];
 writeFileSync(

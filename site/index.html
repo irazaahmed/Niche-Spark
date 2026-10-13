@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Free Keyword Research Tool for Chrome | NicheSpark</title>
-  <meta name="description" content="NicheSpark is a free keyword research tool for Chrome. Collect real Google Autocomplete suggestions with A to Z, prefix, suffix and question research, then group, filter and export long-tail keywords. No account needed." />
+  <meta name="description" content="Free keyword research tool for Chrome. Collect real Google Autocomplete suggestions with A to Z, prefix, suffix and question research, then group and export." />
   <link rel="canonical" href="https://nichespark.tech/" />
   <meta name="google-site-verification" content="YIgD8MAXNs-DDBBoyeC_NKgfb8Oil6uAZxnHRZs61IE" />
   <meta name="theme-color" content="#047857" />
@@ -32,6 +32,12 @@
         "@id": "https://nichespark.tech/#organization",
         "name": "NicheSpark",
         "url": "https://nichespark.tech/",
+        "description": "NicheSpark makes a free Chrome extension for keyword research with real Google Autocomplete suggestions. It is built by Cybrum Solutions.",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Cybrum Solutions",
+          "url": "https://www.cybrumsolutions.dev/"
+        },
         "logo": {
           "@type": "ImageObject",
           "url": "https://nichespark.tech/assets/logo-180.png",
@@ -39,7 +45,8 @@
           "height": 180
         },
         "sameAs": [
-          "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep"
+          "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep",
+          "https://www.cybrumsolutions.dev/products/nichespark"
         ],
         "contactPoint": {
           "@type": "ContactPoint",
@@ -78,6 +85,8 @@
           "@type": "ImageObject",
           "url": "https://nichespark.tech/assets/og.png"
         },
+        "datePublished": "2026-10-11",
+        "dateModified": "2026-10-13",
         "inLanguage": "en"
       },
       {
@@ -91,20 +100,22 @@
         "applicationCategory": "BrowserApplication",
         "applicationSubCategory": "SEO keyword research",
         "operatingSystem": "Google Chrome",
-        "description": "Chrome extension that collects real Google Autocomplete suggestions with A to Z, prefix, suffix and template research, then saves, deduplicates and exports the keywords locally.",
+        "description": "Chrome extension that collects real Google Autocomplete suggestions with A to Z, prefix, suffix, question and template research, then deduplicates, groups and exports the keywords. Projects sync to a free NicheSpark account.",
         "url": "https://nichespark.tech/",
         "sameAs": [
           "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep"
         ],
         "installUrl": "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep",
         "downloadUrl": "https://chromewebstore.google.com/detail/nichespark/mfkjoekmjfphffamabelfngbonnjdgep",
-        "softwareVersion": "0.3.0",
+        "softwareVersion": "0.4.1",
         "image": "https://nichespark.tech/assets/og.png",
         "featureList": [
-          "A to Z, prefix, suffix and template keyword research",
+          "A to Z, prefix, suffix, question and template keyword research",
           "Real Google Autocomplete suggestions",
           "Automatic deduplication and source tracking",
+          "Keyword grouping by theme and modifier",
           "Pause, resume and retry collection",
+          "Free account with cloud sync across computers",
           "CSV export, copy and JSON backup"
         ],
         "isAccessibleForFree": true,
@@ -116,6 +127,76 @@
         "publisher": {
           "@id": "https://nichespark.tech/#organization"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://nichespark.tech/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is NicheSpark free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. NicheSpark is free. You create a free account with Google or an email address so your research is saved and synced. Questions or feedback? Message us on WhatsApp."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where do the keywords come from?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "From the Google Autocomplete dropdown in your own browser. NicheSpark enters each query into the Google search box, waits for the suggestions to finish loading and saves what Google displayed. It does not generate or guess keywords."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does NicheSpark show search volume or keyword difficulty?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. NicheSpark collects autocomplete suggestions, which show what people search for, but it does not invent volume or difficulty numbers. You can take your list to the keyword metrics tool of your choice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why might my results differ from someone else's?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Google personalizes suggestions by location, language, sign-in state and trends. NicheSpark records exactly what Google showed your browser at that moment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will Google block me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NicheSpark uses conservative delays and runs one query at a time, the way a person would. If Google shows a verification page anyway, the job stops and waits for you. It never tries to get around it. Please use NicheSpark responsibly and in line with Google's terms."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do I need to sign in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Signing in saves your projects and keywords to your own NicheSpark account, so they are backed up and available on any computer where you sign in. Your research is private to your account: other users can't see it, and it is never sold or used for advertising. Details are in the privacy policy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is NicheSpark different from other keyword research tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most free tools show a short list from their own database and limit you to a few searches a day. NicheSpark collects the suggestions Google itself shows, with no daily limit, and organizes them for you. It does not show search volume, so it pairs well with a volume tool. See our comparison of free keyword research tools."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I install and update it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Install it from the Chrome Web Store with one click. Chrome keeps it updated automatically."
+            }
+          }
+        ]
       }
     ]
   }
@@ -161,7 +242,7 @@
         <div class="container hero-grid">
           <div class="hero-copy">
             <span class="pill"><span class="pill-dot"></span>NOW ON THE CHROME WEB STORE · FREE</span>
-            <h1 id="hero-title">The free keyword research tool<br /><span class="accent">built on real Google searches</span></h1>
+            <h1 id="hero-title">The free keyword research tool <br /><span class="accent">built on real Google searches</span></h1>
             <p class="lead">
               NicheSpark is a <strong>free keyword research tool for Chrome</strong>. It collects the real suggestions
               Google Autocomplete shows and turns them into an organized keyword list for your niche. Run A to Z, prefix and suffix research in one
@@ -178,8 +259,8 @@
               </a>
             </div>
             <ul class="trust">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Free, no account</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Data stays in your browser</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Free to use</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Synced to your account, never sold</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>No API keys needed</li>
             </ul>
           </div>
@@ -249,8 +330,8 @@
           </article>
           <article class="card" data-reveal style="--d:.2s">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-            <h3>Private by design</h3>
-            <p>No account, no server, no tracking. Your projects and keywords are stored only in your own Chrome profile.</p>
+            <h3>Saved to your account</h3>
+            <p>Sign in with Google or email and your projects sync to your own account, so they are backed up and on every computer. No ads, no tracking, never sold.</p>
           </article>
         </div>
       </div>
@@ -367,8 +448,8 @@
             </ul>
           </article>
           <article class="card card-wide" data-reveal>
-            <h3>Questions <span class="new-badge">Coming in v0.3</span></h3>
-            <p>Puts question words before your seed so Google suggests the questions people actually ask. Perfect for blog posts and FAQ sections. Arrives with the v0.3 update on the Chrome Web Store.</p>
+            <h3>Questions <span class="new-badge">New</span></h3>
+            <p>Puts question words before your seed so Google suggests the questions people actually ask. Perfect for blog posts and FAQ sections.</p>
             <ul class="queries queries-inline">
               <li><span class="q-var">how</span> <span class="q-seed">mobile car detailing</span></li>
               <li><span class="q-var">what is</span> <span class="q-seed">mobile car detailing</span></li>
@@ -430,11 +511,11 @@
           </div>
           <div class="feature" data-reveal>
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
-            <div><h3>Keyword grouping <span class="new-badge">Coming in v0.3</span></h3><p>Every keyword gets a theme, such as price, local, questions or business, and recurring modifiers become one-click groups. Plan one page per group.</p></div>
+            <div><h3>Keyword grouping <span class="new-badge">New</span></h3><p>Every keyword gets a theme, such as price, local, questions or business, and recurring modifiers become one-click groups. Plan one page per group.</p></div>
           </div>
           <div class="feature" data-reveal style="--d:.08s">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/><path d="M19 15v6M16 18h6"/></svg></div>
-            <div><h3>Ready-made lists <span class="new-badge">Coming in v0.3</span></h3><p>Add tested prefix and suffix packs, like Pricing, Local, Commercial or Learning, in one click instead of typing modifiers by hand.</p></div>
+            <div><h3>Ready-made lists <span class="new-badge">New</span></h3><p>Add tested prefix and suffix packs, like Pricing, Local, Commercial or Learning, in one click instead of typing modifiers by hand.</p></div>
           </div>
         </div>
       </div>
@@ -446,11 +527,11 @@
         <div class="section-head left" data-reveal="left">
           <span class="eyebrow">Privacy and responsible use</span>
           <h2>Your research <span class="accent">stays yours</span></h2>
-          <p class="lead">NicheSpark asks only for the permissions it needs, and it works entirely inside your browser.</p>
+          <p class="lead">NicheSpark asks only for the permissions it needs, and your research goes only to your own account.</p>
           <a href="/privacy.html">Read the privacy policy →</a>
         </div>
         <ul class="check-list">
-          <li data-reveal="right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>No servers, no accounts.</strong> Keywords and projects are stored locally in your Chrome profile and are never uploaded.</span></li>
+          <li data-reveal="right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>Your account, your data.</strong> Projects and keywords sync only to your own NicheSpark account. Other users can&apos;t see them, and they are never sold or used for ads.</span></li>
           <li data-reveal="right" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>Minimal access.</strong> Runs only on Google Search pages. No access to your browsing history, cookies, passwords or other websites.</span></li>
           <li data-reveal="right" style="--d:.16s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>Never bypasses protections.</strong> If Google asks for verification or consent, NicheSpark stops and waits for you.</span></li>
           <li data-reveal="right" style="--d:.24s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><strong>Always started by you.</strong> Nothing runs in the background unless you start a collection, and you can stop it any time.</span></li>
@@ -468,24 +549,25 @@
         </div>
         <div class="roadmap">
           <div class="road-col live" data-reveal>
-            <div class="road-head"><h3>Available now</h3><span class="status status-live">v0.3</span></div>
+            <div class="road-head"><h3>Available now</h3><span class="status status-live">v0.4</span></div>
             <ul class="road-list">
               <li><strong>Live Google Autocomplete collection</strong><span>Reads real suggestions from the visible dropdown</span></li>
-              <li><strong>A to Z, prefix, suffix and templates</strong><span>With a query preview before you start</span></li>
+              <li><strong>A to Z, prefix, suffix, questions and templates</strong><span>With a query preview before you start</span></li>
+              <li><strong>Ready-made lists and keyword grouping</strong><span>Modifier packs, themes and modifier groups</span></li>
+              <li><strong>Free accounts and cloud sync</strong><span>Google or email sign-in, your projects on every computer</span></li>
               <li><strong>Job controls</strong><span>Pause, resume, cancel, retry failed, start from any letter</span></li>
               <li><strong>Automatic saving and deduplication</strong><span>With source-query tracking</span></li>
               <li><strong>Multiple projects</strong><span>Each with its own domain and language</span></li>
               <li><strong>CSV export and copy</strong><span>All, filtered or selected keywords, with sources and methods</span></li>
               <li><strong>Filters, sorting and bulk delete</strong><span>By method, source query, date and alphabet</span></li>
               <li><strong>JSON backup and restore</strong><span>Validated import that never overwrites a project</span></li>
+              <li><strong>Light and dark theme</strong><span>Switch in the popup and dashboard</span></li>
               <li><strong>Chrome Web Store release</strong><span>One-click install and automatic updates</span></li>
             </ul>
           </div>
           <div class="road-col next" data-reveal style="--d:.1s">
-            <div class="road-head"><h3>Coming next</h3><span class="status status-next">v0.3 rolling out</span></div>
+            <div class="road-head"><h3>Coming next</h3><span class="status status-next">Planned</span></div>
             <ul class="road-list">
-              <li><strong>Questions method</strong><span>Who, what, how and why research in one click</span></li>
-              <li><strong>Ready-made lists and keyword grouping</strong><span>Modifier packs, themes and modifier groups</span></li>
               <li><strong>Saved research presets</strong><span>Reuse your favourite lists across projects</span></li>
               <li><strong>More languages for grouping</strong><span>Themes beyond English keywords</span></li>
             </ul>
@@ -494,8 +576,7 @@
             <div class="road-head"><h3>Later</h3><span class="status status-later">Planned</span></div>
             <ul class="road-list">
               <li><strong>More sources</strong><span>Exploring YouTube and other autocomplete sources</span></li>
-              <li><strong>Hosted dashboard</strong><span>Explore your projects on a larger screen</span></li>
-              <li><strong>Optional cloud sync</strong><span>Opt-in sync across devices. Local-only stays the default</span></li>
+              <li><strong>Web dashboard</strong><span>Open your synced projects in any browser</span></li>
             </ul>
           </div>
         </div>
@@ -516,8 +597,8 @@
             </a>
           </div>
           <div class="callout">
-            <h3>Keep a backup</h3>
-            <p class="muted small">Your data lives only in this browser, so it is deleted if you remove the extension or clear its data. Use <strong>Backup (JSON)</strong> in the dashboard regularly to keep a copy you can import again.</p>
+            <h3>Your projects are kept safe</h3>
+            <p class="muted small">Projects sync to your account, so removing the extension or changing computers doesn&apos;t lose them. You can still download a CSV or a <strong>Backup (JSON)</strong> from the dashboard any time.</p>
           </div>
         </div>
         <ol class="install-steps">
@@ -526,6 +607,26 @@
           <li data-reveal="right" style="--d:.16s"><div><h3>Pin it</h3><p>Open the puzzle icon in the toolbar and pin NicheSpark so it's always one click away.</p></div></li>
           <li data-reveal="right" style="--d:.24s"><div><h3>Start researching</h3><p>Open the popup, create a project from a seed keyword and click <strong>Start A to Z</strong>.</p></div></li>
         </ol>
+      </div>
+    </section>
+
+    <!-- ── From the blog ───────────────────────────────────────────── -->
+    <section class="section" id="guides">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">From the blog</span>
+          <h2>Guides to <span class="accent">keyword research</span></h2>
+          <p class="lead">Methods, a real case study and tool comparisons, written from what NicheSpark collects.</p>
+        </div>
+        <div class="grid grid-3">
+          <a class="card guide-card" href="/blog/google-autocomplete-keyword-research/" data-reveal><span class="eyebrow">Guide</span><h3>Google Autocomplete keyword research: the complete guide</h3><span class="guide-more">Read the guide →</span></a>
+          <a class="card guide-card" href="/blog/a-to-z-keyword-research/" data-reveal><span class="eyebrow">Method</span><h3>A to Z keyword research: how the alphabet method works</h3><span class="guide-more">Read the guide →</span></a>
+          <a class="card guide-card" href="/blog/prefix-suffix-keyword-research/" data-reveal><span class="eyebrow">Method</span><h3>Prefix and suffix keyword research</h3><span class="guide-more">Read the guide →</span></a>
+          <a class="card guide-card" href="/blog/niche-keyword-research/" data-reveal><span class="eyebrow">Niche research</span><h3>How to research keywords for a niche</h3><span class="guide-more">Read the guide →</span></a>
+          <a class="card guide-card" href="/blog/mobile-car-detailing-keyword-research-case-study/" data-reveal><span class="eyebrow">Case study</span><h3>316 keywords for &quot;mobile car detailing&quot;</h3><span class="guide-more">Read the guide →</span></a>
+          <a class="card guide-card" href="/blog/best-free-keyword-research-tools/" data-reveal><span class="eyebrow">Tools</span><h3>Best free keyword research tools in 2026</h3><span class="guide-more">Read the guide →</span></a>
+        </div>
+        <p class="guides-all"><a href="/blog/">All articles →</a></p>
       </div>
     </section>
 
@@ -539,7 +640,7 @@
         <div class="faq" data-reveal>
           <details>
             <summary>Is NicheSpark free?</summary>
-            <p>Yes. NicheSpark is free and needs no account. Questions or feedback? <a href="https://wa.me/923130221118?text=Hi%2C%20I%20have%20a%20question%20about%20NicheSpark" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
+            <p>Yes. NicheSpark is free. You create a free account with Google or an email address so your research is saved and synced. Questions or feedback? <a href="https://wa.me/923130221118?text=Hi%2C%20I%20have%20a%20question%20about%20NicheSpark" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
           </details>
           <details>
             <summary>Where do the keywords come from?</summary>
@@ -558,8 +659,12 @@
             <p>NicheSpark uses conservative delays and runs one query at a time, the way a person would. If Google shows a verification page anyway, the job stops and waits for you. It never tries to get around it. Please use NicheSpark responsibly and in line with Google's terms.</p>
           </details>
           <details>
-            <summary>Is my data uploaded anywhere?</summary>
-            <p>No. Everything is stored locally in your Chrome profile. NicheSpark has no server and sends your research nowhere. Removing the extension or clearing its data deletes your projects, so download a JSON backup from the dashboard regularly.</p>
+            <summary>Why do I need to sign in?</summary>
+            <p>Signing in saves your projects and keywords to your own NicheSpark account, so they are backed up and available on any computer where you sign in. Your research is private to your account: other users can&apos;t see it, and it is never sold or used for advertising. Details are in the <a href="/privacy.html">privacy policy</a>.</p>
+          </details>
+          <details>
+            <summary>How is NicheSpark different from other keyword research tools?</summary>
+            <p>Most free tools show a short list from their own database and limit you to a few searches a day. NicheSpark collects the suggestions Google itself shows, with no daily limit, and organizes them for you. It does not show search volume, so it pairs well with a volume tool. See our <a href="/blog/best-free-keyword-research-tools/">comparison of free keyword research tools</a>.</p>
           </details>
           <details>
             <summary>How do I install and update it?</summary>
@@ -597,6 +702,7 @@
         <li><a href="#roadmap">Roadmap</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/about/">About</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
         <li><a href="https://wa.me/923130221118?text=Hi%2C%20I%20have%20a%20question%20about%20NicheSpark" target="_blank" rel="noopener">WhatsApp: +92 313 0221118</a></li>
       </ul>

@@ -2,7 +2,7 @@
   {
     "version": "0.4.1",
     "date": "2026-10-12",
-    "status": "Coming to the Chrome Web Store after 0.4.0.",
+    "status": "Released on the Chrome Web Store.",
     "title": "Email verification and a theme switch",
     "changes": [
       {
@@ -22,7 +22,7 @@
   {
     "version": "0.4.0",
     "date": "2026-10-12",
-    "status": "Coming to the Chrome Web Store. It installs automatically once Google approves the update.",
+    "status": "Released on the Chrome Web Store.",
     "title": "Accounts and cloud sync",
     "changes": [
       {
@@ -50,7 +50,7 @@
   {
     "version": "0.3.1",
     "date": "2026-10-12",
-    "status": "Ships together with 0.4.0.",
+    "status": "Released together with 0.4.0.",
     "title": "Dashboard controls fixed; Prefix, Suffix and Template ready out of the box",
     "changes": [
       {
@@ -74,7 +74,7 @@
   {
     "version": "0.3.0",
     "date": "2026-10-12",
-    "status": "Coming to the Chrome Web Store. It installs automatically once Google approves the update.",
+    "status": "Released on the Chrome Web Store.",
     "title": "Questions, ready-made lists and keyword grouping",
     "changes": [
       {
@@ -102,7 +102,7 @@
   {
     "version": "0.2.1",
     "date": "2026-10-12",
-    "status": "Ships together with 0.3.0.",
+    "status": "Released together with 0.3.0.",
     "title": "Cleaner A to Z results",
     "changes": [
       {

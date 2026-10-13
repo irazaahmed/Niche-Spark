@@ -15,14 +15,14 @@ Copy each block into the matching field in the Developer Dashboard.
 
 > Discover Keywords. Uncover Opportunities. Collect Google Autocomplete suggestions for SEO niche research.
 
-**Description**:
+**Description** (updated for v0.4.1; paste this into the Store listing tab):
 
 ```
 NicheSpark collects the real suggestions Google Autocomplete shows and turns them into an organized keyword list for your niche. It's built for SEO researchers, bloggers and site owners who want long-tail keywords without typing queries and copying suggestions by hand.
 
 HOW IT WORKS
 1. Create a project from a seed keyword, for example "mobile car detailing".
-2. Choose a research method: A to Z, prefix, suffix or your own templates.
+2. Choose a research method: A to Z, prefix, suffix, questions or your own templates.
 3. Click Start. NicheSpark opens Google Search in a background tab, enters each query and reads the suggestions Google displays.
 4. Review, filter, copy and export your keywords.
 
@@ -30,7 +30,9 @@ RESEARCH METHODS
 • A to Z: seed + every letter (start from any letter)
 • Prefix: your words before the seed (best, cheap, affordable…)
 • Suffix: your words after the seed (near me, cost, prices…)
+• Questions: how, what, why, can and other question words before the seed
 • Templates: your own patterns with {seed} and {letter}
+• Ready-made prefix and suffix lists (Pricing, Local, Commercial, Learning…)
 Every query can be previewed before collection starts.
 
 FEATURES
@@ -42,7 +44,10 @@ FEATURES
 • Search, filter by method or source query, and sort six ways
 • Copy all, filtered or selected keywords (one per line)
 • CSV export (all, filtered or selected) and JSON backup and restore
+• Keyword grouping by theme (price, local, questions, business…) and by modifier
 • Multiple projects, 18 Google domains, any interface language
+• Free account (Google or email): projects sync to every computer where you sign in
+• Light and dark theme
 
 RESPECTFUL BY DESIGN
 • Collection is always started by you, runs one query at a time, and waits at least 2 seconds between queries.
@@ -50,9 +55,9 @@ RESPECTFUL BY DESIGN
 • Your own search-history entries in the dropdown are recognized and never saved.
 
 PRIVATE
-• No account, no server, no tracking, no ads.
-• All projects and keywords stay in your browser (IndexedDB) and are never uploaded.
-• Runs only on Google Search pages.
+• Your projects and keywords sync only to your own NicheSpark account. Other users can't see them.
+• No ads, no tracking, and your research is never sold.
+• Runs only on Google Search pages. No access to your browsing history, cookies or other websites.
 
 Note: suggestions reflect what Google shows in your browser at that moment, which can vary by location, language and sign-in state. NicheSpark does not show search volume or difficulty.
 
