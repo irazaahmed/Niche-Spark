@@ -160,8 +160,9 @@ describe('CollectionScheduler', () => {
     expect(e.saved).toMatchObject({ status: 'paused', cursor: 2, counts: { succeeded: 2 } });
     await e.scheduler.resume();
     await e.scheduler.idle();
-    expect(e.saved).toMatchObject({ status: 'completed', cursor: 26 });
-    expect(new Set(e.queries).size).toBe(26);
+    // A to Z: the seed, the seed plus a space, then 26 letters.
+    expect(e.saved).toMatchObject({ status: 'completed', cursor: 28 });
+    expect(new Set(e.queries).size).toBe(28);
   });
 
   it('marks a job left running by a stopped worker as interrupted, and can resume it', async () => {

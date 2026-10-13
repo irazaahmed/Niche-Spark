@@ -1,6 +1,6 @@
 import { LIMITS } from '../shared/constants';
 import type { ResearchMethod } from '../shared/types';
-import { normalizeKey, normalizeText } from './keywords';
+import { normalizeKey, normalizeQueryText, normalizeText, queryKey } from './keywords';
 
 export const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
@@ -71,11 +71,11 @@ export function dedupeQueries(queries: readonly GeneratedQuery[]): GeneratedQuer
 }
 
 function makeQuery(text: string, method: ResearchMethod): GeneratedQuery {
-  const clean = normalizeText(text);
+  const clean = normalizeQueryText(text);
   if (clean.length > LIMITS.queryMaxLength) {
     throw new ValidationError(`Query "${clean.slice(0, 30)}…" exceeds ${LIMITS.queryMaxLength} characters.`);
   }
-  return { text: clean, key: normalizeKey(clean), method };
+  return { text: clean, key: queryKey(clean), method };
 }
 
 export interface AzOptions {
@@ -83,13 +83,18 @@ export interface AzOptions {
   startLetter?: string;
 }
 
-/** "seed a", "seed b", … "seed z". */
+/**
+ * "seed", "seed " (with a trailing space), then "seed a" … "seed z".
+ * The two seed queries run first, and only when starting from "a": they show
+ * Google's top suggestions for the seed itself before the alphabet.
+ */
 export function generateAzQueries(seed: string, options: AzOptions = {}): GeneratedQuery[] {
   const s = requireSeed(seed);
   const start = (options.startLetter ?? 'a').toLowerCase();
   const startIndex = LETTERS.indexOf(start);
   if (startIndex < 0) throw new ValidationError('Start letter must be a single letter from a to z.');
-  return dedupeQueries(LETTERS.slice(startIndex).map((l) => makeQuery(`${s} ${l}`, 'az')));
+  const seedQueries = startIndex === 0 ? [makeQuery(s, 'az'), makeQuery(`${s} `, 'az')] : [];
+  return dedupeQueries([...seedQueries, ...LETTERS.slice(startIndex).map((l) => makeQuery(`${s} ${l}`, 'az'))]);
 }
 
 /** "prefix seed" for each prefix. */

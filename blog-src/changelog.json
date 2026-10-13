@@ -1,5 +1,21 @@
 [
   {
+    "version": "0.4.2",
+    "date": "2026-10-13",
+    "status": "Coming to the Chrome Web Store. It installs automatically once Google approves the update.",
+    "title": "A to Z starts with your seed",
+    "changes": [
+      {
+        "type": "Added",
+        "text": "A to Z research now starts with two extra queries before the letters: your seed on its own, and your seed followed by a space. Google suggests different completions for each, so you get its top suggestions for the seed too (28 queries instead of 26)."
+      },
+      {
+        "type": "Changed",
+        "text": "Queries that end with a space are marked \"+ space\" in the query list and while collecting."
+      }
+    ]
+  },
+  {
     "version": "0.4.1",
     "date": "2026-10-12",
     "status": "Released on the Chrome Web Store.",

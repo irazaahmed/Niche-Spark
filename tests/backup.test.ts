@@ -6,9 +6,12 @@ import { IndexedDbStorage } from '../src/storage/indexedDbStorage';
 import { MemoryStorage } from '../src/storage/memoryStorage';
 import type { StorageService } from '../src/storage/StorageService';
 
+/** The 26 letter queries ("seed a" … "seed z"), without the two seed queries A to Z now starts with. */
+const azLetters = (seed: string) => generateAzQueries(seed).filter((q) => / [a-z]$/.test(q.text));
+
 async function sampleProject(s: StorageService) {
   const p = await s.createProject({ name: 'Detailing', seed: 'car detailing', suffixes: ['cost', 'near me'], templates: ['best {seed}'] });
-  const [a, b] = await s.addQueries(p.id, generateAzQueries('car detailing').slice(0, 2));
+  const [a, b] = await s.addQueries(p.id, azLetters('car detailing').slice(0, 2));
   const [c] = await s.addQueries(p.id, generateSuffixQueries('car detailing', ['cost']));
   await s.recordQueryOutcome(p.id, a!.id, { status: 'succeeded', suggestions: ['Car Detailing Austin', 'car detailing atlanta'], at: 1000 });
   await s.recordQueryOutcome(p.id, b!.id, { status: 'failed', suggestions: [], error: 'Timed out', at: 2000 });
@@ -125,7 +128,7 @@ describe.each([
     const s = make();
     const original = await sampleProject(s);
     const imported = await s.importProject(parseBackup(serializeBackup(await exportProject(s, original.id))));
-    const again = await s.addQueries(imported.id, generateAzQueries('car detailing').slice(0, 3));
+    const again = await s.addQueries(imported.id, azLetters('car detailing').slice(0, 3));
     expect(again.map((q) => q.status)).toEqual(['succeeded', 'failed', 'pending']);
     expect(await s.resetFailedQueries(imported.id)).toBe(1);
   });

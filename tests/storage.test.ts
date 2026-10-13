@@ -7,6 +7,9 @@ import { IndexedDbStorage, openDatabase } from '../src/storage/indexedDbStorage'
 import { MemoryStorage } from '../src/storage/memoryStorage';
 import { NotFoundError, StorageError, type StorageService } from '../src/storage/StorageService';
 
+/** The 26 letter queries ("seed a" … "seed z"), without the two seed queries A to Z now starts with. */
+const azLetters = (seed: string) => generateAzQueries(seed).filter((q) => / [a-z]$/.test(q.text));
+
 let clock = 1_000;
 const now = () => ++clock;
 
@@ -72,8 +75,8 @@ describe.each(implementations)('%s', (_name, make) => {
     it('deletes a project with its queries and keywords only', async () => {
       const a = await s.createProject({ name: 'A', seed: 'a' });
       const b = await s.createProject({ name: 'B', seed: 'b' });
-      const [qa] = await s.addQueries(a.id, generateAzQueries('a').slice(0, 1));
-      const [qb] = await s.addQueries(b.id, generateAzQueries('b').slice(0, 1));
+      const [qa] = await s.addQueries(a.id, azLetters('a').slice(0, 1));
+      const [qb] = await s.addQueries(b.id, azLetters('b').slice(0, 1));
       await s.recordQueryOutcome(a.id, qa!.id, { status: 'succeeded', suggestions: ['shared kw'], at: 5 });
       await s.recordQueryOutcome(b.id, qb!.id, { status: 'succeeded', suggestions: ['shared kw'], at: 5 });
       await s.deleteProject(a.id);
@@ -88,19 +91,19 @@ describe.each(implementations)('%s', (_name, make) => {
   describe('queries', () => {
     it('adds queries as pending in generation order', async () => {
       const p = await s.createProject({ name: 'A', seed: 'seed' });
-      await s.addQueries(p.id, generateAzQueries('seed'));
+      await s.addQueries(p.id, azLetters('seed'));
       const list = await s.listQueries(p.id);
       expect(list).toHaveLength(26);
       expect(list[0]).toMatchObject({ text: 'seed a', method: 'az', status: 'pending', attempts: 0, position: 0 });
-      expect(list.map((q) => q.text)).toEqual(generateAzQueries('seed').map((q) => q.text));
+      expect(list.map((q) => q.text)).toEqual(azLetters('seed').map((q) => q.text));
       expect(await s.countQueries(p.id)).toEqual({ total: 26, pending: 26, succeeded: 0, empty: 0, failed: 0 });
     });
 
     it('does not reset existing queries when re-added (skip completed)', async () => {
       const p = await s.createProject({ name: 'A', seed: 'seed' });
-      const [first] = await s.addQueries(p.id, generateAzQueries('seed'));
+      const [first] = await s.addQueries(p.id, azLetters('seed'));
       await s.recordQueryOutcome(p.id, first!.id, { status: 'succeeded', suggestions: ['seed apple'], at: 10 });
-      const again = await s.addQueries(p.id, generateAzQueries('seed'));
+      const again = await s.addQueries(p.id, azLetters('seed'));
       expect(again[0]?.status).toBe('succeeded');
       expect(await s.listQueries(p.id)).toHaveLength(26);
     });
@@ -108,14 +111,14 @@ describe.each(implementations)('%s', (_name, make) => {
     it('filters by method and keeps the same text separate per method', async () => {
       const p = await s.createProject({ name: 'A', seed: 'seed' });
       await s.addQueries(p.id, generateSuffixQueries('seed', ['a', 'cost']));
-      await s.addQueries(p.id, generateAzQueries('seed'));
+      await s.addQueries(p.id, azLetters('seed'));
       expect(await s.listQueries(p.id, 'suffix')).toHaveLength(2);
       expect(await s.listQueries(p.id, 'az')).toHaveLength(26);
     });
 
     it('records failed and empty outcomes honestly and can reset failures', async () => {
       const p = await s.createProject({ name: 'A', seed: 'seed' });
-      const [q1, q2, q3] = await s.addQueries(p.id, generateAzQueries('seed'));
+      const [q1, q2, q3] = await s.addQueries(p.id, azLetters('seed'));
       await s.recordQueryOutcome(p.id, q1!.id, { status: 'failed', suggestions: [], error: 'Timed out', at: 1 });
       await s.recordQueryOutcome(p.id, q2!.id, { status: 'empty', suggestions: [], at: 2 });
       await s.recordQueryOutcome(p.id, q3!.id, { status: 'succeeded', suggestions: ['seed c1', 'seed c2'], at: 3 });
@@ -137,7 +140,7 @@ describe.each(implementations)('%s', (_name, make) => {
 
     it('rejects inconsistent outcomes without changing data', async () => {
       const p = await s.createProject({ name: 'A', seed: 'seed' });
-      const [q] = await s.addQueries(p.id, generateAzQueries('seed'));
+      const [q] = await s.addQueries(p.id, azLetters('seed'));
       await expect(s.recordQueryOutcome(p.id, q!.id, { status: 'succeeded', suggestions: [' '], at: 1 })).rejects.toThrow(ValidationError);
       await expect(s.recordQueryOutcome(p.id, q!.id, { status: 'empty', suggestions: ['x'], at: 1 })).rejects.toThrow(ValidationError);
       await expect(s.recordQueryOutcome(p.id, q!.id, { status: 'failed', suggestions: [], at: 1 })).rejects.toThrow(ValidationError);
@@ -149,7 +152,7 @@ describe.each(implementations)('%s', (_name, make) => {
     it('does not record a query against another project', async () => {
       const a = await s.createProject({ name: 'A', seed: 'a' });
       const b = await s.createProject({ name: 'B', seed: 'b' });
-      const [q] = await s.addQueries(a.id, generateAzQueries('a'));
+      const [q] = await s.addQueries(a.id, azLetters('a'));
       await expect(s.recordQueryOutcome(b.id, q!.id, { status: 'empty', suggestions: [], at: 1 })).rejects.toThrow(NotFoundError);
     });
   });
@@ -157,7 +160,7 @@ describe.each(implementations)('%s', (_name, make) => {
   describe('keywords', () => {
     it('deduplicates across queries and preserves source relationships', async () => {
       const p = await s.createProject({ name: 'A', seed: 'car detailing' });
-      const [az] = await s.addQueries(p.id, generateAzQueries('car detailing').slice(13, 14)); // "car detailing n"
+      const [az] = await s.addQueries(p.id, azLetters('car detailing').slice(13, 14)); // "car detailing n"
       const [sx] = await s.addQueries(p.id, generateSuffixQueries('car detailing', ['near']));
       const r1 = await s.recordQueryOutcome(p.id, az!.id, {
         status: 'succeeded',
@@ -191,7 +194,7 @@ describe.each(implementations)('%s', (_name, make) => {
     it('keeps keyword collections separate per project', async () => {
       const a = await s.createProject({ name: 'A', seed: 'x' });
       const b = await s.createProject({ name: 'B', seed: 'x' });
-      const [qa] = await s.addQueries(a.id, generateAzQueries('x'));
+      const [qa] = await s.addQueries(a.id, azLetters('x'));
       await s.recordQueryOutcome(a.id, qa!.id, { status: 'succeeded', suggestions: ['x a'], at: 1 });
       expect(await s.listKeywords(b.id)).toEqual([]);
     });
@@ -199,8 +202,8 @@ describe.each(implementations)('%s', (_name, make) => {
     it('deletes selected keywords only within the project', async () => {
       const a = await s.createProject({ name: 'A', seed: 'x' });
       const b = await s.createProject({ name: 'B', seed: 'y' });
-      const [qa] = await s.addQueries(a.id, generateAzQueries('x'));
-      const [qb] = await s.addQueries(b.id, generateAzQueries('y'));
+      const [qa] = await s.addQueries(a.id, azLetters('x'));
+      const [qb] = await s.addQueries(b.id, azLetters('y'));
       await s.recordQueryOutcome(a.id, qa!.id, { status: 'succeeded', suggestions: ['k1', 'k2'], at: 1 });
       await s.recordQueryOutcome(b.id, qb!.id, { status: 'succeeded', suggestions: ['k3'], at: 1 });
       const [k3] = await s.listKeywords(b.id);
@@ -217,7 +220,7 @@ describe('IndexedDbStorage persistence and errors', () => {
     const factory = new IDBFactory();
     const first = new IndexedDbStorage(factory, 'persist');
     const p = await first.createProject({ name: 'A', seed: 'seed' });
-    const [q] = await first.addQueries(p.id, generateAzQueries('seed'));
+    const [q] = await first.addQueries(p.id, azLetters('seed'));
     await first.recordQueryOutcome(p.id, q!.id, { status: 'succeeded', suggestions: ['seed apple'], at: 1 });
 
     const second = new IndexedDbStorage(factory, 'persist');
@@ -259,7 +262,7 @@ describe('IndexedDbStorage persistence and errors', () => {
     const factory = new IDBFactory();
     const s = new IndexedDbStorage(factory, 'rollback');
     const p = await s.createProject({ name: 'A', seed: 'seed' });
-    const [q] = await s.addQueries(p.id, generateAzQueries('seed'));
+    const [q] = await s.addQueries(p.id, azLetters('seed'));
     // Delete the project from under the storage service so touch() fails at the end of the transaction.
     const db = await openDatabase(factory, 'rollback');
     await new Promise<void>((resolve) => {

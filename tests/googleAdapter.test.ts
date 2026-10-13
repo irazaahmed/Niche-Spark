@@ -83,6 +83,13 @@ describe('collectSuggestions', () => {
     expect(document.querySelector('textarea')!.value).toBe('mobile car detailing a');
   });
 
+  it('types a trailing space into the box, so "seed " asks Google for the next word', async () => {
+    respond = (v) => (v === 'niche research ' ? [{ text: 'niche research grant' }] : v === 'niche research' ? [{ text: 'niche research' }] : null);
+    const result = await collectSuggestions('niche research ', FAST, env);
+    expect(document.querySelector('textarea')!.value).toBe('niche research ');
+    expect(result).toEqual({ status: 'succeeded', suggestions: ['niche research grant'] });
+  });
+
   it('does not return the previous query\'s stale suggestions', async () => {
     render([{ text: 'old suggestion one' }, { text: 'old suggestion two' }]);
     // Clearing the box does not change the dropdown; the new query does, later.

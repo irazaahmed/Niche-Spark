@@ -11,15 +11,23 @@ import {
   validateTemplate,
   ValidationError,
 } from '../src/core/queryGeneration';
+import { normalizeQueryText, queryKey } from '../src/core/keywords';
 
 const SEED = 'mobile car detailing';
 
 describe('A to Z generation', () => {
-  it('generates seed + a..z in order', () => {
+  it('starts with the seed and the seed plus a space, then a..z in order', () => {
     const q = generateAzQueries(SEED);
-    expect(q).toHaveLength(26);
-    expect(q[0]).toEqual({ text: 'mobile car detailing a', key: 'mobile car detailing a', method: 'az' });
-    expect(q[25]?.text).toBe('mobile car detailing z');
+    expect(q).toHaveLength(28);
+    expect(q[0]).toEqual({ text: 'mobile car detailing', key: 'mobile car detailing', method: 'az' });
+    expect(q[1]).toEqual({ text: 'mobile car detailing ', key: 'mobile car detailing +space', method: 'az' });
+    expect(q[2]).toEqual({ text: 'mobile car detailing a', key: 'mobile car detailing a', method: 'az' });
+    expect(q[27]?.text).toBe('mobile car detailing z');
+  });
+
+  it('runs the seed queries only when starting from a', () => {
+    expect(generateAzQueries(SEED, { startLetter: 'a' })).toHaveLength(28);
+    expect(generateAzQueries(SEED, { startLetter: 'b' })[0]?.text).toBe('mobile car detailing b');
   });
 
   it('starts from a selected letter (case-insensitive)', () => {
@@ -33,7 +41,17 @@ describe('A to Z generation', () => {
   });
 
   it('normalizes the seed whitespace', () => {
-    expect(generateAzQueries('  Mobile   Car\tDetailing ')[1]?.text).toBe('Mobile Car Detailing b');
+    const q = generateAzQueries('  Mobile   Car\tDetailing ');
+    expect(q[0]?.text).toBe('Mobile Car Detailing');
+    expect(q[1]?.text).toBe('Mobile Car Detailing ');
+    expect(q[3]?.text).toBe('Mobile Car Detailing b');
+  });
+
+  it('keeps one trailing space in a query and gives it its own key', () => {
+    expect(normalizeQueryText('  niche   research  ')).toBe('niche research ');
+    expect(normalizeQueryText(' niche research')).toBe('niche research');
+    expect(queryKey('Niche Research ')).toBe('niche research +space');
+    expect(queryKey('Niche Research')).toBe('niche research');
   });
 
   it('is deterministic', () => {

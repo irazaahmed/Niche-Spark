@@ -3,7 +3,7 @@ import { DEFAULT_GOOGLE_DOMAIN, DEFAULT_LANGUAGE, LIMITS, SUPPORTED_GOOGLE_DOMAI
 import type { KeywordRecord, NewProjectInput, Project, ProjectPatch, QueryCounts, QueryRecord } from '../shared/types';
 import type { ProjectBackup } from '../core/backup';
 import { DEFAULT_PROJECT_LISTS } from '../core/modifierPacks';
-import { cleanSuggestions, keywordId, normalizeKey, normalizeText } from '../core/keywords';
+import { cleanSuggestions, keywordId, normalizeKey, normalizeQueryText, normalizeText, queryKey } from '../core/keywords';
 import { cleanAffixList, validateSeed, validateTemplate, ValidationError, type GeneratedQuery } from '../core/queryGeneration';
 import type { QueryOutcome } from './StorageService';
 
@@ -170,8 +170,8 @@ export function buildImportRecords(
   );
   const queries = new Map<string, QueryRecord>();
   for (const q of [...backup.queries].sort((a, b) => a.position - b.position)) {
-    const text = normalizeText(q.text);
-    const key = normalizeKey(text);
+    const text = normalizeQueryText(q.text);
+    const key = queryKey(text);
     const id = queryId(project.id, { method: q.method, key });
     if (queries.has(id)) continue;
     const record: QueryRecord = {

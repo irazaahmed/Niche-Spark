@@ -10,6 +10,9 @@ import { PostgrestCloudApi } from '../src/sync/cloudApi';
 import { EMPTY_CURSORS, SyncEngine, type SyncCursors } from '../src/sync/syncEngine';
 import type { RemoteRow, SyncKind } from '../src/sync/types';
 
+/** The 26 letter queries ("seed a" … "seed z"), without the two seed queries A to Z now starts with. */
+const azLetters = (seed: string) => generateAzQueries(seed).filter((q) => / [a-z]$/.test(q.text));
+
 class FakeCloud implements CloudApi {
   tables: Record<SyncKind, Map<string, RemoteRow>> = { project: new Map(), query: new Map(), keyword: new Map() };
   private clock = Date.parse('2026-10-12T00:00:00Z');
@@ -69,7 +72,7 @@ describe('outbox change tracking', () => {
     let notified = 0;
     s.setChangeListener(() => notified++);
     const p = await s.createProject({ name: 'P', seed: 'car wash' });
-    const [q] = await s.addQueries(p.id, generateAzQueries('car wash').slice(0, 1));
+    const [q] = await s.addQueries(p.id, azLetters('car wash').slice(0, 1));
     await s.recordQueryOutcome(p.id, q!.id, { status: 'succeeded', suggestions: ['car wash near me'], at: 5 });
     const keys = (await s.readOutbox(100)).map((e) => `${e.op}:${e.key}`).sort();
     expect(keys).toEqual([`put:keyword:${p.id}:car wash near me`, `put:project:${p.id}`, `put:query:${q!.id}`].sort());
@@ -96,7 +99,7 @@ describe('outbox change tracking', () => {
 
   it('queues all local data for upload and wipes everything', async () => {
     const p = await s.createProject({ name: 'P', seed: 'car wash' });
-    await s.addQueries(p.id, generateAzQueries('car wash').slice(0, 3));
+    await s.addQueries(p.id, azLetters('car wash').slice(0, 3));
     await s.ackOutbox(await s.readOutbox(100));
     expect(await s.markAllForUpload()).toBe(4);
     expect(await s.hasLocalData()).toBe(true);
@@ -144,7 +147,7 @@ describe('SyncEngine between two devices', () => {
 
   async function collectOne(storage: IndexedDbStorage, suggestions: string[]) {
     const p = await storage.createProject({ name: 'Detailing', seed: 'car detailing' });
-    const [q] = await storage.addQueries(p.id, generateAzQueries('car detailing').slice(0, 2));
+    const [q] = await storage.addQueries(p.id, azLetters('car detailing').slice(0, 2));
     await storage.recordQueryOutcome(p.id, q!.id, { status: 'succeeded', suggestions, at: 10 });
     return p;
   }
@@ -216,7 +219,7 @@ describe('SyncEngine between two devices', () => {
 
   it('pages through large pulls', async () => {
     const p = await a.storage.createProject({ name: 'Big', seed: 'big seed' });
-    const [q] = await a.storage.addQueries(p.id, generateAzQueries('big seed').slice(0, 1));
+    const [q] = await a.storage.addQueries(p.id, azLetters('big seed').slice(0, 1));
     const suggestions = Array.from({ length: 1205 }, (_, i) => `big seed ${i}`);
     await a.storage.recordQueryOutcome(p.id, q!.id, { status: 'succeeded', suggestions, at: 10 });
     await a.engine.sync(); // pushes in batches of 500

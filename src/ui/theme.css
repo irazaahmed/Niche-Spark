@@ -175,3 +175,5 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .theme-toggle { margin-left: auto; display: inline-grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text-muted); cursor: pointer; flex: none; }
 .theme-toggle:hover { color: var(--text); background: var(--surface-2); }
 .theme-toggle svg { width: 16px; height: 16px; }
+
+.query-space { margin-left: 2px; padding: 0 5px; border-radius: 99px; font-size: 0.8em; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }

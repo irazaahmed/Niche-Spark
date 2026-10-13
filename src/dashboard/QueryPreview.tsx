@@ -16,6 +16,7 @@ import type { Project, ProjectPatch, QueryCounts, QueryRecord, QueryStatus, Rese
 import { RESEARCH_METHODS, RESEARCH_METHOD_LABELS } from '../shared/types';
 import { errorMessage } from '../ui/components';
 import { StartControls } from '../ui/StartControls';
+import { QueryText } from '../ui/QueryText';
 
 const STATUS_LABELS: Record<QueryStatus, string> = { pending: 'Pending', succeeded: 'Done', empty: 'Empty', failed: 'Failed' };
 
@@ -218,7 +219,7 @@ export function QueryPreview({ project, records, counts, jobActive, onSave }: Pr
                   <li key={q.key}>
                     <label className="query-row">
                       <input type="checkbox" checked={selected.has(q.key)} onChange={() => toggle(q.key)} />
-                      <span className="query-text">{q.text}</span>
+                      <QueryText className="query-text" text={q.text} />
                       {rec && (
                         <span className={`status status-${rec.status}`} title={rec.lastError ?? `${rec.suggestionCount} suggestions`}>
                           {STATUS_LABELS[rec.status]}

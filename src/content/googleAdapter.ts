@@ -1,7 +1,7 @@
 // Google Autocomplete adapter: enters a query into the visible Google search
 // box and reads the suggestions Google displays. Only suggestion text is read;
 // the user's search-history rows are skipped.
-import { normalizeText } from '../core/keywords';
+import { normalizeQueryText, normalizeText } from '../core/keywords';
 import { DEFAULT_COLLECT_OPTIONS, type CollectOptions, type CollectResult } from '../shared/collection';
 import { GOOGLE_BLOCKED_PATH_PREFIXES, GOOGLE_SELECTORS as S } from './googleSelectors';
 
@@ -85,7 +85,8 @@ export async function collectSuggestions(
   env: AdapterEnv = defaultEnv(),
 ): Promise<CollectResult> {
   const o = { ...DEFAULT_COLLECT_OPTIONS, ...options };
-  const text = normalizeText(query);
+  // Keeps a trailing space: "seed " asks Google for the next word.
+  const text = normalizeQueryText(query);
   if (!text) return { status: 'failed', reason: 'error', message: 'The query is empty.' };
 
   if (isBlockedPage(env)) {
@@ -131,7 +132,7 @@ export async function collectSuggestions(
       if (isBlockedPage(env)) {
         return finish({ status: 'failed', reason: 'blocked', message: 'Google showed an unusual-traffic or CAPTCHA page.' });
       }
-      if (normalizeText(box.value) !== text) {
+      if (normalizeQueryText(box.value) !== text) {
         return finish({ status: 'failed', reason: 'interrupted', message: 'The Google search box changed during collection.' });
       }
       const t = env.now();

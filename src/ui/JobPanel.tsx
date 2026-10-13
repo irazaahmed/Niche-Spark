@@ -4,6 +4,7 @@ import type { BackgroundRequest } from '../shared/messages';
 import { RESEARCH_METHOD_LABELS } from '../shared/types';
 import { ErrorAlert } from './components';
 import { JOB_STATUS_LABELS, sendJobCommand } from './jobClient';
+import { QueryText } from './QueryText';
 
 /** Shows the current collection job with pause / resume / cancel controls. */
 export function JobPanel({ job, onOpenTab }: { job: JobState; onOpenTab?: () => void }) {
@@ -49,7 +50,7 @@ export function JobPanel({ job, onOpenTab }: { job: JobState; onOpenTab?: () => 
       </div>
       {job.status === 'running' && job.currentQuery && (
         <div className="small">
-          Collecting: <strong>{job.currentQuery}</strong>
+          Collecting: <strong><QueryText text={job.currentQuery} /></strong>
         </div>
       )}
       {job.message && <div className={`alert ${job.status === 'awaiting_user' ? 'alert-error' : 'alert-info'}`}>{job.message}</div>}

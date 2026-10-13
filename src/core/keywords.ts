@@ -5,6 +5,23 @@ export function normalizeText(value: string): string {
   return value.normalize('NFC').replace(/\s+/gu, ' ').trim();
 }
 
+/**
+ * A query as it is typed into Google: whitespace normalized like normalizeText,
+ * but one trailing space is kept. "seed " asks Google to complete the next word
+ * and returns different suggestions from "seed". A leading space is dropped:
+ * Google ignores it.
+ */
+export function normalizeQueryText(value: string): string {
+  const text = normalizeText(value);
+  return text && /\s$/u.test(value) ? `${text} ` : text;
+}
+
+/** Deduplication key for a query; a trailing space makes a different query. */
+export function queryKey(text: string): string {
+  const key = normalizeKey(text);
+  return key && /\s$/u.test(text) ? `${key} +space` : key;
+}
+
 /** Case-insensitive deduplication key. */
 export function normalizeKey(value: string): string {
   return normalizeText(value).toLowerCase();
