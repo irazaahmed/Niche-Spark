@@ -149,3 +149,27 @@ npx neon@latest neon-auth config email-password update --project-id rapid-rice-5
 - **Not tested:** completing a Google sign-in (needs a real Google account in
   the browser), the password reset email and page end to end, and the deployed
   Netlify function before it is live.
+
+## Admin panel
+
+https://nichespark.tech/admin/ (not linked from the site, `noindex`, disallowed in robots.txt).
+
+- Sign in with a NicheSpark account (Google or email). Only accounts with
+  `role = 'admin'` in Neon Auth get in; make one with SQL on the main branch:
+  `update neon_auth."user" set role = 'admin' where email = '...';`
+- Shows: number of accounts (new, active, verified, Google vs email), totals of
+  projects/queries/keywords, accounts by country, sign-ups per day, and per
+  account: sign-in method, joined, last active, last location, projects,
+  keywords. Opening an account lists its projects (methods used, counts) and
+  the first 500 keywords of a project.
+- Can delete a project (tombstone, so the user's browsers delete it too) or a
+  whole account (data and login; the extension is signed out on its next token
+  refresh). An admin cannot delete their own account from the panel.
+- How it works: `netlify/functions/admin.mjs` keeps the admin's Neon Auth session
+  in an HttpOnly, SameSite=Strict cookie scoped to `/api/admin`, and calls the
+  `admin_*` database functions (`db/admin.sql`) with the admin's JWT. The
+  functions run as security definer and check `ns_is_admin()` themselves, so no
+  database password is stored on Netlify.
+- Activity: the auth bridge calls `ns_record_activity` on each session reply with
+  Netlify's geolocation (country, city; the IP is not stored), one row per account
+  in `public.user_activity`.

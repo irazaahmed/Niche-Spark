@@ -53,3 +53,10 @@
     X-Robots-Tag = "noindex"
     Cache-Control = "no-store"
     Referrer-Policy = "no-referrer"
+
+# Admin panel: never indexed or cached.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"

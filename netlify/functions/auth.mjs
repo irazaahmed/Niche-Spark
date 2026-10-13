@@ -9,8 +9,8 @@
 //
 // It stores nothing and only forwards a fixed set of auth calls.
 
-const AUTH_URL = process.env.NEON_AUTH_URL ?? 'https://ep-flat-shape-b778n908.neonauth.c-13.us-east-1.aws.neon.tech/neondb/auth';
-const SITE_ORIGIN = 'https://nichespark.tech';
+import { errorCode, errorMessage, rpc, SITE_ORIGIN, str, upstream } from '../lib/neon.mjs';
+
 const EXTENSION_IDS = (process.env.NS_EXTENSION_IDS ?? 'mfkjoekmjfphffamabelfngbonnjdgep,bboepjcnomhpgciggogklkmdadooogck').split(',');
 const MAX_BODY = 8 * 1024;
 
@@ -38,68 +38,51 @@ function json(status, body, origin) {
   });
 }
 
-/** Keeps only Neon Auth cookies, as "name=value; name=value". */
-function mergeJar(jar, response) {
-  const cookies = new Map();
-  for (const part of (jar ?? '').split(';')) {
-    const [name, ...rest] = part.trim().split('=');
-    if (name?.startsWith('__Secure-neon-auth')) cookies.set(name, rest.join('='));
-  }
-  for (const header of response.headers.getSetCookie()) {
-    const [pair, ...attrs] = header.split(';');
-    const [name, ...rest] = pair.trim().split('=');
-    if (!name.startsWith('__Secure-neon-auth')) continue;
-    const expired = attrs.some((a) => /^\s*max-age=0\s*$/i.test(a)) || rest.join('=') === '';
-    if (expired) cookies.delete(name);
-    else cookies.set(name, rest.join('='));
-  }
-  return [...cookies].map(([k, v]) => `${k}=${v}`).join('; ');
-}
-
-async function upstream(path, { method = 'GET', body, jar } = {}) {
-  const headers = { origin: SITE_ORIGIN };
-  if (body) headers['content-type'] = 'application/json';
-  if (jar) headers.cookie = jar;
-  const res = await fetch(`${AUTH_URL}${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined, redirect: 'manual' });
-  let data = null;
-  try {
-    data = await res.json();
-  } catch {
-    /* empty or non-JSON body */
-  }
-  return { res, data, jar: mergeJar(jar, res) };
-}
-
 const publicUser = (u) => (u ? { id: u.id, email: u.email, name: u.name ?? '', image: u.image ?? null, emailVerified: !!u.emailVerified } : null);
-const errorCode = (data) => (data && typeof data.code === 'string' ? data.code : '');
-const errorMessage = (data, fallback) => (data && typeof data.message === 'string' ? data.message : fallback);
-const str = (v, max = 320) => (typeof v === 'string' && v.length <= max ? v : null);
 
 /** The account exists but its email must be verified with the emailed code. */
 function verifyEmailReply(email, message, origin) {
   return json(403, { error: message, code: 'verify_email', email }, origin);
 }
 
+/**
+ * Notes when the account was last active and its approximate location (country
+ * and city from Netlify's IP geolocation; the IP itself is not stored), for the
+ * admin panel. Failures never block sign-in.
+ */
+async function recordActivity(token, ctx) {
+  try {
+    const geo = ctx?.geo ?? {};
+    await Promise.race([
+      rpc(token, 'ns_record_activity', { p_country: geo.country?.name ?? null, p_city: geo.city ?? null, p_client: 'extension' }),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+    ]);
+  } catch {
+    /* activity is best effort */
+  }
+}
+
 /** Session reply: the user, the cookie jar, and a fresh JWT for the Data API. */
-async function sessionReply(jar, origin) {
+async function sessionReply(jar, origin, ctx) {
   const session = await upstream('/get-session', { jar });
   if (!session.res.ok || !session.data?.user) return json(401, { error: 'Your session has ended. Please sign in again.' }, origin);
   const token = await upstream('/token', { jar: session.jar });
   if (!token.res.ok || !token.data?.token) return json(401, { error: 'Could not refresh your session. Please sign in again.' }, origin);
+  await recordActivity(token.data.token, ctx);
   return json(200, { user: publicUser(session.data.user), jar: token.jar, token: token.data.token }, origin);
 }
 
 const actions = {
-  async 'sign-up'(b, origin) {
+  async 'sign-up'(b, origin, ctx) {
     const email = str(b.email), password = str(b.password, 128), name = str(b.name ?? '', 100) ?? '';
     if (!email || !password) return json(400, { error: 'Email and password are required.' }, origin);
     const r = await upstream('/sign-up/email', { method: 'POST', body: { email, password, name: name || email.split('@')[0] } });
     if (!r.res.ok) return json(r.res.status, { error: errorMessage(r.data, 'Could not create your account.') }, origin);
     // With email verification on, sign-up creates the account but no session until the code is entered.
     if (!r.data?.token) return verifyEmailReply(email, `We sent a 6-digit code to ${email}. Enter it to finish creating your account.`, origin);
-    return sessionReply(r.jar, origin);
+    return sessionReply(r.jar, origin, ctx);
   },
-  async 'sign-in'(b, origin) {
+  async 'sign-in'(b, origin, ctx) {
     const email = str(b.email), password = str(b.password, 128);
     if (!email || !password) return json(400, { error: 'Email and password are required.' }, origin);
     const r = await upstream('/sign-in/email', { method: 'POST', body: { email, password } });
@@ -108,9 +91,9 @@ const actions = {
       return verifyEmailReply(email, `Please verify your email first. We sent a 6-digit code to ${email}.`, origin);
     }
     if (!r.res.ok) return json(r.res.status, { error: errorMessage(r.data, 'Wrong email or password.') }, origin);
-    return sessionReply(r.jar, origin);
+    return sessionReply(r.jar, origin, ctx);
   },
-  async 'social-start'(b, origin) {
+  async 'social-start'(b, origin, ctx) {
     const redirect = str(b.redirect, 200);
     if (!redirect || !allowedRedirect(redirect)) return json(400, { error: 'Unsupported redirect.' }, origin);
     const provider = b.provider === 'google' ? 'google' : null;
@@ -120,14 +103,14 @@ const actions = {
     if (!r.res.ok || !r.data?.url) return json(502, { error: errorMessage(r.data, 'Could not start Google sign-in.') }, origin);
     return json(200, { url: r.data.url, jar: r.jar }, origin);
   },
-  async 'social-finish'(b, origin) {
+  async 'social-finish'(b, origin, ctx) {
     const verifier = str(b.verifier, 512), jar = str(b.jar, 8192);
     if (!verifier || !jar) return json(400, { error: 'Google sign-in did not complete.' }, origin);
     const r = await upstream(`/get-session?neon_auth_session_verifier=${encodeURIComponent(verifier)}`, { jar });
     if (!r.res.ok || !r.data?.user) return json(401, { error: 'Google sign-in did not complete. Please try again.' }, origin);
-    return sessionReply(r.jar, origin);
+    return sessionReply(r.jar, origin, ctx);
   },
-  async 'verify-email'(b, origin) {
+  async 'verify-email'(b, origin, ctx) {
     const email = str(b.email), otp = str(b.otp, 12);
     if (!email || !otp || !/^[0-9]{6}$/.test(otp.trim())) return json(400, { error: 'Enter the 6-digit code from the email.' }, origin);
     const r = await upstream('/email-otp/verify-email', { method: 'POST', body: { email, otp: otp.trim() } });
@@ -140,27 +123,27 @@ const actions = {
         : errorMessage(r.data, 'Could not verify the code.');
       return json(400, { error, code }, origin);
     }
-    return sessionReply(r.jar, origin);
+    return sessionReply(r.jar, origin, ctx);
   },
-  async 'resend-code'(b, origin) {
+  async 'resend-code'(b, origin, ctx) {
     const email = str(b.email);
     if (!email) return json(400, { error: 'Enter your email address.' }, origin);
     const r = await upstream('/email-otp/send-verification-otp', { method: 'POST', body: { email, type: 'email-verification' } });
     if (!r.res.ok) return json(r.res.status === 429 ? 429 : 502, { error: r.res.status === 429 ? 'Please wait a minute before asking for another code.' : errorMessage(r.data, 'Could not send a new code.') }, origin);
     return json(200, { ok: true }, origin);
   },
-  async session(b, origin) {
+  async session(b, origin, ctx) {
     const jar = str(b.jar, 8192);
     if (!jar) return json(401, { error: 'Not signed in.' }, origin);
-    return sessionReply(jar, origin);
+    return sessionReply(jar, origin, ctx);
   },
-  async 'sign-out'(b, origin) {
+  async 'sign-out'(b, origin, ctx) {
     const jar = str(b.jar, 8192);
     if (jar) await upstream('/sign-out', { method: 'POST', body: {}, jar });
     return json(200, { ok: true }, origin);
   },
   /** Called by the website's /reset-password/ page (same origin), not by the extension. */
-  async 'reset-password'(b, origin) {
+  async 'reset-password'(b, origin, ctx) {
     const token = str(b.token, 512), newPassword = str(b.newPassword, 128);
     if (!token || !newPassword) return json(400, { error: 'This reset link is incomplete. Request a new one from the extension.' }, origin);
     if (newPassword.length < 8) return json(400, { error: 'Use a password of at least 8 characters.' }, origin);
@@ -168,7 +151,7 @@ const actions = {
     if (!r.res.ok) return json(r.res.status, { error: errorMessage(r.data, 'This reset link has expired. Request a new one from the extension.') }, origin);
     return json(200, { ok: true }, origin);
   },
-  async 'forgot-password'(b, origin) {
+  async 'forgot-password'(b, origin, ctx) {
     const email = str(b.email);
     if (!email) return json(400, { error: 'Enter your email address.' }, origin);
     const r = await upstream('/request-password-reset', { method: 'POST', body: { email, redirectTo: `${SITE_ORIGIN}/reset-password/` } });
@@ -195,7 +178,7 @@ export default async (req, context) => {
     return json(400, { error: 'Invalid JSON.' }, origin);
   }
   try {
-    return await action(body ?? {}, origin);
+    return await action(body ?? {}, origin, context);
   } catch {
     return json(502, { error: 'The sign-in service is unavailable. Please try again.' }, origin);
   }
