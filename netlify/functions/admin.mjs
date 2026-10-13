@@ -58,7 +58,13 @@ async function adminSession(jar) {
   if (!session.res.ok || !session.data?.user) return { error: 'Your session has ended. Please sign in again.', status: 401 };
   const token = await upstream('/token', { jar: session.jar });
   if (!token.res.ok || !token.data?.token) return { error: 'Could not refresh your session. Please sign in again.', status: 401 };
-  const check = await rpc(token.data.token, 'ns_is_admin');
+  // One retry: the Data API can briefly fail right after a deploy or schema change.
+  let check = await rpc(token.data.token, 'ns_is_admin');
+  if (!check.res.ok) check = await rpc(token.data.token, 'ns_is_admin');
+  if (!check.res.ok) {
+    const detail = errorMessage(check.data, '') || `HTTP ${check.res.status}`;
+    return { error: `Could not check admin access for ${session.data.user.email} (${detail}). Please try again.`, status: 502 };
+  }
   if (check.data !== true) return { error: `${session.data.user.email} is not an admin account.`, status: 403, jar: token.jar };
   const u = session.data.user;
   return { user: { id: u.id, email: u.email, name: u.name ?? '' }, token: token.data.token, jar: token.jar };
